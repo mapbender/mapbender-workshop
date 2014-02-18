@@ -72,7 +72,7 @@ code, kbd, pre, samp {
   font-size: 1em; }
 
 pre {
-  #B8C9FF-space: pre-wrap;
+  white-space: pre-wrap;
   word-wrap: break-word; }
 
 q {
@@ -120,7 +120,7 @@ fieldset {
 
 legend {
   border: 0;
-  #B8C9FF-space: normal;
+  white-space: normal;
   margin-left: -7px;
   padding: 0; }
 
@@ -185,11 +185,13 @@ p, pre, dl, menu, ol, ul {
 [class^="icon"],
 [class*=" icon"],
 .icon,
+.ui-resizable-se,
 .sidePaneTabItem,
 .mb-element-overview .toggleOverview,
 .olControlOverviewMapRectReplacement {
   text-decoration: none;
   -webkit-font-smoothing: antialiased;
+  font-family: FontAwesome;
   cursor: pointer;
   display: inline;
   width: auto;
@@ -291,7 +293,7 @@ p, pre, dl, menu, ol, ul {
 
 .iconPrint:before {
   /*content: "\f02f"; }*/
-  content:url("imgage/print.png");}
+  content:url("image/print.png");}
 
 .iconGps:before {
   content: "\f041"; }
@@ -476,9 +478,7 @@ p {
 
 /* ------------------------------------------------------------- MISC */
 .clear, .clearContainer {
-  clear: both;
-  overflow: hidden;
-  *zoom: 1; }
+  clear: both; }
 
 .clearContainer {
   height: 0px; }
@@ -519,17 +519,17 @@ p {
   margin-bottom: 20px;
   padding-bottom: 10px;
   border-bottom: dashed 1px #b3b3b3;
-  text-shadow: #B8C9FF 1px 1px 0px; }
+  text-shadow: #f0f0f0 1px 1px 0px; }
 
 .title, .popupHead {
   font-weight: normal;
   color: #3f3f3f;
-  text-shadow: #B8C9FF 1px 1px 0px; }
+  text-shadow: #c1d0e3 1px 1px 0px; }
 
 .subTitle, fieldset legend, .mb-element-layertree .serviceContainer > .leaveContainer .layer-title, .mb-element-layertree .groupContainer > .leaveContainer .layer-title, .mb-element-searchrouter th {
   font-size: 14px;
-  color: #5b932a;
-  text-shadow: #B8C9FF 1px 1px 0px; }
+  color: #005Da3;
+  text-shadow: #c1d0e3 1px 1px 0px; }
 
 fieldset {
   padding: 20px; }
@@ -542,7 +542,7 @@ fieldset {
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
-  text-shadow: #B8C9FF 1px 1px 0px; }
+  text-shadow: #eff7e9 1px 1px 0px; }
 
 .labelInput, .popupSubTitle {
   display: inline-block;
@@ -550,7 +550,7 @@ fieldset {
   line-height: 29px; }
   .labelInput .required, .popupSubTitle .required {
     color: #aa2323;
-    text-shadow: #B8C9FF 1px 1px 0px; }
+    text-shadow: white 1px 1px 0px; }
 
 .labelCheck {
   color: #707070;
@@ -605,9 +605,9 @@ fieldset {
   padding: 5px 10px;
   line-height: 14px;
   margin: 0px;
-  border: 1px solid #538e24;
-  color: #B8C9FF;
-  background-color: #6fb536;
+  border: 1px solid #005Da3;
+  color: white;
+  background-color: #005Da3;
   -webkit-border-radius: 3px;
   -moz-border-radius: 3px;
   -ms-border-radius: 3px;
@@ -617,16 +617,17 @@ fieldset {
   -moz-transition: all 0.3s ease-in-out;
   -o-transition: all 0.3s ease-in-out;
   transition: all 0.3s ease-in-out;
-  -webkit-box-shadow: 0 0 6px rgba(0, 0, 0, 0.1), inset 0 -10px 10px #5fa229;
-  -moz-box-shadow: 0 0 6px rgba(0, 0, 0, 0.1), inset 0 -10px 10px #5fa229;
-  box-shadow: 0 0 6px rgba(0, 0, 0, 0.1), inset 0 -10px 10px #5fa229; }
+  -webkit-box-shadow: 0 0 6px rgba(0, 0, 0, 0.1), inset 0 -10px 10px #005Da3;
+  -moz-box-shadow: 0 0 6px rgba(0, 0, 0, 0.1), inset 0 -10px 10px #005Da3;
+  box-shadow: 0 0 6px rgba(0, 0, 0, 0.1), inset 0 -10px 10px #005Da3; }
   .button:hover, .tabContainerAlt .tab:hover, .sideContent .mb-aboutButton:hover, .sideContent .mb-gpsButton:hover,
   .sideContent .mb-button:hover {
-    background-color: #63a130;
-    -webkit-box-shadow: 0 0 6px rgba(0, 0, 0, 0.1), inset 0 -10px 10px #559225;
-    -moz-box-shadow: 0 0 6px rgba(0, 0, 0, 0.1), inset 0 -10px 10px #559225;
-    box-shadow: 0 0 6px rgba(0, 0, 0, 0.1), inset 0 -10px 10px #559225; }
-  .button.icon, .tabContainerAlt .icon.tab, .tabContainerAlt .tab.sidePaneTabItem, .tabContainerAlt .mb-element-overview .tab.toggleOverview, .mb-element-overview .tabContainerAlt .tab.toggleOverview, .tabContainerAlt .tab.olControlOverviewMapRectReplacement, .button.sidePaneTabItem, .sideContent .sidePaneTabItem.mb-aboutButton, .sideContent .sidePaneTabItem.mb-gpsButton,
+    background-color: #c1d0e3;
+    -webkit-box-shadow: 0 0 6px rgba(0, 0, 0, 0.1), inset 0 -10px 10px #c1d0e3;
+    -moz-box-shadow: 0 0 6px rgba(0, 0, 0, 0.1), inset 0 -10px 10px #c1d0e3;
+    box-shadow: 0 0 6px rgba(0, 0, 0, 0.1), inset 0 -10px 10px #c1d0e3; }
+  .button.icon, .button.ui-resizable-se, .tabContainerAlt .ui-resizable-se.tab, .sideContent .ui-resizable-se.mb-aboutButton, .sideContent .ui-resizable-se.mb-gpsButton,
+  .sideContent .ui-resizable-se.mb-button, .tabContainerAlt .icon.tab, .tabContainerAlt .tab.sidePaneTabItem, .tabContainerAlt .mb-element-overview .tab.toggleOverview, .mb-element-overview .tabContainerAlt .tab.toggleOverview, .tabContainerAlt .tab.olControlOverviewMapRectReplacement, .button.sidePaneTabItem, .sideContent .sidePaneTabItem.mb-aboutButton, .sideContent .sidePaneTabItem.mb-gpsButton,
   .sideContent .sidePaneTabItem.mb-button, .sideContent .icon.mb-aboutButton, .sideContent .mb-element-overview .mb-aboutButton.toggleOverview, .mb-element-overview .sideContent .mb-aboutButton.toggleOverview, .sideContent .mb-aboutButton.olControlOverviewMapRectReplacement, .sideContent .icon.mb-gpsButton, .sideContent .mb-element-overview .mb-gpsButton.toggleOverview, .mb-element-overview .sideContent .mb-gpsButton.toggleOverview, .sideContent .mb-gpsButton.olControlOverviewMapRectReplacement,
   .sideContent .icon.mb-button,
   .sideContent .mb-element-overview .mb-button.toggleOverview,
@@ -639,16 +640,16 @@ fieldset {
   .button.critical, .tabContainerAlt .critical.tab, .sideContent .critical.mb-aboutButton, .sideContent .critical.mb-gpsButton,
   .sideContent .critical.mb-button {
     border: 1px solid #9f3434;
-    color: #B8C9FF;
-    background-color: #d36565;
+    color: white;
+    background-color: #ff00ff;
     -webkit-border-radius: 3px;
     -moz-border-radius: 3px;
     -ms-border-radius: 3px;
     -o-border-radius: 3px;
     border-radius: 3px;
-    -webkit-box-shadow: 0 0 6px rgba(0, 0, 0, 0.1), inset 0 -10px 10px #b23a3a;
-    -moz-box-shadow: 0 0 6px rgba(0, 0, 0, 0.1), inset 0 -10px 10px #b23a3a;
-    box-shadow: 0 0 6px rgba(0, 0, 0, 0.1), inset 0 -10px 10px #b23a3a; }
+    -webkit-box-shadow: 0 0 6px rgba(0, 0, 0, 0.1), inset 0 -10px 10px #ff00ff;
+    -moz-box-shadow: 0 0 6px rgba(0, 0, 0, 0.1), inset 0 -10px 10px #ff00ff;
+    box-shadow: 0 0 6px rgba(0, 0, 0, 0.1), inset 0 -10px 10px #ff00ff; }
     .button.critical:hover, .tabContainerAlt .critical.tab:hover, .sideContent .critical.mb-aboutButton:hover, .sideContent .critical.mb-gpsButton:hover,
     .sideContent .critical.mb-button:hover {
       background-color: #cd5151;
@@ -658,7 +659,7 @@ fieldset {
 
 .linkButton, .mb-element-searchrouter tr {
   color: #707070;
-  text-shadow: #B8C9FF 1px 1px 0px; }
+  text-shadow: white 1px 1px 0px; }
   .linkButton:before, .mb-element-searchrouter tr:before {
     margin-right: 5px; }
   .linkButton:hover, .mb-element-searchrouter tr:hover, .linkButton.activeLink, .mb-element-searchrouter tr.activeLink, .linkButton:active, .mb-element-searchrouter tr:active {
@@ -722,11 +723,12 @@ fieldset {
     max-height: 200px;
     border: solid 1px #c8c8c8;
     width: 100%;
-    -webkit-box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.1), inset 0px 0px 2px #B8C9FF;
-    -moz-box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.1), inset 0px 0px 2px #B8C9FF;
-    box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.1), inset 0px 0px 2px #B8C9FF; }
+    -webkit-box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.1), inset 0px 0px 2px white;
+    -moz-box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.1), inset 0px 0px 2px white;
+    box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.1), inset 0px 0px 2px white; }
     .dropdown .dropdownList li {
-      padding-left: 5px; }
+      padding-left: 5px;
+      line-height: 29px; }
       .dropdown .dropdownList li:hover {
         color: #5b932a;
         background-color: #f9f9f9; }
@@ -757,18 +759,21 @@ fieldset {
     cursor: move; }
 
 .popupButtons {
-  margin-right: 20px; }
+  position: absolute;
+  right: 20px;
+  bottom: 20px;
+  left: 0; }
 
 .popupContent, .popupSubContent {
-  padding: 0 10px 0 20px;
-  margin: 0 20px 20px 0;
-  max-height: 370px;
-  overflow-y: auto; }
+  padding: 0 40px;
+  margin-bottom: 20px; }
 
 .popupSubContent {
   width: 460px; }
 
 .popup {
+  min-width: 300px;
+  min-height: 250px;
   position: relative;
   z-index: 9999;
   width: 460px;
@@ -776,6 +781,7 @@ fieldset {
   background-color: #f4f4f4;
   padding-bottom: 20px;
   /*background-image: url("../../images/content.png");*/
+background-color: 
   -webkit-transition: margin 0.4s ease-in-out;
   -moz-transition: margin 0.4s ease-in-out;
   -o-transition: margin 0.4s ease-in-out;
@@ -785,9 +791,9 @@ fieldset {
   -ms-border-radius: 3px;
   -o-border-radius: 3px;
   border-radius: 3px;
-  -webkit-box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.9), inset 0px 0px 2px #B8C9FF;
-  -moz-box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.9), inset 0px 0px 2px #B8C9FF;
-  box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.9), inset 0px 0px 2px #B8C9FF; }
+  -webkit-box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.9), inset 0px 0px 2px white;
+  -moz-box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.9), inset 0px 0px 2px white;
+  box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.9), inset 0px 0px 2px white; }
   .popup.popupOverflow .popupContent, .popup.popupOverflow .popupSubContent {
     overflow: visible; }
 
@@ -825,6 +831,29 @@ fieldset {
   .sideContent .popupContainer .mb-button {
     margin-left: 3px; }
 
+.ui-resizable .popupScroll {
+  overflow: auto;
+  position: absolute;
+  top: 70px;
+  right: 0;
+  bottom: 60px;
+  left: 0; }
+
+.ui-resizable-se {
+  font-size: 16px;
+  position: absolute;
+  right: 3px;
+  bottom: -3px;
+  -webkit-transform: rotate(45deg);
+  -moz-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  -o-transform: rotate(45deg);
+  transform: rotate(45deg);
+  cursor: default; }
+  .ui-resizable-se:before {
+    content: "\f054";
+    display: block; }
+
 /* ------------------------------------------------- TABS */
 .tabContainer .tab {
   margin-right: 3px;
@@ -840,9 +869,9 @@ fieldset {
   border-right: solid 1px #a2a2a2;
   float: left;
   padding: 3px 10px 3px 10px;
-  -webkit-box-shadow: 1px 0px 2px rgba(0, 0, 0, 0.1), inset 1px 0px 2px #B8C9FF;
-  -moz-box-shadow: 1px 0px 2px rgba(0, 0, 0, 0.1), inset 1px 0px 2px #B8C9FF;
-  box-shadow: 1px 0px 2px rgba(0, 0, 0, 0.1), inset 1px 0px 2px #B8C9FF;
+  -webkit-box-shadow: 1px 0px 2px rgba(0, 0, 0, 0.1), inset 1px 0px 2px white;
+  -moz-box-shadow: 1px 0px 2px rgba(0, 0, 0, 0.1), inset 1px 0px 2px white;
+  box-shadow: 1px 0px 2px rgba(0, 0, 0, 0.1), inset 1px 0px 2px white;
   -webkit-transition: all 0.2s ease-in-out;
   -moz-transition: all 0.2s ease-in-out;
   -o-transition: all 0.2s ease-in-out;
@@ -895,9 +924,9 @@ fieldset {
   display: inline-block; }
   .tabContainerAlt .tab.active {
     cursor: default;
-    background-color: #578e2a;
-    color: #B8C9FF;
-    -webkit-box-shadow: 0 0 6px rgba(0, 0, 0, 0.1), inset 0 -10px 10px #4c8121;
+    background-color: #005Da3;
+    color: white;
+    -webkit-box-shadow: 0 0 6px rgba(0, 0, 0, 0.1), inset 0 -10px 10px #005Da3;
     -moz-box-shadow: 0 0 6px rgba(0, 0, 0, 0.1), inset 0 -10px 10px #4c8121;
     box-shadow: 0 0 6px rgba(0, 0, 0, 0.1), inset 0 -10px 10px #4c8121; }
 .tabContainerAlt .container {
@@ -939,7 +968,7 @@ fieldset {
 
 .mb-element-copyright-link {
   cursor: pointer;
-  color: #B8C9FF;
+  color: white;
   text-decoration: none; }
 
 .mb-element-copyright-dialog {
@@ -947,12 +976,12 @@ fieldset {
 
 /* ---------------------------------------------------------- TOOLBAR */
 .logoContainer {
-  /*background-image: url("../../images/head.png"); }*/
+  background-image: url("../../images/head.png"); }
 
 .toolBar {
-  color: #B8C9FF;
+  color: white;
   background-color: #606060;
-  background-color: rgba(0, 46, 184, 0.8);
+  background-color: rgba(0, 93, 83, 0.9);
   text-shadow: 1px 1px 0px black;
   -webkit-box-shadow: 0 0 5px rgba(0, 0, 0, 0.4);
   -moz-box-shadow: 0 0 5px rgba(0, 0, 0, 0.4);
@@ -976,7 +1005,10 @@ fieldset {
       display: inline-block;
       padding: 5px; }
   .toolBar.bottom {
-    padding: 5px 10px 5px 10px; }
+    padding: 5px 10px 5px 10px; 
+    background-color: #ff0000;
+    background-color: rgba(255, 0, 0, 0.9);
+     }
     .toolBar.bottom [class^="icon"]:before, .toolBar.bottom [class*=" icon"]:before {
       font-size: 14px; }
     .toolBar.bottom .toolBarItem {
@@ -988,9 +1020,9 @@ fieldset {
       bottom: 0px;
       margin-bottom: 28px; }
   .toolBar .toolBarItemActive {
-    background-color: #f9f9f9;
-    color: #404040;
-    text-shadow: 1px 1px 0 #B8C9FF;
+    background-color: #c1d0e3;
+    color: #005Da3;
+    text-shadow: 1px 1px 0 white;
     -webkit-border-radius: 3px;
     -moz-border-radius: 3px;
     -ms-border-radius: 3px;
@@ -1014,18 +1046,19 @@ fieldset {
   display: block;
   padding: 5px 10px;
   margin-bottom: 5px;
-  color: #B8C9FF;
-  background-color: #6fb536;
+  color: white;
+  background-color: #005Da3;
   text-align: center;
-  border-top: 1px solid #b3b3b3;
-  border-bottom: 1px solid #b3b3b3;
-  -webkit-box-shadow: 0 0 6px rgba(0, 0, 0, 0.1), inset 0 -10px 10px #5fa229;
-  -moz-box-shadow: 0 0 6px rgba(0, 0, 0, 0.1), inset 0 -10px 10px #5fa229;
-  box-shadow: 0 0 6px rgba(0, 0, 0, 0.1), inset 0 -10px 10px #5fa229; }
+  border-top: 1px solid #f0f0f0;
+  border-bottom: 1px solid #f0f0f0;
+  -webkit-box-shadow: 0 0 6px rgba(0, 0, 0, 0.1), inset 0 -10px 10px #005Da3;
+  -moz-box-shadow: 0 0 6px rgba(0, 0, 0, 0.1), inset 0 -10px 10px #005Da3;
+  box-shadow: 0 0 6px rgba(0, 0, 0, 0.1), inset 0 -10px 10px #005Da3; }
 
 .sidePane {
   overflow: visible;
   /*background-image: url("../../images/content.png");*/
+  background-color: #eff7e9;
   border-top: 1px solid #b3b3b3;
   border-bottom: 1px solid #b3b3b3;
   -webkit-transition: all 0.4s ease-in-out;
@@ -1072,9 +1105,9 @@ fieldset {
     bottom: 40px; }
   .contentPane .mb-element-scaledisplay {
     padding: 5px 10px;
-    color: #B8C9FF;
+    color: white;
     background-color: #606060;
-    background-color: rgba(0, 46, 184, 0.8);
+    background-color: rgba(0, 93, 83, 0.9);
     text-shadow: 1px 1px 0px black;
     -webkit-box-shadow: 0 0 5px rgba(0, 0, 0, 0.4);
     -moz-box-shadow: 0 0 5px rgba(0, 0, 0, 0.4);
@@ -1112,9 +1145,9 @@ fieldset {
   -webkit-border-radius: 50% 50%;
   -moz-border-radius: 50% / 50%;
   border-radius: 50% / 50%;
-  color: #B8C9FF;
+  color: white;
   background-color: #606060;
-  background-color: rgba(0, 46, 184, 0.8);
+  background-color: rgba(0, 93, 83, 0.9);
   text-shadow: 1px 1px 0px black;
   -webkit-box-shadow: 0 0 5px rgba(0, 0, 0, 0.4);
   -moz-box-shadow: 0 0 5px rgba(0, 0, 0, 0.4);
@@ -1154,9 +1187,9 @@ fieldset {
   -ms-border-radius: 3px;
   -o-border-radius: 3px;
   border-radius: 3px;
-  color: #B8C9FF;
+  color: white;
   background-color: #606060;
-  background-color: rgba(0, 46, 184, 0.8);
+  background-color: rgba(0, 93, 83, 0.9);
   text-shadow: 1px 1px 0px black;
   -webkit-box-shadow: 0 0 5px rgba(0, 0, 0, 0.4);
   -moz-box-shadow: 0 0 5px rgba(0, 0, 0, 0.4);
@@ -1202,7 +1235,7 @@ fieldset {
 .iconZoomLevel:not(:first-child):after {
   content: '';
   height: 7px;
-  border-left: dotted 1px #B8C9FF;
+  border-left: dotted 1px white;
   position: absolute;
   top: -8px;
   left: 19px; }
@@ -1211,25 +1244,25 @@ fieldset {
   cursor: crosshair; }
 .olMapViewport .olHandlerBoxZoomBox {
   border: 2px solid #404040;
-  background-color: #B8C9FF;
+  background-color: white;
   filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=80);
   opacity: 0.8; }
 
 /* Overview */
 .mb-element-overview .toggleOverview {
   padding: 0px 6px;
-  color: #B8C9FF;
-  background-color: #6fb536;
-  -webkit-box-shadow: 0 0 6px rgba(0, 0, 0, 0.1), inset 0 -10px 10px #5fa229;
-  -moz-box-shadow: 0 0 6px rgba(0, 0, 0, 0.1), inset 0 -10px 10px #5fa229;
-  box-shadow: 0 0 6px rgba(0, 0, 0, 0.1), inset 0 -10px 10px #5fa229;
+  color: white;
+  background-color: #005Da3;
+  -webkit-box-shadow: 0 0 6px rgba(0, 0, 0, 0.1), inset 0 -10px 10px #005Da3;
+  -moz-box-shadow: 0 0 6px rgba(0, 0, 0, 0.1), inset 0 -10px 10px #005Da3;
+  box-shadow: 0 0 6px rgba(0, 0, 0, 0.1), inset 0 -10px 10px #005Da3;
   -webkit-border-radius: 3px;
   -moz-border-radius: 3px;
   -ms-border-radius: 3px;
   -o-border-radius: 3px;
   border-radius: 3px; }
 .mb-element-overview .olMap {
-  background-color: #B8C9FF;
+  background-color: white;
   -webkit-transition: width 0.2s linear;
   -moz-transition: width 0.2s linear;
   -o-transition: width 0.2s linear;
@@ -1346,7 +1379,7 @@ fieldset {
     position: absolute;
     right: 40px; }
 .mb-element-layertree [data-state="error"] .layer-title {
-  color: #aa2323 !important; }
+  color: #001627 !important; }
 .mb-element-layertree [data-state="error"]:before {
   color: #aa2323;
   position: absolute;
@@ -1367,8 +1400,7 @@ fieldset {
     width: 290px;
     margin-bottom: 20px; }
   .mb-element-searchrouter .dropdown {
-    margin-left: -90px;
-    width: 380px; }
+    width: 290px; }
   .mb-element-searchrouter .ui-helper-hidden-accessible {
     display: none; }
   .mb-element-searchrouter .search-results {
@@ -1378,6 +1410,8 @@ fieldset {
     text-align: left; }
   .mb-element-searchrouter td {
     padding-right: 10px; }
+  .mb-element-searchrouter .search-forms > form > div > div {
+    clear: both; }
 
 .ui-autocomplete {
   z-index: 1000;
@@ -1407,6 +1441,8 @@ fieldset {
   color: #3f3f3f; }
 .mb-wmcEditor .buttonBack {
   margin-left: 20px; }
+.mb-wmcEditor tr {
+  vertical-align: top; }
 
 .elementFormWMC .labelInput, .elementFormWMC .popupSubTitle {
   width: 110px;
@@ -1423,14 +1459,14 @@ fieldset {
   bottom: 5px;
   padding-bottom: 5px; }
   .toolBar .mb-element-scaleline .scaleBorder {
-    border-color: #B8C9FF; }
+    border-color: white; }
 
 .mb-element-basesourceswitcher li {
   padding: 5px 7px;
   background-color: #b5b5b5;
   display: inline-block;
   margin-right: -4px;
-  color: #B8C9FF;
+  color: white;
   cursor: pointer;
   text-shadow: none;
   -webkit-transition: all 0.2s ease-in-out;
