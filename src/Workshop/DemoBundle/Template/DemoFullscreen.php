@@ -18,7 +18,7 @@ class DemoFullscreen extends Template
         return array(
             'sidepane' => array(
                 'tabs' => array(
-                    'state' => true,
+                    'state' => false,
                     'options' => array('icon' => 'XXX')
                 )
             )
@@ -36,17 +36,25 @@ class DemoFullscreen extends Template
     /**
      * @inheritdoc
      */
-    public function getAssets($type)
+    static public function listAssets()
     {
-        parent::getAssets($type);
         $assets = array(
-            'css' => array('@WorkshopDemo/Resources/public/css/demo_fullscreen.css'),
+            'css' => array('@MapbenderCoreBundle/Resources/public/sass/theme/mapbender3.scss',
+                           '@MapbenderCoreBundle/Resources/public/sass/template/fullscreen.scss','@WorkshopDemoBundle/Resources/public/demo_fullscreen.css'),
             'js' => array('@FOMCoreBundle/Resources/public/js/widgets/popup.js',
-                '@FOMCoreBundle/Resources/public/js/frontend/sidepane.js',
-                '@FOMCoreBundle/Resources/public/js/frontend/tabcontainer.js'),
+                          '@FOMCoreBundle/Resources/public/js/frontend/sidepane.js',
+                          '@FOMCoreBundle/Resources/public/js/frontend/tabcontainer.js'),
             'trans' => array()
         );
+        return $assets;
+    }
 
+    /**
+     * @inheritdoc
+     */
+    public function getAssets($type)
+    {
+        $assets = $this::listAssets();
         return $assets[$type];
     }
 
