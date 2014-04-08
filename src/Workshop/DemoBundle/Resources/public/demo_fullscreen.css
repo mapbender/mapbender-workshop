@@ -1,9 +1,9 @@
 .toolBar {
-  background-color: rgba(0, 29, 122, 0.8);
+  background-color: rgba(0, 29, 122, 0.8) !important;
 }
 
 .toolPane {
-  background-color: rgba(0, 29, 122, 0.8);
+  background-color: rgba(0, 29, 122, 0.8) !important;
 }
 
 .sidePane {
@@ -17,28 +17,28 @@
 }
 
 .logoContainer {
-  background-color: white;
-  background-image: url("");
+  background-color: white !important;
+  background: url("");
   -webkit-box-shadow: 0px 0px 3px #0028AD;
   -moz-box-shadow: 0px 0px 3px #0028AD;
   box-shadow: 0px 0px 3px #0028AD;
 }
 
 .sidePaneTabItem {
-    background-color: #0028AD;
+    background-color: #0028AD !important;
 }
 
 .layer-opacity-handle {
-    background-color: #0028AD;
+    background-color: #0028AD !important;
 }
 
 .mb-element-overview .toggleOverview {
-    background-color: #0028AD;
+    background-color: #0028AD !important;
 }
 
 
 .button, .tabContainerAlt .tab {
-    background-color: #0028AD;
+    background-color: #0028AD !important;
 }
 
 .iconPrint:before {
@@ -48,9 +48,9 @@
 
  .popup {
    background-color: #eff7e9;
-   background-image: url("");
+   background: none;
  }
 
 .pan{
-  background-color: rgba(0, 93, 83, 0.9);
+  background-color: rgba(0, 93, 83, 0.9) !important;
 }
