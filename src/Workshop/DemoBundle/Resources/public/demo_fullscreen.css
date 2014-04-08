@@ -47,10 +47,16 @@
 }
 
  .popup {
-   background-color: #eff7e9;
-   background: none;
+  background: none !important;
  }
 
 .pan{
   background-color: rgba(0, 93, 83, 0.9) !important;
+}
+
+.mb-element-scaledisplay {
+    background-color: rgba(0, 29, 122, 0.8) !important;
+    padding: 5px 10px !important;
+    position:absolute !important;
+    right:140px !important;
 }
