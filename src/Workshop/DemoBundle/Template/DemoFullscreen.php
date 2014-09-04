@@ -18,9 +18,11 @@ class DemoFullscreen extends Template
         return array(
             'sidepane' => array(
                 'tabs' => array(
-                    'state' => false,
-                    'options' => array('icon' => 'XXX')
-                )
+                    'name' => 'tabs',
+                    'label' => 'mb.manager.template.region.tabs.label'),
+                'accordion' => array(
+                    'name' => 'accordion',
+                    'label' => 'mb.manager.template.region.accordion.label')
             )
         );
     }
@@ -48,6 +50,19 @@ class DemoFullscreen extends Template
         );
         return $assets;
     }
+    
+    /**
+     * @inheritdoc
+     */
+    public function getLateAssets($type)
+    {
+        $assets = array(
+            'css' => array(),
+            'js' => array(),
+            'trans' => array()
+        );
+        return $assets[$type];
+    }    
 
     /**
      * @inheritdoc
@@ -69,8 +84,7 @@ class DemoFullscreen extends Template
     /**
      * @inheritdoc
      */
-    public function render($format = 'html', $html = true, $css = true,
-        $js = true)
+    public function render($format = 'html', $html = true, $css = true,$js = true)
     {
         $region_props = $this->application->getEntity()->getNamedRegionProperties();
         $default_region_props = $this->getRegionsProperties();
