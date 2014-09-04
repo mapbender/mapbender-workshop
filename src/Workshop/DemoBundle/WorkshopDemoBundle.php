@@ -9,6 +9,9 @@
 namespace Workshop\DemoBundle;
 
 use Mapbender\CoreBundle\Component\MapbenderBundle;
+use Symfony\Component\DependencyInjection\ContainerBuilder;
+use Mapbender\CoreBundle\DependencyInjection\Compiler\MapbenderYamlCompilerPass;
+
 
 /**
  * WorkshopDemo
@@ -17,6 +20,13 @@ use Mapbender\CoreBundle\Component\MapbenderBundle;
  */
 class WorkshopDemoBundle extends MapbenderBundle
 {
+    
+    public function build(ContainerBuilder $container)
+    {
+        parent::build($container);
+
+        $container->addCompilerPass(new MapbenderYamlCompilerPass());
+    }    
 
 
     /**
