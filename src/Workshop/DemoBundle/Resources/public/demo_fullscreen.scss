@@ -9,7 +9,7 @@ $buttonCriticalBgColor: #bf0c00;
 $buttonActiveBgColor: darken($buttonBgColor, 15%);
 $buttonHoverBgColor: lighten($buttonActiveBgColor, 5%);
 $buttonShadowColor: opacify($buttonActiveBgColor, 0.2);
-$borderColor: #c52b45;
+$borderColor: lighten($textColor, 30%);
 
 $color_wild_sand_approx: #f5f5f5;
 $color_gunsmoke_approx: #858585;
@@ -72,7 +72,7 @@ body {
         > .accordionContainer {
           > .accordion {
             > .tablecell{
-              background-color: $buttonBgColor;
+              background-color: lighten($buttonBgColor, 5%);
               border: 1px solid $buttonBorderColor;
             }
             &.active > .tablecell {
@@ -249,7 +249,7 @@ body {
       font-size: 14px;
     }
     .featureInfoWrapper.iconCheckboxActive:before {
-      content: url("bundles/workshopdemo/img/info.png");
+      content: url("bundles/workshopdemo/image/info.png");
     }
   }
 
@@ -281,7 +281,7 @@ body {
   .tabContainer {
     .container {
       background-color: $color_alabaster_approx;
-      border: 1px solid $buttonBgColor;
+      border: 1px solid $borderColor;
       border-top-width: 3px;
       clear: left;
       display: none;
@@ -369,57 +369,45 @@ body {
 * Icons
 */
 .iconPrint:before {
-  content: url("bundles/workshopdemo/img/print.png");
+  content: url("bundles/workshopdemo/image/print.png");
 }
 
 .iconHelp:before {
-  content: url("bundles/workshopdemo/img/help.png");
+  content: url("bundles/workshopdemo/image/help.png");
 }
 
 .iconGps:before {
-  content: url("bundles/workshopdemo/img/gps.png");
+  content: url("bundles/workshopdemo/image/gps.png");
 }
 
 .iconLayertree:before {
-  content: url("bundles/workshopdemo/img/layertree.png");
+  content: url("bundles/workshopdemo/image/layertree.png");
 }
 
 .iconLegend:before {
-  content: url("bundles/workshopdemo/img/legend.png");
+  content: url("bundles/workshopdemo/image/legend.png");
 }
 
 .iconInfoActive:before {
-  content: url("bundles/workshopdemo/img/info.png");
+  content: url("bundles/workshopdemo/image/info.png");
 }
 
 .iconSearch:before {
-  content: url("bundles/workshopdemo/img/search.png");
-}
-
-.iconWms:before {
-  content: url("bundles/workshopdemo/img/wmsloader.png");
-}
-
-.iconWmcEditor:before {
-  content: url("bundles/workshopdemo/img/wmceditor.png");
-}
-
-.iconWmcLoader:before {
-  content: url("bundles/workshopdemo/img/wmcloader.png");
+  content: url("bundles/workshopdemo/image/search.png");
 }
 
 .iconZoomSelect:before {
-  content: url("bundles/workshopdemo/img/selectarea.png");
+  content: url("bundles/workshopdemo/image/selectarea.png");
 }
 
 .iconZoomMin:before {
-  content: url("bundles/workshopdemo/img/zoomfull_wesseling.png");
+  content: url("bundles/workshopdemo/image/zoomfull.png");
 }
 
 .iconLineRuler:before {
-  content: url("bundles/workshopdemo/img/measure.png");
+  content: url("bundles/workshopdemo/image/measure.png");
 }
 
 .iconAreaRuler:before {
-  content: url("bundles/workshopdemo/img/measure_area.png");
+  content: url("bundles/workshopdemo/image/measure_area.png");
 }
