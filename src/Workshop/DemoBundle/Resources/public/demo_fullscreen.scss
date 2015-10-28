@@ -1,0 +1,425 @@
+$fontSize: 15px;
+$lineHeight: 21px;
+$textColor: #7a7a7a;
+$backGroundColor: #fff; //  #E8EAF0; //#f4f4f4;
+$toolbarActiveItemColor: #f0f0f0;
+$buttonBgColor: #1289CD;
+$buttonBorderColor: #05517C;
+$buttonCriticalBgColor: #bf0c00;
+$buttonActiveBgColor: darken($buttonBgColor, 15%);
+$buttonHoverBgColor: lighten($buttonActiveBgColor, 5%);
+$buttonShadowColor: opacify($buttonActiveBgColor, 0.2);
+$borderColor: #c52b45;
+
+$color_wild_sand_approx: #f5f5f5;
+$color_gunsmoke_approx: #858585;
+$color_alabaster_approx: #f9f9f9;
+
+html {
+  background: none;
+}
+
+body {
+  background: $backGroundColor none;
+  font-family: Calluna Sans, Gill Sans, Calibri, Trebuchet MS, sans-serif;
+  font-size: $fontSize;
+  line-height: $lineHeight;
+
+  > span[role="status"] {
+    display: none;
+  }
+
+  .templateWrapper {
+    top: 5px;
+    overflow: visible;
+    > .toolBar {
+      color: $textColor;
+      background-color: $backGroundColor;
+      .toolBarItemActive {
+        background-color: $toolbarActiveItemColor;
+        color: $textColor;
+        //Instead of the line below you could use @include text-shadow($shadow-1, $shadow-2, $shadow-3, $shadow-4, $shadow-5, $shadow-6, $shadow-7, $shadow-8, $shadow-9, $shadow-10)
+        @include text-shadow( 1px, 1px, 0, $color_wild_sand_approx);
+      }
+      &.top {
+        border-bottom: solid 2px $borderColor;
+      }
+      &.bottom {
+        border-top: solid 2px $borderColor;
+      }
+    }
+    > .logoContainer {
+      background-image: none;
+      margin-left: 10px;
+      padding: 5px;
+      margin-top: -10px;
+    }
+
+    > .sidePane {
+      background: $backGroundColor none;
+      border-bottom: solid 2px $borderColor;
+      border-top: solid 2px $borderColor;
+      border-right: solid 2px $borderColor;
+
+      &.left {
+        bottom: 42px;
+        left: 0;
+        position: absolute;
+        top: 50px;
+      }
+
+      > .sideContent {
+        > .accordionContainer {
+          > .accordion {
+            > .tablecell{
+              background-color: $buttonBgColor;
+              border: 1px solid $buttonBorderColor;
+            }
+            &.active > .tablecell {
+              background-color: $buttonActiveBgColor !important;
+            }
+            &:hover > .tablecell {
+              background-color: $buttonHoverBgColor !important;
+            }
+            &:focus > .tablecell {
+              box-shadow: inset 0 1px 1px transparent, 0 0 4px $buttonShadowColor;
+            }
+          }
+        }
+      }
+
+      /**
+      * Side pane display toggle button
+      */
+      > .sidePaneTabs {
+        > .sidePaneTabItem {
+          background-color: $buttonBgColor;
+          color: $backGroundColor;
+          display: block;
+          margin-bottom: 5px;
+          padding: 5px 10px;
+          text-align: center;
+          &:hover{
+            background-color: $buttonHoverBgColor;
+          }
+        }
+      }
+    }
+
+    &.sidePaneOpened .sidePane {
+      width: 350px;
+    }
+
+    #content {
+      .mb-element-scaleline {
+        bottom: 105px;
+      }
+      .mb-element-overview {
+        bottom: 130px;
+      }
+      .mb-element-scaledisplay {
+        padding: 5px 10px;
+        color: #000;
+        background-color: $color_wild_sand_approx;
+        @include text-shadow(1px, 1px, 0, $backGroundColor);
+      }
+    }
+  }
+
+  .modal-body {
+    .button {
+      background-color: $buttonBgColor;
+      border: 1px solid $buttonBorderColor;
+      &:hover {
+        background-color: $buttonHoverBgColor;
+      }
+      &:focus {
+        box-shadow: inset 0 1px 1px transparent, 0 0 8px $buttonShadowColor;
+      }
+      &.active {
+        background-color: $buttonActiveBgColor;
+      }
+    }
+
+    select,
+    button,
+    textarea,
+    input,
+    .uneditable-input {
+      &:focus {
+        border-color: $buttonBorderColor;
+        box-shadow: inset 0 1px 1px transparent, 0 0 8px $buttonShadowColor;
+      }
+    }
+  }
+
+  .mb-element-popup-dialog {
+    background: $backGroundColor none;
+    > .modal-header{
+      background-color: $buttonActiveBgColor;
+      >.ui-dialog-titlebar-buttonpane{
+        a{
+          border: none !important;
+
+        }
+        .close > span.ui-button-text{
+          margin-top: -3px;
+        }
+      }
+    }
+
+    .mapbender-element-tab-navigator > .ui-tabs-nav > li {
+      &.ui-state-active {
+        > a {
+          background-color: $buttonActiveBgColor;
+        }
+      }
+    }
+
+    > .modal-body > .mapbender-element-tab-navigator > ul.modal-header {
+      background-color: lighten($buttonBgColor, 40%);
+
+    }
+  }
+
+  .mapbender-element-result-table {
+    > .dataTables_wrapper{
+      > table[role="grid"] {
+        > thead {
+          > tr > th {
+            background-color: $buttonBgColor;
+            border: 1px solid $buttonBorderColor;
+            &:hover {
+              background-color: $buttonHoverBgColor;
+            }
+            &:focus {
+              box-shadow: inset 0 1px 1px transparent, 0 0 8px $buttonShadowColor;
+            }
+            &.sorting_desc, &.sorting_asc {
+              background-color: $buttonActiveBgColor;
+            }
+          }
+        }
+      }
+      .dataTables_info {
+        border: 1px solid $buttonBorderColor;
+      }
+    }
+
+    .paging_simple_numbers{
+      a.paginate_button.current{
+        background-color: $buttonActiveBgColor !important;
+      }
+    }
+  }
+
+  .button {
+    background-color: $buttonBgColor;
+    &.ui-button {
+      border: 1px solid $buttonBorderColor;
+
+    }
+    &.critical {
+      background-color: $buttonCriticalBgColor;
+      &:hover {
+        background-color: darken($buttonCriticalBgColor, 10%);
+      }
+      &:focus {
+        box-shadow: inset 0 1px 1px transparent, 0 0 8px opacify($buttonCriticalBgColor, 0.6);
+      }
+    }
+  }
+
+  .subTitle {
+    color: $buttonBgColor;
+    font-size: 14px;
+  }
+
+  .mb-element-layertree {
+    .themeContainer > .leaveContainer .layer-title {
+      color: $buttonBgColor;
+      font-size: 14px;
+    }
+    .serviceContainer > .leaveContainer .layer-title {
+      color: $buttonBgColor;
+      font-size: 14px;
+    }
+    .groupContainer > .leaveContainer .layer-title {
+      color: $buttonBgColor;
+      font-size: 14px;
+    }
+    .featureInfoWrapper.iconCheckboxActive:before {
+      content: url("bundles/workshopdemo/img/info.png");
+    }
+  }
+
+  .title {
+    color: $textColor;
+    font-weight: normal;
+  }
+
+  .popupHead {
+    color: $textColor;
+    font-weight: normal;
+  }
+
+  .popup {
+    background: $backGroundColor none;
+    border-color: $color_gunsmoke_approx $textColor $textColor;
+    border-style: solid;
+    border-width: 1px 1px 3px;
+    margin: -1000px auto 0;
+    min-height: 250px;
+    min-width: 300px;
+    padding-bottom: 20px;
+    position: relative;
+    @include transition(margin, 0.4s, ease-in-out, 0s);
+    width: 500px;
+    z-index: 9999;
+  }
+
+  .tabContainer {
+    .container {
+      background-color: $color_alabaster_approx;
+      border: 1px solid $buttonBgColor;
+      border-top-width: 3px;
+      clear: left;
+      display: none;
+      padding: 20px;
+      position: relative;
+      z-index: 20;
+    }
+    .tab.active {
+      background-color: $color_alabaster_approx;
+      bottom: -3px;
+      color: $buttonBgColor;
+      cursor: default;
+      height: 34px;
+      z-index: 30;
+    }
+  }
+
+  .mb-element-zoombar {
+    .pan {
+      background-color: $backGroundColor;
+      //Instead of the line below you could use @include border-radius($radius, $vertical-radius)
+      border-radius: 50%;
+      border: solid 1px $textColor;
+      height: 49px;
+      position: relative;
+      width: 49px;
+      color: $textColor !important;
+    }
+    .toolPane {
+      background-color: $backGroundColor;
+      border: solid 1px $textColor;
+      color: $textColor !important;
+      margin: 10px 5px 0;
+      padding: 5px 0;
+    }
+    .pan, .toolPane, .mb-element-scaledisplay {
+      background-color: $backGroundColor !important;
+      color: $textColor;
+    }
+  }
+
+  .mb-element-overview {
+    .toggleOverview {
+      background-color: $buttonBgColor;
+      @include border-radius(3px);
+      color: $backGroundColor;
+      padding: 0 6px;
+    }
+    .olMap > div {
+      border: 3px solid $buttonBgColor;
+    }
+  }
+
+  .layer-slider-handle {
+    background-color: $buttonBgColor !important;
+  }
+
+  .olControlOverviewMapExtentRectangle {
+    border: 2px solid $buttonBgColor;
+    cursor: move;
+    overflow: hidden;
+  }
+
+
+  .tabContainerAlt .tab {
+    border: 1px solid $backGroundColor;
+    background-color: $buttonBgColor;
+    &.active {
+      background-color: $buttonBgColor;
+    }
+  }
+
+  .accordionContainer .accordion.active > div {
+    background-color: $buttonBgColor !important;
+  }
+
+  .metadataContainer .labelText {
+    color: $buttonBgColor;
+  }
+
+}
+
+
+/**
+* Icons
+*/
+.iconPrint:before {
+  content: url("bundles/workshopdemo/img/print.png");
+}
+
+.iconHelp:before {
+  content: url("bundles/workshopdemo/img/help.png");
+}
+
+.iconGps:before {
+  content: url("bundles/workshopdemo/img/gps.png");
+}
+
+.iconLayertree:before {
+  content: url("bundles/workshopdemo/img/layertree.png");
+}
+
+.iconLegend:before {
+  content: url("bundles/workshopdemo/img/legend.png");
+}
+
+.iconInfoActive:before {
+  content: url("bundles/workshopdemo/img/info.png");
+}
+
+.iconSearch:before {
+  content: url("bundles/workshopdemo/img/search.png");
+}
+
+.iconWms:before {
+  content: url("bundles/workshopdemo/img/wmsloader.png");
+}
+
+.iconWmcEditor:before {
+  content: url("bundles/workshopdemo/img/wmceditor.png");
+}
+
+.iconWmcLoader:before {
+  content: url("bundles/workshopdemo/img/wmcloader.png");
+}
+
+.iconZoomSelect:before {
+  content: url("bundles/workshopdemo/img/selectarea.png");
+}
+
+.iconZoomMin:before {
+  content: url("bundles/workshopdemo/img/zoomfull_wesseling.png");
+}
+
+.iconLineRuler:before {
+  content: url("bundles/workshopdemo/img/measure.png");
+}
+
+.iconAreaRuler:before {
+  content: url("bundles/workshopdemo/img/measure_area.png");
+}
