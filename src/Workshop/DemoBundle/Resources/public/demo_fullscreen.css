@@ -47,7 +47,7 @@
 }
 
  .popup {
-  background: none !important;
+  background: #eff7e9 !important;
  }
 
 .pan{
@@ -58,5 +58,4 @@
     background-color: rgba(0, 29, 122, 0.8) !important;
     padding: 5px 10px !important;
     position:absolute !important;
-    right:140px !important;
 }
