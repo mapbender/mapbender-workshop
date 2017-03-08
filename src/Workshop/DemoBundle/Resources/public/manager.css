@@ -1,0 +1,89 @@
+html, body {
+    color: #002647;
+}
+
+.title, .popupHead {
+    font-weight: normal;
+    color: #002647;
+}
+
+.description {
+    color: #002647;
+}
+
+
+.logo {
+    background-color: white;
+}
+
+.contentPane .mapbenderVersion {
+    color: #002647;
+    text-align: right;
+}
+
+.dekoSeperator {
+    height: 6px;
+    border: none;
+    outline: none;
+    background: url("../../bundles/workshopdemo/image/line.png");
+}
+
+.head {
+    position: relative;
+    height: 170px;
+    min-width: 1000px;
+    border-top: solid 5px #272727;
+    background-image: url("../../bundles/workshopdemo/image/head.png");
+    background: -owg-linear-gradient(rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0)), url("../../bundles/workshopdemo/image/head.png");
+    background: -webkit-linear-gradient(rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0)), url("../../bundles/workshopdemo/image/head.png");
+    background: -moz-linear-gradient(rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0)), url("../../bundles/workshopdemo/image/head.png");
+    background: -o-linear-gradient(rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0)), url("../../bundles/workshopdemo/image/head.png");
+    background: linear-gradient(rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0)), url("../../bundles/workshopdemo/image/head.png");
+}
+
+html, body {
+    background-image: url("../../bundles/workshopdemo/image/body.png");
+    background: -owg-linear-gradient(rgba(255, 255, 255, 0.3) 100px, rgba(255, 255, 255, 0)) fixed, url("../../bundles/workshopdemo/image/body.png");
+    background: -webkit-linear-gradient(rgba(255, 255, 255, 0.3) 100px, rgba(255, 255, 255, 0)) fixed, url("../../bundles/workshopdemo/image/body.png");
+    background: -moz-linear-gradient(rgba(255, 255, 255, 0.3) 100px, rgba(255, 255, 255, 0)) fixed, url("../../bundles/workshopdemo/image/body.png");
+    background: -o-linear-gradient(rgba(255, 255, 255, 0.3) 100px, rgba(255, 255, 255, 0)) fixed, url("../../bundles/workshopdemo/image/body.png");
+    background: linear-gradient(rgba(255, 255, 255, 0.3) 100px, rgba(255, 255, 255, 0)) fixed, url("../../bundles/workshopdemo/image/body.png");
+}
+
+.contentPane > .content {
+    background: #fff  url("../../bundles/workshopdemo/image/content.png");
+    border-radius: 5px;
+    border-top: solid 2px #002647;
+    border-left: solid 2px #002647;
+    border-right: solid 2px #002647;
+    border-bottom: solid 5px #002647;
+}
+
+.box {
+    border: solid 1px #b7bccf;
+    background-color: #fff;
+}
+
+.contentTitle {
+    border-bottom: solid 0px #002647;
+}
+
+.listFilterApplicationBoxes .iconAppDefault {
+    font-size: 0px;
+    line-height: 0px; 
+    color: #002647;
+    
+}
+
+.listFilterBoxes .filterItem {
+    position: relative;
+    background-color: #fff;
+    margin-bottom: 20px;
+    background-image: url("../../bundles/workshopdemo/image/workshop_logo.png");
+    background-size: 118px 118px;
+    border: solid 1px #002647;
+}
+
+img {
+    border: solid 1px #002647;
+}
