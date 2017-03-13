@@ -51,7 +51,7 @@ html, body {
 }
 
 .contentPane > .content {
-    background: #fff  url("../../bundles/workshopdemo/image/content.png");
+    background: #fff url("../../bundles/workshopdemo/image/content.png");
     border-radius: 5px;
     border-top: solid 2px #002647;
     border-left: solid 2px #002647;
