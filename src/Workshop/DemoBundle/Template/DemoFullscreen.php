@@ -11,7 +11,7 @@ use Mapbender\CoreBundle\Template\Fullscreen;
  */
 class DemoFullscreen extends Fullscreen
 {
-    protected static $title = 'Workshop Demo Fullscreen Template (Kreis Groß-Gerau)';
+    protected static $title = 'Workshop Demo Fullscreen Template';
     protected static $css   = array(
         '@MapbenderCoreBundle/Resources/public/sass/template/fullscreen.scss',
         '@WorkshopDemoBundle/Resources/public/demo_fullscreen.css',
