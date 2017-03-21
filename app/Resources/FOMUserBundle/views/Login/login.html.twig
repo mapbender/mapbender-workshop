@@ -1,10 +1,10 @@
 {% extends "FOMUserBundle:Login:box.html.twig" %}
 {% block css %}
   <link rel="stylesheet" href="{{ path('mapbender_core_application_assets', {'slug': 'mb3-login', 'type': 'css'}) }}"/>
-  <link rel="stylesheet" href="{{ asset('bundles/grossgeraukreis/login.css') }}"/>
+  <link rel="stylesheet" href="{{ asset('bundles/workshopdemo/login.css') }}"/>
 {% endblock %}
 
-{% block favicon %}{{ asset('bundles/grossgeraukreis/image/favicon.png') }}{% endblock %}
+{% block title %}{{ 'fom.user.login.login.title' | trans}}{% endblock %}
 
 {% block box_content %}
   <div class="loginBox login">
@@ -42,11 +42,7 @@
       <div class="clearContainer"></div>
     </form>
   </div>
-  <script type="text/javascript">
-    if(top != window) {
-      top.location.href = location.href;
-      top.location.reload();
-    }
+ <script type="text/javascript">
     var Mapbender = Mapbender || {};
     Mapbender.configuration = {elements:{}};
   </script>      
