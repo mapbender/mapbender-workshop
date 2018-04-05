@@ -64,7 +64,21 @@ html, body {
     background-color: #002647;
 }
 
+
+.authWrapper > .loginBox > form > .input:focus {
+      border: solid 1px #002647;
+}
+   
+
 .button:hover {
     background-color: #00417A;
+}
+
+.labelText{
+    color: #002647;
+}
+
+.linkButton:hover, .linkButton.activeLink, .linkButton:active {
+    color: #00417A;
 }
 

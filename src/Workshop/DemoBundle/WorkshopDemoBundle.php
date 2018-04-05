@@ -27,7 +27,6 @@ class WorkshopDemoBundle extends MapbenderBundle
     {
         return array('Workshop\DemoBundle\Template\DemoFullscreen');
     }
-
     /**
      * @inheritdoc
      */
