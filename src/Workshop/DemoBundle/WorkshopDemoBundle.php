@@ -27,13 +27,15 @@ class WorkshopDemoBundle extends MapbenderBundle
     {
         return array('Workshop\DemoBundle\Template\DemoFullscreen');
     }
+    
+    
     /**
      * @inheritdoc
      */
     public function getElements()
     {
         return array(
-            
+         //    'Workshop\DemoBundle\Element\MapKlick',
         );
     }
 }
