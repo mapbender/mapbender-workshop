@@ -38,6 +38,10 @@ body {
       label, span {
           font-size: $fontSize;
       }
+      .toolBarItem,
+      .toolBarItem:hover {
+          color: $textColor;
+      }
       .toolBarItemActive {
         background-color: $toolbarActiveItemColor;
         color: $textColor;
@@ -121,10 +125,11 @@ body {
       }
       .mb-element-overview {
         bottom: 130px;
+        border: 3px solid $buttonBgColor;
       }
       .mb-element-scaledisplay {
         padding: 5px 10px;
-        color: #000;
+        color: $buttonBgColor;
         background-color: $color_wild_sand_approx;
         @include text-shadow(1px, 1px, 0, $backGroundColor);
       }
@@ -273,7 +278,6 @@ body {
     border-color: $color_gunsmoke_approx $textColor $textColor;
     border-style: solid;
     border-width: 1px 1px 3px;
-    margin: -1000px auto 0;
     min-height: 250px;
     min-width: 300px;
     padding-bottom: 20px;
@@ -288,7 +292,7 @@ body {
     .container {
       background-color: $color_alabaster_approx;
       border: 1px solid $borderColor;
-      border-top-width: 3px;
+      border-top-width: 1px;
       clear: left;
       display: none;
       padding: 20px;

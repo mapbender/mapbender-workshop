@@ -1,7 +1,7 @@
-{% extends "FOMUserBundle:Login:box.html.twig" %}
+{% extends "MapbenderCoreBundle:Login:box.html.twig" %}
 {% block css %}
   <link rel="stylesheet" href="{{ path('mapbender_core_application_assets', {'slug': 'mb3-login', 'type': 'css'}) }}"/>
-  <link rel="stylesheet" href="{{ asset('bundles/workshopdemo/login.css') }}"/>
+  <link rel="stylesheet" type="text/css" href="{{ asset('bundles/workshopdemo/login.css') }}"/>
 {% endblock %}
 
 {% block title %}{{ 'fom.user.login.login.title' | trans}}{% endblock %}
@@ -10,7 +10,7 @@
   <div class="loginBox login">
     <h2 class="contentTitle">{{ 'fom.user.login.login.caption' | trans }}</h2>
 
-    <form action="{{ path("fom_user_login_logincheck") }}" method="post" id="login" novalidate="novalidate">
+    <form action="{{ path("mapbender_core_login_logincheck") }}" method="post" id="login" novalidate="novalidate">
       {% if error %}
         <div class="messageBox error">
           {% if error.message == "Bad credentials" %}
@@ -42,8 +42,13 @@
       <div class="clearContainer"></div>
     </form>
   </div>
- <script type="text/javascript">
+  <script type="text/javascript">
+    if(top != window) {
+      top.location.href = location.href;
+      top.location.reload();
+    }
     var Mapbender = Mapbender || {};
     Mapbender.configuration = {elements:{}};
-  </script>      
+  </script>
+    {% include 'MapbenderCoreBundle::cookieconsent.html.twig' %}
 {% endblock %}
