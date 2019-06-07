@@ -16,8 +16,13 @@ html, body {
 
 .authWrapper > .head{
     top: 0px;
-    border-top: solid 6px #37ab49;
-    background: #ffffff ;
+    border-top: none;
+    background-image: url("../../bundles/workshopdemo/image/head.png");
+    background: -owg-linear-gradient(rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0)), url("../../bundles/workshopdemo/image/head.png");
+    background: -webkit-linear-gradient(rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0)), url("../../bundles/workshopdemo/image/head.png");
+    background: -moz-linear-gradient(rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0)), url("../../bundles/workshopdemo/image//head.png");
+    background: -o-linear-gradient(rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0)), url("../../bundles/workshopdemo/image//head.png") ;
+    background: linear-gradient(rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0)), url("../../bundles/workshopdemo/image/head.png");
 }
 
 .dekoSeperator {

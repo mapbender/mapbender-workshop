@@ -1,15 +1,17 @@
-{% extends "FOMUserBundle:Login:box.html.twig" %}
-
+{% extends "MapbenderCoreBundle:Login:box.html.twig" %}
+{% block favicon %}{{ asset('favicon.png') }}{% endblock %}
 {% block title %} {{ 'fom.user.password.form.title' | trans}} {% endblock %}
 {% block css %}
   <link rel="stylesheet" href="{{ path('mapbender_core_application_assets', {'slug': 'mb3-login', 'type': 'css'}) }}"/>
-    <link rel="stylesheet" href="{{ asset('bundles/workshopdemo/password.css') }}"/>
+  <link rel="stylesheet" href="{{ asset('bundles/workshopdemo/password.css') }}"/>
 {% endblock %}
 {% block box_content %}
   <div class="loginBox forgot">
     <h2 class="contentTitle">{{ 'fom.user.password.form.caption' | trans}}</h2>
-    <form action="{{ path('fom_user_password_request') }}" method="post" {{ form_enctype(form)}} autocomplete="off" novalidate="novalidate">
 
+      {{ form_start(form, { 'action': path('fom_user_password_request'), 'method': 'POST', 'attr': {
+          novalidate: 'novalidate', autocomplete: 'off'
+      }}) }}
         <p class='labelText'>{{ 'fom.user.password.form.message' | trans }}</p>
       {% if form_errors(form) | trim | length > 0 %}
         <div class="messageBox error">{{ form_errors(form) }}</div>
@@ -19,9 +21,9 @@
       {{ form_widget(form.search) }}
       {{ form_row(form._token) }}
 
-      <a class="left iconLinkButton linkButton" href="{{ path('fom_user_login_login') }}">{{ "fom.user.password.form.back_to_login"|trans}}</a>
+      <a class="left iconLinkButton linkButton" href="{{ path('mapbender_core_login_login') }}">{{ "fom.user.password.form.back_to_login"|trans}}</a>
       <button class="button right">{{ 'fom.user.password.form.require_password' | trans}}</button>
-    </form>
+      {{ form_end(form) }}
     <div class="clearContainer"></div>
   </div>
  <script type="text/javascript">
