@@ -19,9 +19,10 @@ Follow these steps to add your styling manually:
 ```
   /app/Resources/MapbenderManagerBundle/views/
   /app/Resources/MapbenderCoreBundle/views/
+  /app/Resources/FOMUserBundle/views/Password/
 ```
 
-* You find the sample.twig in the [workshop bundle](https://github.com/mapbender/mapbender-workshop/tree/master/app/Resources/MapbenderManagerBundle/views/)
+* You find the sample.twig in the [workshop bundle](https://github.com/mapbender/mapbender-workshop/tree/master/app/Resources/)
 * or copy the file from the origin location to this location
 
 ```
