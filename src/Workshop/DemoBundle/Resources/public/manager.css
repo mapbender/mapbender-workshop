@@ -80,16 +80,10 @@ html, body {
     
 }
 
-.listFilterBoxes .filterItem {
-    position: relative;
+.listFilterApplicationBoxes .col1 {
     background-color: #fff;
-    margin-bottom: 20px;
     background-image: url("../../bundles/workshopdemo/image/workshop_logo.png");
-    background-size: 118px 118px;
-    border: solid 1px #002647;
-}
-
-img {
+    background-size: 114px 114px;
     border: solid 1px #002647;
 }
 
