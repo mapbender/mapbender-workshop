@@ -27,7 +27,7 @@ html, body {
 }
 
 .dekoSeperator {
-    height: 6px;
+    height: 0px;
     border: none;
     outline: none;
     background: url("../../bundles/workshopdemo/image/line.png");
@@ -86,10 +86,6 @@ html, body {
     margin-bottom: 20px;
     background-image: url("../../bundles/workshopdemo/image/workshop_logo.png");
     background-size: 118px 118px;
-    border: solid 1px #002647;
-}
-
-img {
     border: solid 1px #002647;
 }
 
