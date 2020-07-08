@@ -1,41 +1,33 @@
 <?php
 
-/*
- * This file is part of the Mapbender 3 project.
- *
- * For the full copyright and license information, please view the LICENSE
- * file that was distributed with this source code.
- */
 namespace Workshop\DemoBundle;
 
 use Mapbender\CoreBundle\Component\MapbenderBundle;
 
-
-/**
- * WorkshopDemo
- *
- * @author Astrid Emde
- */
 class WorkshopDemoBundle extends MapbenderBundle
 {
-
+    /**
+     * Return list of element classes provided by this bundle.
+     * Each entry in the array is a fully qualified class name.
+     *
+     * @return string[]
+     */
+    public function getElements()
+    {
+        return array(
+//    'Workshop\DemoBundle\Element\MapKlick',
+       );
+    }
 
     /**
-     * @inheritdoc
+     * Return list of template classes provided by this bundle.
+     * Each entry in the array is a fully qualified class name.
+     *
+     * @return string[]
      */
     public function getTemplates()
     {
         return array('Workshop\DemoBundle\Template\DemoFullscreen');
     }
-    
-    
-    /**
-     * @inheritdoc
-     */
-    public function getElements()
-    {
-        return array(
-         //    'Workshop\DemoBundle\Element\MapKlick',
-        );
-    }
+
 }
