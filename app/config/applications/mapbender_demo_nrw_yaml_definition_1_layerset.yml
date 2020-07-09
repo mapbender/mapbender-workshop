@@ -171,7 +171,7 @@ parameters:
                                 cprTitle: null
                                 cprUrl: null
                                 group: null
-                                instances: {  }         
+                                instances: []         
 
                     fi-button:
                         title: mb.core.featureinfo.class.title
