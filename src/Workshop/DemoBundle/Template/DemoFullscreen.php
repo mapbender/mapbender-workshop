@@ -30,6 +30,6 @@ class DemoFullscreen extends Fullscreen
         "/components/vis-ui.js/vis-ui.js-built.js"
     );
 
-    public $twigTemplate = 'DemoDemoBundle:Template:DemoFullscreen.html.twig';
+    public $twigTemplate = 'WorkshopDemoBundle:Template:demo_fullscreen.html.twig';
 }
 
