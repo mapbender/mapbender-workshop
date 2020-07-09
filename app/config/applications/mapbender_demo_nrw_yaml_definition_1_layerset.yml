@@ -132,44 +132,32 @@ parameters:
                         instancesets:
                             1-basesourceswitcher:
                                 title: OSM
-                                cprTitle: null
-                                cprUrl: null
                                 group: Karten
                                 instances:
                                     - osm
                             20-basesourceswitcher:
                                 title: Bodenbewegungsgebiete
-                                cprTitle: null
-                                cprUrl: null
                                 group: Raumbezug
                                 instances:
                                     - Bodenbewegungsgebiete
                             30-basesourceswitcher:
                                 title: DOP
-                                cprTitle: null
-                                cprUrl: null
                                 group: Luftbilder
                                 instances:
                                     - dop
                             31-basesourceswitcher:
                                 title: DOP + Overlay
-                                cprTitle: null
-                                cprUrl: null
                                 group: Luftbilder
                                 instances:
                                     - dop
                                     - overlay
                             32-basesourceswitcher:
                                 title: nur Overlay
-                                cprTitle: null
-                                cprUrl: null
                                 group: Luftbilder
                                 instances:
                                     - overlay 
                             9-basesourceswitcher:
                                 title: 'kein Hintergrund'
-                                cprTitle: null
-                                cprUrl: null
                                 group: null
                                 instances: []         
 
