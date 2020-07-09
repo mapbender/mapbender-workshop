@@ -27,7 +27,7 @@ class WorkshopDemoBundle extends MapbenderBundle
      */
     public function getTemplates()
     {
-        return array('Workshop\DemoBundle\Template\demo_fullscreen');
+        return array('Workshop\DemoBundle\Template\DemoFullscreen');
     }
 
 }
