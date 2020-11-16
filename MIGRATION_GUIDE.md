@@ -29,8 +29,6 @@ You also find information at https://github.com/mapbender/mapbender/wiki/Best-pr
 
 You can update the configuration with the following SQL.
 
-.. code-block:: postgres
-
     Update mb_core_element set configuration =
     replace(configuration,'s:6:"choice"','s:53:"Symfony\Component\Form\Extension\Core\Type\ChoiceType"')
         where class = 'Mapbender\CoreBundle\Element\SearchRouter';
@@ -72,8 +70,6 @@ Digitizer is available for Mapbender >= 3.2.2. The new Digitizer Version is 1.4.
 * you find a demo in the workshop bundle https://github.com/mapbender/mapbender-workshop/blob/release/3.2/app/config/applications/mapbender_user_digitzer.yml
 
 There is a new style unsaved.
-
-.. code-block:: yaml
 
     unsaved:
         strokeWidth: 3
