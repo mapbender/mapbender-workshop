@@ -1,9 +1,9 @@
 Migration Guide
-==================
+***************************
 
 
 Migration to Mapbender 3.2
---------------------------
+==========================
 
 You can migrate older Mapbender installations to Mapbendr 3.2.
 
@@ -17,7 +17,7 @@ Some elements may not work after the update and  need a closer look.
 
 
 SearchRouter
-***************************
+--------------------------
 
 You find a demo at https://github.com/mapbender/mapbender-workshop/blob/release/3.2/app/config/applications/mapbender_demo_nrw.yml
 
@@ -47,14 +47,14 @@ You can update the configuration with the following SQL.
 
  
 BaseSourceSwitcher
-***************************
+--------------------------
 Please note that on start of an apllication all WMS are activated where the root-Layer is activated.
 
 Before 3.2 it was possible to activate all Basesource and only the first WMS was visible on start.
 
 
 Template / CSS
-***************************
+--------------------------
 
 CSS change and there will be a big redesign in the backend and frontend in the upcoming versions.
 
@@ -63,7 +63,7 @@ CSS change and there will be a big redesign in the backend and frontend in the u
 
 
 Digitizer
-***************************
+--------------------------
 
 Digitizer is available for Mapbender >= 3.2.2. The new Digitizer Version is 1.4. Some functionality is not updated to 1.4 already (f.e. cluster).
 
@@ -87,7 +87,7 @@ There is a new style unsaved.
 
 
 WMS Layer visibility
-***************************
+--------------------------
 
 Make sure that your WMS provides a proper extent for all supported EPSG-codes (this is used and saved in table mb_wms_wmslayersource Spalten latlonbounds und boundingboxes). 
 Else it can happen, that a layer is not requested for the given extent of your map.
