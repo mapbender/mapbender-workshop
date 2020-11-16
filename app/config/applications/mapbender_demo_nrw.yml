@@ -6,6 +6,7 @@ parameters:
             description: Mapbender Demo zur Veranschaulichung der YAML-Definition
             published: true
             template:  Mapbender\CoreBundle\Template\Fullscreen
+            mapEngineCode: current            
             regionProperties:
               - name: sidepane
                 properties:
@@ -265,10 +266,7 @@ parameters:
                             maxscale: !!float 1000
                             icon_url: 'https://demo.mapbender.org/bundles/mapbendercore/image/pin_red.png'
                             icon_offset: '-6,32'
-                            
-
-
-                                                    
+                             
                 content:
                     map:
                         title: mb.core.map.class.title
@@ -280,14 +278,20 @@ parameters:
                             max: [-500000,4350000,1600000,6850000]
                         scales: [5000000,1000000,500000,100000,50000,25000,10000,7500,5000,2500,1000,500]
                         otherSrs: ["EPSG:25833","EPSG:31466","EPSG:31467","EPSG:3857","EPSG:4326"]
+                        
                     zoombar:
                         class: Mapbender\CoreBundle\Element\ZoomBar
                         target: map
-                        components: ["pan","history","zoom_box","zoom_max","zoom_slider"]
+                        components:
+                            - rotation
+                            - zoom_max
+                            - zoom_in_out
+                            - zoom_slider
                         stepSize: 50
                         stepByPixel: true
                         anchor: right-top
                         draggable: false
+                        
                     legend:
                         class: Mapbender\CoreBundle\Element\Legend
                         target: map
@@ -295,8 +299,10 @@ parameters:
                         elementType: dialog
                         autoOpen: false
                         displayType: list
+                        showWmsTitle: true
                         showLayerTitle: true
                         showGroupedLayerTitle: true
+                        
                     featureinfo:
                         class: Mapbender\CoreBundle\Element\FeatureInfo
                         title: mb.core.featureinfo.class.title
@@ -310,6 +316,7 @@ parameters:
                         showOriginal: true
                         width: 500
                         height: 500
+                        
                     wmsloader:
                         title: mb.wms.wmsloader.class.title
                         class: Mapbender\WmsBundle\Element\WmsLoader
@@ -318,10 +325,13 @@ parameters:
                         defaultFormat: 'image/png'
                         defaultInfoFormat: 'text/html'
                         splitLayers: false
+                        useDeclarative: true
+                                          
                     imageexport:
                         class: Mapbender\PrintBundle\Element\ImageExport
                         target: map
                         title: Image export
+                        
                     printclient:
                         title: mb.core.printclient.class.title
                         class: Mapbender\CoreBundle\Element\PrintClient
@@ -344,18 +354,21 @@ parameters:
                                 label: Title              # label of the optional field
                                 options:                  #
                                     required: true        # true or false
+                                    
                     lineruler:
                         title: mb.core.ruler.tag.line
                         tooltip: 'ruler'
                         class: Mapbender\CoreBundle\Element\Ruler
                         target: map
                         type: line
+                        
                     arearuler:
                         title: mb.core.ruler.tag.area
                         tooltip: 'area'
                         class: Mapbender\CoreBundle\Element\Ruler
                         target: map
                         type: area
+                        
                     scalebar:
                         class: Mapbender\CoreBundle\Element\ScaleBar
                         target: map
@@ -373,6 +386,7 @@ parameters:
                         anchor: 'right-bottom'
                         maximized: true
                         fixed: false
+                        
                     scaledisplay:
                         title: mb.core.scaledisplay.class.title
                         class: Mapbender\CoreBundle\Element\ScaleDisplay
@@ -380,14 +394,15 @@ parameters:
                         anchor: left-top
                         scalePrefix: Scale
                         unitPrefix: true
+                        
                     poi:
                         title: mb.core.poi.class.title
                         class: Mapbender\CoreBundle\Element\POI
                         target: map
                         body: 'Please take a look at this POI'
                         useMailto: false
-                sidepane:
 
+                sidepane:
                     layertree:
                         title: mb.core.layertree.class.title
                         class: Mapbender\CoreBundle\Element\Layertree
@@ -437,7 +452,6 @@ parameters:
                                 opened: true
                                 sourceVisibility: false
                                 allSelected: false                                
-                                
 
                     redlining:
                         title: Skizzen
@@ -484,7 +498,7 @@ parameters:
                                 title: Orte mit Pflichtfeld
                                 class: Mapbender\CoreBundle\Component\SQLSearchEngine  
                                 class_options:
-                                    connection: search_db
+                                    connection: geodata_db
                                     relation: brd.qry_gn250_p_ortslage
                                     attributes:
                                         - gid
@@ -544,7 +558,7 @@ parameters:
                                 title: Orte mit Choice und Verbindung autocomplete
                                 class: Mapbender\CoreBundle\Component\SQLSearchEngine  
                                 class_options:
-                                    connection: search_db
+                                    connection: geodata_db
                                     relation: brd.qry_gn250_p_ortslage
                                     attributes:
                                         - gid
@@ -614,12 +628,27 @@ parameters:
                                             pointRadius: 16
 
                 footer:
+                    imprintButton:
+                        title: Imprint & Contact
+                        tooltip: Imprint & Contact
+                        class: Mapbender\CoreBundle\Element\Button
+                        label: true
+                        click: https://mapbender.org/en/contact/
+
+                    privacyButton:
+                        title: Privacy-Policy
+                        tooltip: Privacy-Policy
+                        class: Mapbender\CoreBundle\Element\Button
+                        label: true
+                        click: http://mapbender.org/en/privacy-policy
+
                     activityindicator:
                         class: Mapbender\CoreBundle\Element\ActivityIndicator
                         title: mb.core.activityindicator.class.title
                         activityClass: mb-activity
                         ajaxActivityClass: mb-activity-ajax
                         tileActivityClass: mb-activity-tile
+                        
                     coordinates:
                         class: Mapbender\CoreBundle\Element\CoordinatesDisplay
                         title: mb.core.coordinates.class.title
@@ -628,24 +657,28 @@ parameters:
                         empty:  "x: - y: -"
                         prefix: "x: "
                         separator:  " y: "
+                        
                     srs:
                         class: Mapbender\CoreBundle\Element\SrsSelector
                         title: mb.core.srsselector.class.title
                         tooltip: mb.core.srsselector.class.description
                         label: false
                         target: map
+                        
                     scaleselector:
                         class: Mapbender\CoreBundle\Element\ScaleSelector
                         title: mb.core.scaleselector.class.title
                         tooltip: mb.core.scaleselector.class.description
                         label: false
                         target: map
+                        
                     copyrightButton:
                         title: © OpenStreetMap contributors
                         tooltip: © OpenStreetMap contributors
                         class: Mapbender\CoreBundle\Element\Button
                         label: true
                         click: https://www.openstreetmap.org/copyright
+                        
                     HTML:
                         title: HTML-powered by Mapbender
                         class: Mapbender\CoreBundle\Element\HTMLElement
