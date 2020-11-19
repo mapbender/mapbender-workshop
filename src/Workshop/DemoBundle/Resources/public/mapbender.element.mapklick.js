@@ -2,23 +2,37 @@
 
 $.widget('mapbender.mbMapKlick', $.mapbender.mbButton, {
     options: {
-        target: undefined,
-        icon: undefined,
-        label: true,
-        group: undefined
+	target: undefined,
+	icon: undefined,
+	label: true,
+	group: undefined
     },
-
     map: null,
+    mbMap: null,
     mapClickProxy: null,
+        // invoked on close; informs controlling button to de-highlight
+    closeCallback: null,
+    isActive: false,
 
-    _create: function() {
-        this._super('_create');
-        Mapbender.elementRegistry.onElementReady(this.options.target, $.proxy(this._setup, this));
-    },
+        _create: function() {
+            var self = this;
+            var target = this.options.target;
+            Mapbender.elementRegistry.waitReady(target).then(
+                function(mbMap) {
+                    self._setup(mbMap);
+                },
+                function() {
+                    Mapbender.checkTarget("mbMapKlick", target);
+                }
+            );
+        },
 
-    _setup: function() {
-        this.map = $('#' + this.options.target);
-        this.mapClickProxy = $.proxy(this._mapClickHandler, this);
+    _setup: function(mbMap) {
+        //this.map = $('#' + this.options.target);
+        //this.mapClickProxy = $.proxy(this._mapClickHandler, this);
+            this.mbMap = mbMap;
+            this.mbMap.element.on('mbmapclick', this._mapClickHandler.bind(this));
+
     },
 
     /**
@@ -28,8 +42,8 @@ $.widget('mapbender.mbMapKlick', $.mapbender.mbButton, {
      */
     activate: function() {
         this._super('activate');
-        if(this.map.length !== 0) {
-            this.map.bind('click', this.mapClickProxy);
+        if(this.mbMap.length !== 0) {
+            this.mbMap.bind('click', this.mapClickProxy);
         }
     },
 
@@ -38,46 +52,44 @@ $.widget('mapbender.mbMapKlick', $.mapbender.mbButton, {
      */
     deactivate: function() {
         this._super('deactivate');
-        if(this.map.length !== 0) {
-            this.map.unbind('click', this.mapClickProxy);
+        if(this.mbMap.length !== 0) {
+            this.mbMap.unbind('click', this.mapClickProxy);
         }
     },
 
+
+
     /**
-     * The actual click event handler. Here Pixel and World coordinates
+     * The actual click event handler. The coordinates
      * are extracted and then send to the mapClickWorker
      */
-    _mapClickHandler: function(event) {
-        var x = event.pageX - this.map.offset().left,
-            y = event.pageY - this.map.offset().top,
-            olMap = this.map.data('mapbenderMbMap').map.olMap,
-            ll = olMap.getLonLatFromPixel(new OpenLayers.Pixel(x, y)),
-            coordinates = {
-                pixel: {
-                    x: x,
-                    y: y
-                },
+    _mapClickHandler: function(event, data) {
+
+ 	    var srsName = Mapbender.Model.getCurrentProjectionCode();
+            var deci = (Mapbender.Model.getProjectionUnitsPerMeter(srsName) < 0.25) ? 5 : 2;
+
+            var coordinates = {
                 world: {
-                    x: ll.lon,
-                    y: ll.lat
-                }
-            };
+                    x: data.coordinate[0].toFixed(deci),
+                    y: data.coordinate[1].toFixed(deci)
+                },
+		srs: {
+		    current: srsName
+		}
+              };
 
         this._mapClickWorker(coordinates);
     },
 
     /**
      * This should be used for your own logic. This function receives an
-     * coordinates object which has two properties 'pixel' and 'world' which
-     * hold the pixel and world coordinates of the mouse click. Each property
-     * has x and y values.
+     * coordinates object which has two properties 'world' and 'srs' which
+     * hold the coordinates and the current of the mouse click. 
      */
     _mapClickWorker: function(coordinates) {
         alert('You clicked: ' +
-                coordinates.pixel.x + ' x ' + coordinates.pixel.y +
-                ' (Pixel), which equals ' +
                 coordinates.world.x + ' x ' + coordinates.world.y +
-                ' (World).');
+                ' (' + coordinates.srs.current + ')');
        
 
       // or open OpenStreetMap

@@ -2,32 +2,20 @@
 
 namespace Workshop\DemoBundle\Element\Type;
 
-use Mapbender\ManagerBundle\Form\Type\YAMLConfigurationType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
-use Symfony\Component\OptionsResolver\OptionsResolverInterface;
+use Symfony\Component\OptionsResolver\OptionsResolver;
 
-/**
- *
- */
 class MapKlickAdminType extends AbstractType
 {
 
     /**
      * @inheritdoc
      */
-    public function getName()
-    {
-        return 'mapklick';
-    }
-
-    /**
-     * @inheritdoc
-     */
-    public function setDefaultOptions(OptionsResolverInterface $resolver)
+    public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults(array(
-            'application' => null
+            'application' => null,
         ));
     }
 
@@ -36,13 +24,18 @@ class MapKlickAdminType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('target', 'target_element',
-            array(
+        $builder
+            ->add('target', 'Mapbender\CoreBundle\Element\Type\TargetElementType', array(
                 'element_class' => 'Mapbender\\CoreBundle\\Element\\Map',
-                'application'   => $options['application'],
-                'property_path' => '[target]',
-                'required'      => false))
-            ->add('schemes', new YAMLConfigurationType(),
-                array('required' => false, 'attr' => array('class' => 'code-yaml')));
+                'application' => $options['application'],
+                'required' => false))
+            ->add('schemes', 'Mapbender\ManagerBundle\Form\Type\YAMLConfigurationType', array(
+                'required' => false, 
+                'attr' => array(
+                    'class' => 'code-yaml',
+                ),
+           ))
+           ;
     }
+
 }

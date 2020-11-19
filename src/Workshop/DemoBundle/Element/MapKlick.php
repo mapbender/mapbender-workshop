@@ -3,30 +3,36 @@
 namespace Workshop\DemoBundle\Element;
 
 use Mapbender\CoreBundle\Component\Element;
-use Symfony\Component\DependencyInjection\ContainerInterface;
-use Symfony\Component\HttpFoundation\Response;
 
-class MapKlick extends Element {
-    public static function getClassTitle() {
+/**
+ * Class MapKlick
+ * @package Workshop\DemoBundle\Element
+ */
+class MapKlick extends Element
+{
+
+    /**
+     * @inheritdoc
+     */
+    public static function getClassTitle()
+    {
         return "MapKlick";
     }
 
-    public static function getClassDescription() {
+    /**
+     * @inheritdoc
+     */
+    public static function getClassDescription() 
+    {
         return "MapKlick Beschreibung";
     }
 
-    public static function getClassTags() {
-        return array();
-    }
-
-    static public function listAssets() {
-        return array(
-            'js' => array(
-                '@MapbenderCoreBundle/Resources/public/mapbender.element.button.js',
-                'mapbender.element.mapklick.js'
-            ),
-            'css' => array()
-        );
+    /**
+     * @inheritdoc
+     */
+    public static function getType()
+    {
+        return 'Workshop\DemoBundle\Element\Type\MapKlickAdminType';
     }
 
     public static function getDefaultConfiguration() {
@@ -43,18 +49,29 @@ class MapKlick extends Element {
         );
     }
 
+    /**
+     * @inheritdoc
+     */
+    public function getAssets()
+    {
+        return array(
+            'js' => array(
+                '@MapbenderCoreBundle/Resources/public/mapbender.element.button.js',
+                'mapbender.element.mapklick.js'
+            ),
+            'css' => array(),
+            'trans' => array()
+        );
+    }
+
+    /**
+     * @inheritdoc
+     */
     public function getWidgetName() {
         return 'mapbender.mbMapKlick';
     }
     
-    /**
-     * @inheritdoc
-     */
-    public static function getType()
-    {
-        return 'Workshop\DemoBundle\Element\Type\MapKlickAdminType';
-    }    
-    
+
     /**
      * @inheritdoc
      */
@@ -75,14 +92,24 @@ class MapKlick extends Element {
     }
 
 
+    public function getFrontendTemplatePath($suffix = '.html.twig')
+    {
+        return 'WorkshopDemoBundle:ElementAdmin:mapklickadmin.html.twig';
+    }
+
     /**
      * If you want a custom button template, copy the button template from the
      * CoreBundle to your own bundle as a starter.
      */
-    public function render() {
+    /**
+     * @inheritdoc
+     */
+    public function render()
+    {
         return $this->container->get('templating')->render('MapbenderCoreBundle:Element:button.html.twig', array(
                 'id' => $this->getId(),
                 'configuration' => $this->entity->getConfiguration(),
-                'title' => $this->getTitle()));
+                'title' => $this->getTitle()
+        ));
     }
 }
