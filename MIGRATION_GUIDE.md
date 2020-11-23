@@ -42,6 +42,19 @@ You can update the configuration with the following SQL.
 
 3. For choice: Please not that key or value are passed flipped that means value and the key- see also https://github.com/mapbender/mapbender/wiki/Best-practices:-form-types#inversion-of-choices
 
+    choices:
+        Bonn - this is the value not the key: Bonn
+        Cologne - this is the value not the key: Cologne
+        Siegburg - this is the value not the key: Siegburg
+
+
+SimpleSearch
+--------------------------
+SimpleSearch element was improved. You can now define the projection of the result that comes from the Solr Service. Mapbedner will then transform the result to the projection of the map.
+
+Define sourceSrs in your SimpleSearch definition. If not defined the default ('EPSG:4326') be be choosen. You find an example at https://github.com/mapbender/mapbender-workshop/blob/release/3.2/app/config/applications/mapbender_demo_nrw.yml
+
+                     sourceSrs: 'EPSG:25832'
 
  
 BaseSourceSwitcher

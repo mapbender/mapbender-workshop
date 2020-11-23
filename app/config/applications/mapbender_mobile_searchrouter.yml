@@ -225,26 +225,72 @@ parameters:
                         classes: html-element-inline
                         content: ""
                         
-                    simplesearch:
-                        title: mb.core.simplesearch.class.title
-                        class: Mapbender\CoreBundle\Element\SimpleSearch
+                    searchrouter:
+                        tooltip: 'Search Router'
                         target: map
-                        query_url: 'http://geodaten.metropoleruhr.de/suche?wt=json&indent=true&rows=10'
-                        query_key: q
-                        query_format: '%s'
-                        token_regex: '[^a-zA-Z0-9äöüÄÖÜß]'
-                        token_regex_in: '([a-zA-ZäöüÄÖÜß]{3,})'
-                        token_regex_out: '$1*'
-                        collection_path: response.docs
-                        label_attribute: text
-                        geom_attribute: utm32
-                        geom_format: WKT
-                        delay: !!float 300
-                        query_ws_replace: null
-                        result:
-                            buffer: !!float 5
-                            minscale: !!float 100
-                            maxscale: !!float 1000
-                            icon_url: 'https://demo.mapbender.org/bundles/mapbendercore/image/pin_red.png'
-                            icon_offset: '-6,32'               
+                        timeoutFactor: 3
+                        width: 700
+                        height: 500
+                        asDialog: false
+                        class: Mapbender\CoreBundle\Element\SearchRouter                        
+                        routes:
+                            1-route:
+                                title: Orte
+                                class: Mapbender\CoreBundle\Component\SQLSearchEngine  
+                                class_options:
+                                    connection: geodata_db
+                                    relation: brd.qry_gn250_p_ortslage
+                                    attributes:
+                                        - gid
+                                        - name
+                                        - gemeinde
+                                        - hoehe_ger
+                                    geometry_attribute: geom
+                                form:
+                                    name:
+                                        type: 'Symfony\Component\Form\Extension\Core\Type\TextType'
+                                        options:
+                                            required: true
+                                            label: Name (autocomplete und Pflichtfeld)
+                                            attr:
+                                                data-autocomplete: 'on'
+                                        compare: ilike
+                                    gemeinde:
+                                        type: 'Symfony\Component\Form\Extension\Core\Type\TextType'
+                                        options:
+                                            label: 'Gemeinde (kein Pflichtfeld und ilike)'
+                                            required: false
+                                        compare: ilike
+                                results:
+                                    view: table
+                                    count: true
+                                    headers:
+                                        name: Name
+                                        gemeinde: Gemeinde
+                                        bundesland: Bundesland
+                                        ewz_ger: Einwohner
+                                        hoehe_ger: Höhe
+                                    callback:
+                                        event: click
+                                        options:
+                                            buffer: 1000
+                                            minScale: null
+                                            maxScale: null
+                                    styleMap:
+                                        default:
+                                            strokeColor: '#00ff00'
+                                            strokeWidth: 4
+                                            strokeOpacity: 1
+                                            fillOpacity: 0
+                                            pointRadius: 6                                           
+                                        select:
+                                            strokeColor: '#ff00ff'
+                                            fillColor: '#ff00ff'
+                                            fillOpacity: 0.8
+                                            pointRadius: 6                                            
+                                        temporary:
+                                            strokeColor: '#0000ff'
+                                            fillColor: '#0000ff'
+                                            fillOpacity: 1
+                                            pointRadius: 10            
 

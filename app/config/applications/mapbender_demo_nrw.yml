@@ -257,6 +257,7 @@ parameters:
                         collection_path: response.docs
                         label_attribute: text
                         geom_attribute: utm32
+                        sourceSrs: 'EPSG:25832'                        
                         geom_format: WKT
                         delay: !!float 300
                         query_ws_replace: null
@@ -495,7 +496,7 @@ parameters:
                         class: Mapbender\CoreBundle\Element\SearchRouter                        
                         routes:
                             1-route:
-                                title: Orte mit Pflichtfeld
+                                title: Orte
                                 class: Mapbender\CoreBundle\Component\SQLSearchEngine  
                                 class_options:
                                     connection: geodata_db
@@ -508,15 +509,15 @@ parameters:
                                     geometry_attribute: geom
                                 form:
                                     name:
-                                        type: text
+                                        type: 'Symfony\Component\Form\Extension\Core\Type\TextType'
                                         options:
                                             required: true
-                                            label: Name autocomplete und Pflichtfeld
+                                            label: Name (autocomplete und Pflichtfeld)
                                             attr:
                                                 data-autocomplete: 'on'
                                         compare: ilike
                                     gemeinde:
-                                        type: text
+                                        type: 'Symfony\Component\Form\Extension\Core\Type\TextType'
                                         options:
                                             label: 'Gemeinde (kein Pflichtfeld und ilike)'
                                             required: false
@@ -568,10 +569,10 @@ parameters:
                                     geometry_attribute: geom
                                 form:
                                     name:
-                                        type: text
+                                        type: 'Symfony\Component\Form\Extension\Core\Type\TextType'
                                         options:
                                             required: false
-                                            label: Name with autocomplete, distinct and reference to gemeinde (not mandatory)
+                                            label: Name (autocomplete, distinct and reference to gemeinde, not mandatory)
                                             attr:
                                                 data-autocomplete: 'on'
                                                 data-autocomplete-distinct: on

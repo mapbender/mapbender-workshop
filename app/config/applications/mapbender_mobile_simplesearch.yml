@@ -238,6 +238,7 @@ parameters:
                         collection_path: response.docs
                         label_attribute: text
                         geom_attribute: utm32
+                        sourceSrs: 'EPSG:25832'
                         geom_format: WKT
                         delay: !!float 300
                         query_ws_replace: null
