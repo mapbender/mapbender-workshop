@@ -15,6 +15,12 @@ Check the [Mapbender Update process](https://doc.mapbender.org/en/installation/u
 
 Some elements may not work after the update and  need a closer look.
 
+Update map_engine_code
+--------------------------
+If it makes sense update all applications to map_engine_code cureent.
+
+    Update mb_core_application set map_engine_code = 'current';
+
 
 SearchRouter
 --------------------------
