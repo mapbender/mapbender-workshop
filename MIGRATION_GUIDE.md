@@ -114,3 +114,9 @@ Redlining was renamed to Sketch (>= 3.2.3)
 	Update  public.mb_core_element set class = 'Mapbender\CoreBundle\Element\Sketch',
 	title = 'mb.core.sketch.class.title'
 		where class = 'Mapbender\CoreBundle\Element\Redlining';
+		
+		
+FeatureInfo
+--------------
+* showOriginal deprecated - parameter not available anymore from 3.2.3
+* highlighting: true - new >= 3.2.3 highlights the geometry if you have WKT integrated in the featureinfo result - see https://github.com/mapbender/mapbender/issues/1287 
