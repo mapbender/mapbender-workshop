@@ -106,3 +106,11 @@ WMS Layer visibility
 
 Make sure that your WMS provides a proper extent for all supported EPSG-codes (this is used and saved in table mb_wms_wmslayersource Spalten latlonbounds und boundingboxes). 
 Else it can happen, that a layer is not requested for the given extent of your map.
+
+Sketch
+----------
+Redlining was renamed to Sketch (>= 3.2.3)
+
+	Update  public.mb_core_element set class = 'Mapbender\CoreBundle\Element\Sketch',
+	title = 'mb.core.sketch.class.title'
+		where class = 'Mapbender\CoreBundle\Element\Redlining';
