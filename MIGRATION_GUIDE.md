@@ -5,7 +5,7 @@ Migration Guide
 Migration to Mapbender 3.2
 ==========================
 
-You can migrate older Mapbender installations to Mapbendr 3.2.
+You can migrate older Mapbender installations to Mapbender 3.2.
 
 Check the [Mapbender Update process](https://doc.mapbender.org/en/installation/update.html).
 
