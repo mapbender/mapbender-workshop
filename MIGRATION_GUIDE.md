@@ -86,7 +86,7 @@ Digitizer is available for Mapbender >= 3.2.2. The new Digitizer Version is 1.4.
 
 * see list of deprecated features https://github.com/mapbender/mapbender-digitizer/releases/tag/1.4
 * see also https://github.com/mapbender/mapbender-digitizer/blob/1.4/Element/Digitizer.php
-* you find a demo in the workshop bundle https://github.com/mapbender/mapbender-workshop/blob/release/3.2/app/config/applications/mapbender_user_digitzer.yml
+* you find a demo in the workshop bundle https://github.com/mapbender/mapbender-workshop/blob/release/3.2/app/config/applications/mapbender_digitize_demo.yml
 
 There is a new style unsaved.
 
