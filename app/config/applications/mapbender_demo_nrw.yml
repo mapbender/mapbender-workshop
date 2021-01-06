@@ -173,7 +173,6 @@ parameters:
                         icon: iconInfoActive
                         label: true
                         target: featureinfo
-                        deactivate: deactivate
                         group: featureinfo
                     print-button:
                         title: mb.core.printclient.class.title
@@ -182,7 +181,6 @@ parameters:
                         label: true
                         icon: iconPrint
                         target: printclient
-                        action: open
                     imageexport-button:
                         title: Image Export
                         tooltip: Image Export
@@ -190,7 +188,6 @@ parameters:
                         label: true
                         icon: iconImageExport
                         target: imageexport
-                        action: open
                     legend-button:
                         title: mb.core.legend.class.title
                         tooltip: mb.core.legend.class.title
@@ -198,7 +195,6 @@ parameters:
                         label: true
                         target: legend
                         icon: iconLegend
-                        action: open
                     wmsloader-button:
                         title: mb.wms.wmsloader.class.title
                         tooltip: mb.wms.wmsloader.class.description
@@ -206,7 +202,6 @@ parameters:
                         label: true
                         target: wmsloader
                         icon: iconWms
-                        action: open
                     gps-button:
                         title: mb.core.gpsposition.class.title
                         tooltip: mb.core.gpsposition.class.description
@@ -220,16 +215,14 @@ parameters:
                         icon: icon-line-ruler
                         label: true
                         target: lineruler
-                        deactivate: deactivate
                         group: rulers
                     arearulerButton:
-                        title: mb.core.ruler.tag.measure 
+                        title: mb.core.ruler.tag.measure
                         tooltip: mb.core.ruler.tag.area
                         class: Mapbender\CoreBundle\Element\Button
                         icon: icon-area-ruler
                         label: true
                         target: arearuler
-                        deactivate: deactivate
                         group: rulers
                     about:
                         title: mb.core.aboutdialog.tag.about
@@ -314,6 +307,7 @@ parameters:
                         displayType: tabs
                         autoActivate: false
                         printResult: true
+                        maxCount: 100
                         showOriginal: true
                         width: 500
                         height: 500
@@ -326,7 +320,6 @@ parameters:
                         defaultFormat: 'image/png'
                         defaultInfoFormat: 'text/html'
                         splitLayers: false
-                        useDeclarative: true
                                           
                     imageexport:
                         class: Mapbender\PrintBundle\Element\ImageExport
@@ -339,6 +332,8 @@ parameters:
                         target: map
                         file_prefix: mapbender
                         templates:
+                            - { template: a4_portrait_offical, label: A4 Portrait (official)}
+                            - { template: a4_landscape_offical, label: A4 Landscape (official)}                            
                             - { template: a4portrait, label: A4 Portrait}
                             - { template: a4landscape, label: A4 Landscape}
                             - { template: a3portrait, label: A3 Portrait}
@@ -375,7 +370,7 @@ parameters:
                         target: map
                         anchor: 'left-bottom'
                         maxWidth: 200
-                        units: ['km']
+                        units: km
 
                     overview:
                         title: mb.core.overview.class.title
@@ -454,9 +449,9 @@ parameters:
                                 sourceVisibility: false
                                 allSelected: false                                
 
-                    redlining:
-                        title: Skizzen
-                        class: Mapbender\CoreBundle\Element\Redlining
+                    sketch:
+                        title: Sketch
+                        class: Mapbender\CoreBundle\Element\Sketch
                         target: map
                         geometrytypes:
                             - point
@@ -556,7 +551,7 @@ parameters:
                                             pointRadius: 10                                                                                                                               
 
                             2-route:
-                                title: Orte mit Choice und Verbindung autocomplete
+                                title: Orte (mit Choice und Verbindung autocomplete)
                                 class: Mapbender\CoreBundle\Component\SQLSearchEngine  
                                 class_options:
                                     connection: geodata_db

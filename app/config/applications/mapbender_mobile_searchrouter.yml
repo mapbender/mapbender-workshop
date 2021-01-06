@@ -78,7 +78,7 @@ parameters:
 
                     bss-button:
                         title: mb.core.basesourceswitcher.class.title
-                        tooltip: mb.core.basesourceswitcher.class.Description
+                        tooltip: mb.core.basesourceswitcher.class.title
                         class: Mapbender\CoreBundle\Element\Button
                         icon: iconLegend
                         label: false
@@ -90,7 +90,6 @@ parameters:
                         class: Mapbender\CoreBundle\Element\GpsPosition
                         label: false
                         target: map
-                        action: open
                         icon: iconGps
                         refreshinterval: '5000'
                         average: '1'
@@ -146,9 +145,7 @@ parameters:
                     zoombar:
                         class: Mapbender\CoreBundle\Element\ZoomBar
                         target: map
-                        components: ["zoom_in_out", "zoom_max"]
-                        stepsize: 50
-                        stepbypixel: true
+                        components: ["rotation", "zoom_in_out", "zoom_max"]
                         anchor: left-top
                         draggable: false
 
@@ -195,20 +192,20 @@ parameters:
                         instancesets:
                             is1:
                                 title: "OSM Demo"
-                                cprTitle: ~
-                                cprUrl: ~
+                                cprTitle: "OSM Demo"
+                                cprUrl: "OSM Demo"
                                 group: ~
                                 instances: [osm]                        
                             is2:
                                 title: "OSM Demo (with opacity)"
-                                cprTitle: ~
-                                cprUrl: ~
+                                cprTitle: "OSM Demo opacity"
+                                cprUrl: "OSM Demo opycity"
                                 group: ~
                                 instances: [osm_opacity]
                             is3:
                                 title: "OSM Demo (grey)"
-                                cprTitle: ~
-                                cprUrl: ~
+                                cprTitle: "OSM Demo grey"
+                                cprUrl: "OSM Demo grey"
                                 group: ~
                                 instances: [osm_grey]
                             is4:

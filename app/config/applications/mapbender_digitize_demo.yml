@@ -143,7 +143,6 @@ parameters:
                         class: Mapbender\CoreBundle\Element\Map
                         layersets: [main]
                         srs: EPSG:25832
-                        #units: m
                         extents:
                             start: [361000,5619000,371150,5625000]
                             max: [-500000,4350000,1600000,6850000]
@@ -158,8 +157,6 @@ parameters:
                             - zoom_max
                             - zoom_in_out
                             - zoom_slider
-                        stepSize: 50
-                        stepByPixel: true
                         anchor: right-top
                         draggable: false
                         
@@ -196,7 +193,6 @@ parameters:
                         defaultFormat: 'image/png'
                         defaultInfoFormat: 'text/html'
                         splitLayers: false
-                        useDeclarative: true
                                             
                     imageexport:
                         class: Mapbender\PrintBundle\Element\ImageExport
@@ -209,6 +205,8 @@ parameters:
                         target: map
                         file_prefix: mapbender
                         templates:
+                            - { template: a4_portrait_offical, label: A4 Portrait (official)}
+                            - { template: a4_landscape_offical, label: A4 Landscape (official)}                           
                             - { template: a4portrait, label: A4 Portrait}
                             - { template: a4landscape, label: A4 Landscape}
                             - { template: a3portrait, label: A3 Portrait}
@@ -246,8 +244,7 @@ parameters:
                         anchor: 'left-bottom'
                         position: ['10px', '10px']
                         maxWidth: 200
-                        units: ['km']
-
+                        units: km
                     overview:
                         title: mb.core.overview.class.title
                         class: Mapbender\CoreBundle\Element\Overview
@@ -284,6 +281,7 @@ parameters:
                                 label: 'point digitizing'
                                 # deprecated 
                                 #maxResults: 500 #https://github.com/mapbender/mapbender-digitizer/releases/tag/1.4
+                                maxResults: 50
                                 featureType:
                                     connection: geodata_db
                                     table: poi
@@ -291,7 +289,8 @@ parameters:
                                     geomType: point
                                     geomField: geom_25832
                                     srid: 25832
-                                    filter: 'st_isempty(geom_25832) = false and gid < 10000'
+                                    filter: 'st_isempty(geom_25832) = false AND gid < 15000'
+                                    #and gid < 10000'
                                     events:
                                         onBeforeSave: $feature->setAttribute('abstract', 'MAPS'); $feature->setAttribute('user_name', $user ); $feature->setAttribute('group_name', implode(',', $userRoles));                             
                                 #deprecated openFormAfterEdit: true #https://github.com/mapbender/mapbender-digitizer/releases/tag/1.4                            
@@ -343,7 +342,7 @@ parameters:
                                         fillColor:   "#ff0000" 
                                         fillOpacity: 0.3
                                         strokeOpacity: 0.6
-                                        pointRadius: 20
+                                        pointRadius: 10
                                         label: ${name}
                                         fontColor: black
                                         fontSize: 28px
@@ -416,6 +415,7 @@ parameters:
                                                         name: name
                                                         mandatoryText: 'Please give a name to the poi.'
                                                         infoText: 'Help: Please give a name to the new object.'
+                                                        copyClipboard: true
                                                     -
                                                         type: input
                                                         title: Title
@@ -488,7 +488,7 @@ parameters:
                                                     -
                                                         type: date
                                                         title: 'favorite Date'
-                                                        name: date_favorite
+                                                        name: date_favorite_varchar
                                                         mandatory: true
                                                         css:
                                                             width: 25%
