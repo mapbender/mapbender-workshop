@@ -56,7 +56,7 @@ You can update the configuration with the following SQL.
 
 SimpleSearch
 --------------------------
-SimpleSearch element was improved. You can now define the projection of the result that comes from the Solr Service. Mapbedner will then transform the result to the projection of the map.
+SimpleSearch element was improved. You can now define the projection of the result that comes from the Solr Service. Mapbender will then transform the result to the projection of the map.
 
 Define sourceSrs in your SimpleSearch definition. If not defined the default ('EPSG:4326') be be choosen. You find an example at https://github.com/mapbender/mapbender-workshop/blob/release/3.2/app/config/applications/mapbender_demo_nrw.yml
 
