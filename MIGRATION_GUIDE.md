@@ -87,6 +87,10 @@ Digitizer is available for Mapbender >= 3.2.2. The new Digitizer Version is 1.4.
 * see list of deprecated features https://github.com/mapbender/mapbender-digitizer/releases/tag/1.4
 * see also https://github.com/mapbender/mapbender-digitizer/blob/1.4/Element/Digitizer.php
 * you find a demo in the workshop bundle https://github.com/mapbender/mapbender-workshop/blob/release/3.2/app/config/applications/mapbender_digitize_demo.yml
+* font definitions see https://github.com/mapbender/mapbender/issues/1308
+  - fontSize: 38 definition without px 
+  - labelxOffset: 18 (not supported in 3.2.3)
+  - labelYOffset: 18 (not supported in 3.2.3)
 
 There is a new style unsaved.
 
@@ -98,7 +102,10 @@ There is a new style unsaved.
         pointRadius: 6
         label: 'Neu - bitte speichern'
         fontColor: red
-        fontSize: 18px
+        fontFamily: 'Arial, Courier New, monospace'
+        fontColor: red
+        fontSize: 38
+        fontWeight: bold
 
 
 WMS Layer visibility
