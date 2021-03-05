@@ -75,6 +75,13 @@ body {
       border: solid 3px $borderColor;
     }
     
+
+
+    .logo{
+      max-height: none;
+      height: 60px;
+    }
+    
     
 
     > .sidePane {
@@ -424,12 +431,59 @@ body {
     color: $buttonBgColor;
   }
 
+  .searchterm.input {
+    width: 200px;
+  }
+  
+  .searchterm.input::placeholder {
+    color: lighten($buttonBgColor,15%);
+    font-style: italic;
+  }
+  
+.layer-menu-btn .fa-bars::before {
+    content: "...";
 }
+
+.iconFileText::before {
+    content: "\f05a";
+    font-family: FontAwesome;
+}
+
+.iconCancel::before {
+    content: "\f00d";
+    font-family: FontAwesome;
+}
+
+.labelText, a.labelText {
+    color: #244766;
+}
+
+.popupHead {
+    border-bottom: dashed 1px #244766;
+    margin: 0 20px 20px 20px;
+    padding: 20px 0 10px 0;
+}
+}
+
 
 
 /**
 * Icons
 */
+.layer-menu-btn .fa-bars::before {
+    content: "...";
+}
+
+.iconFileText::before {
+    content: "\f05a";
+    font-family: FontAwesome;
+}
+
+.iconCancel::before {
+    content: "\f00d";
+    font-family: FontAwesome;
+}
+
 .iconPrint:before {
   content: url("bundles/workshopdemo/image/print.png");
 }
@@ -451,7 +505,8 @@ body {
 }
 
 .iconInfoActive:before {
-  content: url("bundles/workshopdemo/image/info.png");
+    content: "\f05a";
+    font-family: FontAwesome;
 }
 
 .iconSearch:before {
