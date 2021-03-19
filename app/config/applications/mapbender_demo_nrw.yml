@@ -11,7 +11,6 @@ parameters:
               - name: sidepane
                 properties:
                   name: accordion
-                  label: mb.manager.template.region.accordion.label
             layersets:
                 more_maps:
                     mapbender_users:
@@ -261,6 +260,7 @@ parameters:
                             icon_url: 'https://demo.mapbender.org/bundles/mapbendercore/image/pin_red.png'
                             icon_offset: '-6,32'
                              
+
                 content:
                     map:
                         title: mb.core.map.class.title
@@ -470,11 +470,11 @@ parameters:
                         type: element
                         target: map
                         srsList: []
-                        addMapSrsList: true                        
+                        addMapSrsList: true
                         zoomlevel: 6
 
                     html-about-mapbender:
-                        title: 'HTML About Mapbender'
+                        title: 'About Mapbender'
                         class: Mapbender\CoreBundle\Element\HTMLElement
                         classes: html-element-inline
                         content: "<p>This is a demo of the HTML-element.</p><br><p><b>Applicaton name:</b><br> {{ application.title }}</p><br><p>Mapbender is part of </p><p><a href=\"https://www.osgeo.org/projects/mapbender/\" target=\"_blank\"><img src=\"https://www.osgeo.org/wp-content/themes/roots/assets/img/logo-osgeo.svg\" alt=\"OSGeo Project\"  title=\"OSGeo Project\" width=\"100px\" /></a></p><p><br>Find out more about OSGeo at<br/><a href=\"https://www.osgeo.org\" target=\"_blank\">https://www.osgeo.org</a><br/><a href=\"https://www.osgeo.org/projects/mapbender/\" target=\"_blank\">https://www.osgeo.org/projects/mapbender/</a>"
@@ -667,7 +667,10 @@ parameters:
                         tooltip: mb.core.scaleselector.class.description
                         label: false
                         target: map
-                        
+                    applicationswitcher:
+                        class: Mapbender\CoreBundle\Element\ApplicationSwitcher
+                        applications: [mapbender_user, mapbender_user_basic]
+
                     copyrightButton:
                         title: © OpenStreetMap contributors
                         tooltip: © OpenStreetMap contributors

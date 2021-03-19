@@ -1,7 +1,7 @@
 parameters:
     applications:
         mapbender_digitize_demo:
-            title: Mapbender Digitze Demo
+            title: Mapbender Digitize Demo
             screenshot: ~
             description: Try the Mapbender Digitize Demo
             published: true
@@ -10,9 +10,8 @@ parameters:
               - name: sidepane
                 properties:
                   name: accordion
-                  label: mb.manager.template.region.accordion.label
             layersets:
-                main:               
+                main:
                     mapbender_users:
                         class: Mapbender\WmsBundle\Entity\WmsInstance
                         title: Mapbender Users
@@ -71,7 +70,7 @@ parameters:
                         content: "{{ application.title }}"
                   
                     fi-button:
-                        title: Information #mb.core.featureinfo.class.title
+                        title: mb.core.featureinfo.class.title
                         tooltip: mb.core.featureinfo.class.title
                         class: Mapbender\CoreBundle\Element\Button
                         icon: iconInfoActive
@@ -86,8 +85,8 @@ parameters:
                         icon: iconPrint
                         target: printclient
                     imageexport-button:
-                        title: Image Export
-                        tooltip: Image Export
+                        title: mb.print.imageexport.class.title
+                        tooltip: mb.print.imageexport.class.title
                         class: Mapbender\CoreBundle\Element\Button
                         label: false
                         icon: iconImageExport
@@ -181,7 +180,6 @@ parameters:
                         displayType: tabs
                         autoActivate: false
                         printResult: true
-                        showOriginal: true
                         width: 500
                         height: 500
                         
@@ -287,12 +285,12 @@ parameters:
                                     table: poi
                                     uniqueId: gid
                                     geomType: point
-                                    geomField: geom_25832
-                                    srid: 25832
-                                    filter: 'st_isempty(geom_25832) = false AND gid < 15000'
+                                    geomField: geom
+                                    srid: 4326
+                                    filter: ~
                                     #and gid < 10000'
-                                    events:
-                                        onBeforeSave: $feature->setAttribute('abstract', 'MAPS'); $feature->setAttribute('user_name', $user ); $feature->setAttribute('group_name', implode(',', $userRoles));                             
+                                    #events:
+                                    #    onBeforeSave: $feature->setAttribute('abstract', 'MAPS'); $feature->setAttribute('user_name', $user ); $feature->setAttribute('group_name', implode(',', $userRoles));                             
                                 #deprecated openFormAfterEdit: true #https://github.com/mapbender/mapbender-digitizer/releases/tag/1.4                            
                                 #deprecated zoomScaleDenominator: 2000 #https://github.com/mapbender/mapbender-digitizer/releases/tag/1.4
                                 #deprecated useContextMenu: true #https://github.com/mapbender/mapbender-digitizer/releases/tag/1.4
@@ -404,10 +402,10 @@ parameters:
                                                     -
                                                         type: label
                                                         title: 'Welcome to the digitize demo. Try the new Mapbender feature!'
-                                                    -
-                                                        type: input
-                                                        title: Benutzername
-                                                        name: user_name                                                          
+                                                    #-
+                                                    #    type: input
+                                                    #    title: Benutzername
+                                                    #    name: user_name                                                          
                                                     -
                                                         type: input
                                                         title: Name
@@ -488,7 +486,7 @@ parameters:
                                                     -
                                                         type: date
                                                         title: 'favorite Date'
-                                                        name: date_favorite_varchar
+                                                        name: date_favorite
                                                         mandatory: true
                                                         css:
                                                             width: 25%
@@ -601,9 +599,9 @@ parameters:
                                     table: lines_multi
                                     uniqueId: gid
                                     geomType: multiline
-                                    geomField: geom_25832
-                                    srid: 25832
-                                    filter: 'st_isempty(geom_25832) = false'
+                                    geomField: geom
+                                    srid: 4326
+                                    filter: 'st_isempty(geom) = false'
                                 openFormAfterEdit: true
                                 allowDelete: true
                                 inlineSearch: true
@@ -647,7 +645,7 @@ parameters:
                                         children:
                                             -
                                                 type: label
-                                                title: 'Welcome to the digitize demo. Try the new Mapbender3 feature!'
+                                                title: 'Welcome to the digitize demo. Try the new Mapbender feature!'
                                             -
                                                 type: input
                                                 title: Name
@@ -745,9 +743,9 @@ parameters:
                                     table: polygons_multi
                                     uniqueId: gid
                                     geomType: multipolygon
-                                    geomField: geom_25832
-                                    srid: 25832
-                                    filter: 'st_isempty(geom_25832) = false'
+                                    geomField: geom
+                                    srid: 4326
+                                    filter: 'st_isempty(geom) = false'
                                 openFormAfterEdit: true
                                 allowDelete: false
                                 printable: false                                
@@ -849,6 +847,10 @@ parameters:
                         showBaseSource: true
                         layerRemove: true
                         menu: [opacity,zoomtolayer,metadata]
+                    sketch:
+                        class: Mapbender\CoreBundle\Element\Sketch
+                        target: map
+                        auto_activate: false
 
                     searchrouter:
                         target: map
@@ -965,7 +967,9 @@ parameters:
                         tooltip: mb.core.scaleselector.class.description
                         label: false
                         target: map
-                        
+                    applicationswitcher:
+                        class: Mapbender\CoreBundle\Element\ApplicationSwitcher
+                        applications: [mapbender_user, mapbender_user_basic]
                     copyrightButton:
                         title: © OpenStreetMap contributors
                         tooltip: © OpenStreetMap contributors
