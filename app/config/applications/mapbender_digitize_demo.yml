@@ -5,6 +5,7 @@ parameters:
             screenshot: ~
             description: Try the Mapbender Digitize Demo
             published: true
+            persistentView: false             
             template:  Mapbender\CoreBundle\Template\Fullscreen
             regionProperties:
               - name: sidepane
@@ -156,6 +157,7 @@ parameters:
                             - zoom_max
                             - zoom_in_out
                             - zoom_slider
+                            - zoom_home
                         anchor: right-top
                         draggable: false
                         
@@ -289,8 +291,8 @@ parameters:
                                     srid: 4326
                                     filter: ~
                                     #and gid < 10000'
-                                    #events:
-                                    #    onBeforeSave: $feature->setAttribute('abstract', 'MAPS'); $feature->setAttribute('user_name', $user ); $feature->setAttribute('group_name', implode(',', $userRoles));                             
+                                    events:
+                                        onBeforeSave: $feature->setAttribute('abstract', 'MAPS'); $feature->setAttribute('user_name', $user ); $feature->setAttribute('group_name', implode(',', $userRoles));                             
                                 #deprecated openFormAfterEdit: true #https://github.com/mapbender/mapbender-digitizer/releases/tag/1.4                            
                                 #deprecated zoomScaleDenominator: 2000 #https://github.com/mapbender/mapbender-digitizer/releases/tag/1.4
                                 #deprecated useContextMenu: true #https://github.com/mapbender/mapbender-digitizer/releases/tag/1.4
@@ -401,7 +403,7 @@ parameters:
                                                 children:
                                                     -
                                                         type: label
-                                                        title: 'Welcome to the digitize demo. Try the new Mapbender feature!'
+                                                        title: 'Welcome to the digitize demo. Try the new Mapbender feature!'                                                        
                                                     #-
                                                     #    type: input
                                                     #    title: Benutzername
@@ -439,6 +441,30 @@ parameters:
                                                             E: E
                                                     -
                                                         type: breakLine
+
+                                                    -   type: text                     # Typ text zur Generierung von dynamischen Texten aus der Datenbank
+                                                        title: 'Mapbender user/group'   # Beschriftung (optional)
+                                                        #text: data.name  #+ ' ' + data.firstname + ' ' + data.lastname + ' Email:' + data.email
+                                                        #text: "'user: ' + data.user_name + ' group:' + data.group_name"
+                                                        text: |
+                                                              'user: ' + data.user_name + ' group:' + data.group_name
+
+                                                    -   type: text                     # Typ text zur Generierung von dynamischen Texten aus der Datenbank
+                                                        title: Text with function type:text   # Beschriftung (optional)
+                                                        text: |
+                                                              (function(){ var result = '';
+                                                                          if(data.user_name){
+                                                                              result += 'user: ' + data.user_name;
+                                                                          }else{
+                                                                              result += 'user: -' ;
+                                                                          }
+                                                                          if(data.user_group){
+                                                                              result += ' group: ' + data.group_name;
+                                                                          }else{
+                                                                              result += ' group: -' ;
+                                                                          }                                                                          
+                                                                          return result;})()                                                                        
+
                                             -
                                                 type: form
                                                 title: 'Personal information'

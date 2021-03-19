@@ -5,6 +5,7 @@ parameters:
             screenshot: mapbender_user.png
             description: Mapbender Demo zur Veranschaulichung der YAML-Definition
             published: true
+            persistentView: true            
             template:  Mapbender\CoreBundle\Template\Fullscreen
             mapEngineCode: current            
             regionProperties:
@@ -165,6 +166,14 @@ parameters:
                                 group: null
                                 instances: []        
 
+                    resetview:
+                        title: mb.core.resetView.class.title
+                        class: Mapbender\CoreBundle\Element\ResetView
+                        configuration:
+                            label: true
+                            tooltip: null
+                            resetDynamicSources: true
+
                     fi-button:
                         title: mb.core.featureinfo.class.title
                         tooltip: mb.core.featureinfo.class.title
@@ -281,6 +290,7 @@ parameters:
                             - zoom_max
                             - zoom_in_out
                             - zoom_slider
+                            - zoom_home
                         stepSize: 50
                         stepByPixel: true
                         anchor: right-top
