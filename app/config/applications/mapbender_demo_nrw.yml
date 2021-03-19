@@ -5,7 +5,7 @@ parameters:
             screenshot: mapbender_user.png
             description: Mapbender Demo zur Veranschaulichung der YAML-Definition
             published: true
-            persistentView: true            
+            persistentView: false            
             template:  Mapbender\CoreBundle\Template\Fullscreen
             mapEngineCode: current            
             regionProperties:
