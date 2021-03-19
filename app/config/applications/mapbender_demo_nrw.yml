@@ -249,7 +249,9 @@ parameters:
                         title: mb.core.simplesearch.class.title
                         class: Mapbender\CoreBundle\Element\SimpleSearch
                         target: map
-                        query_url: 'http://geodaten.metropoleruhr.de/suche?wt=json&indent=true&rows=10'
+                        query_url: 'http://geodaten.metropoleruhr.de/suche?wt=json&indent=true&rows=10'                        
+                        #only Bonn
+                        #query_url: 'http://geodaten.metropoleruhr.de/suche?wt=json&indent=true&rows=10&fq=onm:Bonn'
                         query_key: q
                         query_format: '%s'
                         token_regex: '[^a-zA-Z0-9äöüÄÖÜß]'
@@ -266,8 +268,8 @@ parameters:
                             buffer: !!float 5
                             minscale: !!float 100
                             maxscale: !!float 1000
-                            icon_url: 'https://demo.mapbender.org/bundles/mapbendercore/image/pin_red.png'
-                            icon_offset: '-6,32'
+                            icon_url: '/bundles/mapbendercore/image/pin_red.png'
+                            icon_offset: '-6,-32'
                              
 
                 content:
