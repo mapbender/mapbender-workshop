@@ -3,7 +3,7 @@ parameters:
         mapbender_digitize_demo:
             title: Mapbender Digitize Demo
             screenshot: ~
-            description: Try the Mapbender Digitize Demo
+            description: Try the Mapbender Digitize Demo with the Tables defined in the documentation (https://doc.mapbender.org/en/functions/editing/digitizer.html#sql-for-the-demo-tables) or with the PostgreSQL backup in the Workshop repository (https://github.com/mapbender/mapbender-workshop/geobasis.backup).
             published: true
             persistentView: false             
             template:  Mapbender\CoreBundle\Template\Fullscreen
@@ -617,78 +617,6 @@ parameters:
                                                     D: D
                                                     E: E                                                 
                                                     
-                            multiline:
-                                label: 'multiline digitizing'
-                                maxResults: 1500
-                                featureType:
-                                    connection: geodata_db
-                                    table: lines_multi
-                                    uniqueId: gid
-                                    geomType: multiline
-                                    geomField: geom
-                                    srid: 4326
-                                    filter: 'st_isempty(geom) = false'
-                                openFormAfterEdit: true
-                                allowDelete: true
-                                inlineSearch: true
-                                printable: false                                
-                                toolset:
-                                    -
-                                        type: drawLine
-                                    -
-                                        type: modifyFeature
-                                    -
-                                        type: moveFeature
-                                    -
-                                        type: selectFeature
-                                    -
-                                        type: removeSelected
-                                popup:
-                                    title: 'multiline test suite'
-                                    width: 500px
-                                searchType: currentExtent
-                                styles:
-                                    default:
-                                        strokeWidth: 2
-                                        strokeOpacity: 0.8
-                                        strokeColor: "#6633FF" 
-                                    select:
-                                        strokeWidth: 4
-                                        strokeColor: "#CC0066" 
-                                tableFields:
-                                    gid:
-                                        label: Nr.
-                                        width: 20%
-                                    name:
-                                        label: Name
-                                        width: 80%
-                                formItems:
-                                    -
-                                        type: form
-                                        title: 'Basic information'
-                                        css:
-                                            padding: 10px
-                                        children:
-                                            -
-                                                type: label
-                                                title: 'Welcome to the digitize demo. Try the new Mapbender feature!'
-                                            -
-                                                type: input
-                                                title: Name
-                                                name: name
-                                                mandatory: true
-                                                mandatoryText: 'Please give a name to the new object.'
-                                                infoText: 'Help: Please give a name to the new object.'
-                                            -
-                                                type: select
-                                                title: Type
-                                                name: type
-                                                options:
-                                                    A: A
-                                                    B: B
-                                                    C: C
-                                                    D: D
-                                                    E: E
                             polygon:
                                 label: 'polygon digitizing'
                                 maxResults: 1500
@@ -732,6 +660,33 @@ parameters:
                                     name:
                                         label: Name
                                         width: 80%
+                                styles:
+                                    default:
+                                        strokeWidth: 2
+                                        strokeColor: "#0000ff" 
+                                        strokeOpacity: 0.6
+                                        label: ${name}
+                                        fontColor: "#0000ff" 
+                                        fontSize: 28px
+                                        fontFamily: 'Arial, Courier New, monospace'
+                                        fontWeight: bold
+                                        labelOutlineColor: white
+                                        labelOutlineWidth: 1
+                                        labelYOffset: -18
+                                        labelXOffset: -18           
+                                    select:
+                                        strokeWidth: 5
+                                        strokeOpacity: 0.5            
+                                        strokeColor: "#b000b0"
+                                        label: ${gid}
+                                        fontColor: blue
+                                        fontSize: 18px                                        
+                                    unsaved:
+                                        strokeWidth: 5
+                                        strokeColor: "#ff0000" 
+                                        label: 'Neu - bitte speichern'
+                                        fontColor: red
+                                        fontSize: 18px                                        
                                 formItems:
                                     -
                                         type: form
@@ -755,107 +710,6 @@ parameters:
                                                 name: type
                                                 mandatoryText: 'Please give a type to the new object.'
                                                 infoText: 'Help: Please give a type to the new object.'                                                
-                                                options:
-                                                    A: A
-                                                    B: B
-                                                    C: C
-                                                    D: D
-                                                    E: E
-                            multipolygon:
-                                label: 'multipolygon digitizing'
-                                maxResults: 1500
-                                featureType:
-                                    connection: geodata_db
-                                    table: polygons_multi
-                                    uniqueId: gid
-                                    geomType: multipolygon
-                                    geomField: geom
-                                    srid: 4326
-                                    filter: 'st_isempty(geom) = false'
-                                openFormAfterEdit: true
-                                allowDelete: false
-                                printable: false                                
-                                toolset:
-                                    -
-                                        type: drawPolygon
-                                    -
-                                        type: drawRectangle
-                                    -
-                                        type: drawDonut
-                                    -
-                                        type: drawEllipse
-                                    -
-                                        type: drawCircle
-                                    -
-                                        type: modifyFeature
-                                    -
-                                        type: moveFeature
-                                    -
-                                        type: selectFeature
-                                    -
-                                        type: removeSelected
-                                popup:
-                                    title: 'multipolygon test suite'
-                                    width: 500px
-                                searchType: currentExtent
-                                tableFields:
-                                    gid:
-                                        label: Nr.
-                                        width: 20%
-                                    name:
-                                        label: Name
-                                        width: 80%
-                                styles:
-                                  default:
-                                      strokeWidth: 2
-                                      strokeColor: '#648296'
-                                      fillColor: '#7b9fb7'
-                                      fillOpacity: 0.7
-                                      fillWidth: 2
-                                      label: ${name}
-                                      fontColor: '#648296'
-                                      fontSize: 12px
-                                      fontWeight: "bold"
-                                  select:
-                                      strokeWidth: 4
-                                      strokeColor: '#435e70'
-                                      strokeOpacity: 1
-                                      fillOpacity: 0.6
-                                      fillColor: '#435e70'
-                                      label: '${name} ${type}'
-                                      fontColor: '#435e70'
-                                      fontSize: 14px
-                                      fontWeight: "bold"
-                                  unsaved:
-                                      strokeWidth: 5
-                                      strokeColor: "#ff0000"
-                                      strokeOpacity: 1                                        
-                                      fillOpacity: 0.6
-                                      fillColor: '#ff0000'
-                                      label: 'Neu - bitte speichern'
-                                      fontColor: black
-                                      fontSize: 18px                                       
-                                formItems:
-                                    -
-                                        type: form
-                                        title: 'Basic information'
-                                        css:
-                                            padding: 10px
-                                        children:
-                                            -
-                                                type: label
-                                                title: 'Welcome to the digitize demo. Try the new Mapbender3 feature!'
-                                            -
-                                                type: input
-                                                title: Name
-                                                mandatory: true
-                                                name: name
-                                                mandatoryText: 'Please give a name to the new object.'
-                                                infoText: 'Help: Please give a name to the new object.'
-                                            -
-                                                type: select
-                                                title: Type
-                                                name: type
                                                 options:
                                                     A: A
                                                     B: B
