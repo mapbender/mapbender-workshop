@@ -91,6 +91,15 @@ Digitizer is available for Mapbender >= 3.2.2. The new Digitizer Version is 1.4.
   - fontSize: 38 definition without px 
   - labelxOffset: 18 (not supported in 3.2.3)
   - labelYOffset: 18 (not supported in 3.2.3)
+* types that are not supported in 3.2.4
+  - https://doc.mapbender.org/en/functions/editing/digitizer.html
+  - image
+  - upload
+  - text (will be fixed in 3.2.5)
+  - select with multiselect
+  - coordinates
+* clustering not implemented in 3.2.4
+* style definition is limited not all OL2 styles can be defined
 
 There is a new style unsaved.
 
