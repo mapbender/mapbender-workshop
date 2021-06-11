@@ -244,6 +244,9 @@ parameters:
                         icon: iconPoi
                         label: true
                         target: poi
+                    shareUrl:
+                        class: Mapbender\CoreBundle\Element\ShareUrl
+                        label: false
                         
                     simplesearch:
                         title: mb.core.simplesearch.class.title
@@ -394,7 +397,7 @@ parameters:
                         anchor: 'right-bottom'
                         maximized: true
                         fixed: false
-                        
+                        screenType: desktop
                     scaledisplay:
                         title: mb.core.scaledisplay.class.title
                         class: Mapbender\CoreBundle\Element\ScaleDisplay
