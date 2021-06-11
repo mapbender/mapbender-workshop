@@ -51,6 +51,9 @@ parameters:
     branding.project_name: Geoportal powered by Mapbender
     branding.logo: ./bundles/workshopdemo/image/workshop_logo.png
 
+# Definition for the Login-Landscape-Image
+    branding.login_backdrop: ./bundles/mapbendercore/image/body.png      
+
     # framework : http://symfony.com/doc/2.8/reference/configuration/framework.html#cookie-lifetime
     cookie_secure: false
     cookie_lifetime: 3600
