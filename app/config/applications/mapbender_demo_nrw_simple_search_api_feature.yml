@@ -249,20 +249,15 @@ parameters:
                         title: mb.core.simplesearch.class.title
                         class: Mapbender\CoreBundle\Element\SimpleSearch
                         target: map
-                        query_url:  "https://osm-search.wheregroup.com/search.php?format=geojson&polygon_geojson=1&addressdetails=1"
+                        query_url:  "https://www.ldproxy.nrw.de/dvg/collections/nw_dvg2_krs/items?f=geojson&limit=100"
 
-                        #query_url:  "https://nominatim.openstreetmap.org/search?format=geojson&polygon_geojson=1&addressdetails=1"
-                        #query_url: 'http://geodaten.metropoleruhr.de/suche?wt=json&indent=true&rows=10'                        
-                        #only Bonn
-                        #query_url: 'http://geodaten.metropoleruhr.de/suche?wt=json&indent=true&rows=10&fq=onm:Bonn'
-
-                        query_key: q
+                        query_key: name
                         query_format: '%s'
                         token_regex: '[^a-zA-Z0-9äöüÄÖÜß]'
                         token_regex_in: '([a-zA-ZäöüÄÖÜß]{3,})'
                         token_regex_out: '$1*'
                         collection_path: features
-                        label_attribute:  '${properties.address.city} ${properties.address.road} - ${properties.address.house_number}'
+                        label_attribute:  '${properties.Name}'
                         geom_attribute: geometry
                         sourceSrs: 'EPSG:4326'                        
                         geom_format: GeoJSON
