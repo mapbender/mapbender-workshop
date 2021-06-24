@@ -280,8 +280,7 @@ parameters:
                             poi:
                                 label: 'point digitizing'
                                 # deprecated 
-                                #maxResults: 500 #https://github.com/mapbender/mapbender-digitizer/releases/tag/1.4
-                                maxResults: 50
+                                #deprecated maxResults: 500 #https://github.com/mapbender/mapbender-digitizer/releases/tag/1.4
                                 featureType:
                                     connection: geodata_db
                                     table: poi
@@ -345,7 +344,7 @@ parameters:
                                         pointRadius: 10
                                         label: ${name}
                                         fontColor: black
-                                        fontSize: 28px
+                                        fontSize: 28
                                         fontFamily: 'Arial, Courier New, monospace'
                                         fontWeight: bold
                                         labelOutlineColor: white
@@ -360,7 +359,7 @@ parameters:
                                         pointRadius: 6
                                         label: ${gid}
                                         fontColor: green
-                                        fontSize: 18px
+                                        fontSize: 18
                                     unsaved:
                                         strokeWidth: 3
                                         strokeColor: "#f0f0f0" 
@@ -369,7 +368,7 @@ parameters:
                                         pointRadius: 6
                                         label: 'Neu - bitte speichern'
                                         fontColor: red
-                                        fontSize: 18px                                        
+                                        fontSize: 18                                      
                                 #clustering:
                                 #      -
                                 #        scale: 10000
@@ -538,7 +537,7 @@ parameters:
                                     geomField: geom
                                     srid: 4326
                                     filter: 'st_isempty(geom) = false'
-                                openFormAfterEdit: true
+                                #deprecated openFormAfterEdit: true
                                 allowDelete: true
                                 toolset:
                                     -
@@ -558,11 +557,11 @@ parameters:
                                 styles:
                                     default:
                                         strokeWidth: 2
-                                        strokeColor: "#0000ff" 
+                                        strokeColor: "#0000ff" #'${fontcolor}'
                                         strokeOpacity: 0.6
                                         label: ${name}
-                                        fontColor: "#0000ff" 
-                                        fontSize: 28px
+                                        fontColor: "#0000ff" #'${fontcolor}'
+                                        fontSize: 28
                                         fontFamily: 'Arial, Courier New, monospace'
                                         fontWeight: bold
                                         labelOutlineColor: white
@@ -575,13 +574,13 @@ parameters:
                                         strokeColor: "#b000b0"
                                         label: ${gid}
                                         fontColor: blue
-                                        fontSize: 18px                                        
+                                        fontSize: 18                                       
                                     unsaved:
                                         strokeWidth: 5
                                         strokeColor: "#ff0000" 
                                         label: 'Neu - bitte speichern'
                                         fontColor: red
-                                        fontSize: 18px  
+                                        fontSize: 18 
                                 tableFields:
                                     gid:
                                         label: Nr.
@@ -667,7 +666,7 @@ parameters:
                                         strokeOpacity: 0.6
                                         label: ${name}
                                         fontColor: "#0000ff" 
-                                        fontSize: 28px
+                                        fontSize: 28
                                         fontFamily: 'Arial, Courier New, monospace'
                                         fontWeight: bold
                                         labelOutlineColor: white
@@ -680,13 +679,13 @@ parameters:
                                         strokeColor: "#b000b0"
                                         label: ${gid}
                                         fontColor: blue
-                                        fontSize: 18px                                        
+                                        fontSize: 18                                        
                                     unsaved:
                                         strokeWidth: 5
                                         strokeColor: "#ff0000" 
                                         label: 'Neu - bitte speichern'
                                         fontColor: red
-                                        fontSize: 18px                                        
+                                        fontSize: 18                                       
                                 formItems:
                                     -
                                         type: form
