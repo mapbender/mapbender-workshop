@@ -1,0 +1,569 @@
+parameters:
+    applications:
+        mapbender_demo_nrw_simple_search_photon:
+            title: Mapbender Demo NRW SimpleSearch PHOTON
+            screenshot: mapbender_user.png
+            description: Mapbender Demo zur Veranschaulichung der YAML-Definition
+            published: true
+            persistentView: false            
+            template:  Mapbender\CoreBundle\Template\Fullscreen
+            mapEngineCode: current            
+            regionProperties:
+              - name: sidepane
+                properties:
+                  name: accordion
+            layersets:
+                more_maps:
+                    mapbender_users:
+                        class: Mapbender\WmsBundle\Entity\WmsInstance
+                        title: 1 Mapbender Users
+                        url: https://wms.wheregroup.com/cgi-bin/mapbender_user.xml
+                        version: 1.3.0
+                        layers:
+                            10: { name: Mapbender_User,    title : User, visible: true, legendurl: https://wms.wheregroup.com/cgi-bin/mapbender_user.xml?version=1.3.0&service=WMS&request=GetLegendGraphic&sld_version=1.1.0&layer=Mapbender_User&format=image/png&STYLE=default }
+                            22: { name: Mapbender_Names,   title : Name, visible: true, queryable: true}
+                        info_format: text/html
+                        visible: true
+                        format: image/png
+                        transparent: true
+                        tiled: false
+                        opacity: 85
+                        isBaseSource: false
+                        
+                background_maps:                        
+                    osm:
+                        class: Mapbender\WmsBundle\Entity\WmsInstance
+                        title: 6 OSM Demo
+                        url: https://osm-demo.wheregroup.com/service
+                        version: 1.3.0
+                        layers:
+                            30: { name: osm,    title : OSM Demo WhereGroup,  visible: true }
+                        info_format: text/html
+                        visible: false
+                        format: image/png
+                        transparent: true
+                        tiled: true
+                        opacity: 50
+                        isBaseSource: true
+                overview:
+                    osm_overview:
+                        class: Mapbender\WmsBundle\Entity\WmsInstance
+                        title: 2o OSM Demo
+                        url: https://osm-demo.wheregroup.com/service
+                        version: 1.3.0
+                        layers:
+                            40: { name: osm,    title : OSM Demo WhereGroup,  visible: true }
+                        tiled: false
+                        format: image/png
+                        transparent: true
+                        visible: true
+                        opacity: 100
+                        isBaseSource: false
+
+                Raumbezug:
+                    Bodenbewegungsgebiete:
+                        class: Mapbender\WmsBundle\Entity\WmsInstance
+                        title: 3 WMS NW Bodenbewegungsgebiete Kacheln
+                        url: https://www.wms.nrw.de/geobasis/wms_nw_bodenbewegungsgebiete_kacheln
+                        version: 1.3.0
+                        layers:
+                            1: { name: WMS_NW_BODENBEWEGUNGSGEBIETE_KACHELN,    title : WMS NW Bodenbewegungsgebiete Kacheln,  visible: true }
+                        tiled: false
+                        format: image/png
+                        transparent: true
+                        visible: false
+                        opacity: 100
+                        isBaseSource: true
+
+
+                Luftbildinformation:
+                    overlay:
+                        class: Mapbender\WmsBundle\Entity\WmsInstance
+                        title: 4 NW Overlay für DOP
+                        url: https://www.wms.nrw.de/geobasis/wms_nw_dop_overlay
+                        version: 1.3.0
+                        layers:
+                            1: { name: WMS_NW_DOP_OVERLAY,    title : Overlay für DOP}
+                        tiled: false
+                        format: image/png
+                        transparent: true
+                        visible: false
+                        opacity: 100
+                        isBaseSource: true
+
+                    dop:
+                        class: Mapbender\WmsBundle\Entity\WmsInstance
+                        title: 5 NW DOP
+                        url: https://www.wms.nrw.de/geobasis/wms_nw_dop
+                        version: 1.3.0
+                        layers:
+                            1: { name: WMS_NW_DOP,    title : WMS NW DOP,  visible: true }
+                        tiled: true
+                        format: image/png
+                        transparent: true
+                        visible: true
+                        opacity: 100
+                        isBaseSource: true
+
+                'Touristik und Freizeit':
+                    tfis:
+                        class: Mapbender\WmsBundle\Entity\WmsInstance
+                        title: 2 WMS NW TFIS
+                        url: http://www.wms.nrw.de/geobasis/wms_nw_tfis
+                        version: 1.3.0
+                        layers:
+                            1: { name: nw_tfis,    title : 'Touristik und Freizeitinformation NRW',  visible: true , , queryable: true , legendurl: https://www.wms.nrw.de/legends/geobasis/wms_nw_tfis/Legende_TFIS.png }
+                        tiled: false
+                        format: image/png
+                        transparent: true
+                        visible: true
+                        opacity: 100
+                        isBaseSource: false
+
+
+            elements:
+                toolbar:
+
+                    basesourceswitcher:
+                        title: mb.core.basesourceswitcher.class.title
+                        tooltip: mb.core.basesourceswitcher.class.title
+                        class: Mapbender\CoreBundle\Element\BaseSourceSwitcher
+                        display: group
+                        target: map
+                        instancesets:
+                            1-basesourceswitcher:
+                                title: OSM
+                                group: Karten
+                                instances:
+                                    - osm
+                            11-basesourceswitcher:
+                                title: OSM + Overlay
+                                group: Karten
+                                instances: [osm, overlay]                                
+                            20-basesourceswitcher:
+                                title: Bodenbewegungsgebiete
+                                group: Raumbezug
+                                instances:
+                                    - Bodenbewegungsgebiete
+                            30-basesourceswitcher:
+                                title: DOP
+                                group: Luftbilder
+                                instances:
+                                    - dop
+                            31-basesourceswitcher:
+                                title: DOP + Overlay
+                                group: Luftbilder
+                                instances:
+                                    - dop
+                                    - overlay
+                            32-basesourceswitcher:
+                                title: nur Overlay
+                                group: Luftbilder
+                                instances:
+                                    - overlay 
+                            9-basesourceswitcher:
+                                title: 'kein Hintergrund'
+                                group: null
+                                instances: []        
+
+                    resetview:
+                        title: mb.core.resetView.class.title
+                        class: Mapbender\CoreBundle\Element\ResetView
+                        configuration:
+                            label: false
+                            tooltip: null
+                            resetDynamicSources: true
+
+                    fi-button:
+                        title: mb.core.featureinfo.class.title
+                        tooltip: mb.core.featureinfo.class.title
+                        class: Mapbender\CoreBundle\Element\Button
+                        icon: iconInfoActive
+                        label: false
+                        target: featureinfo
+                        group: featureinfo
+                    print-button:
+                        title: mb.core.printclient.class.title
+                        tooltip: mb.core.printclient.class.title
+                        class: Mapbender\CoreBundle\Element\Button
+                        label: false
+                        icon: iconPrint
+                        target: printclient
+                    imageexport-button:
+                        title: Image Export
+                        tooltip: Image Export
+                        class: Mapbender\CoreBundle\Element\Button
+                        label: false
+                        icon: iconImageExport
+                        target: imageexport
+                    legend-button:
+                        title: mb.core.legend.class.title
+                        tooltip: mb.core.legend.class.title
+                        class: Mapbender\CoreBundle\Element\Button
+                        label: false
+                        target: legend
+                        icon: iconLegend
+                    wmsloader-button:
+                        title: mb.wms.wmsloader.class.title
+                        tooltip: mb.wms.wmsloader.class.description
+                        class: Mapbender\CoreBundle\Element\Button
+                        label: false
+                        target: wmsloader
+                        icon: iconWms
+                    gps-button:
+                        title: mb.core.gpsposition.class.title
+                        tooltip: mb.core.gpsposition.class.description
+                        class: Mapbender\CoreBundle\Element\GpsPosition
+                        label: false
+                        target: map
+                    linerulerButton:
+                        title: mb.core.ruler.tag.measure
+                        tooltip: mb.core.ruler.tag.line
+                        class: Mapbender\CoreBundle\Element\Button
+                        icon: icon-line-ruler
+                        label: false
+                        target: lineruler
+                        group: rulers
+                    arearulerButton:
+                        title: mb.core.ruler.tag.measure
+                        tooltip: mb.core.ruler.tag.area
+                        class: Mapbender\CoreBundle\Element\Button
+                        icon: icon-area-ruler
+                        label: false
+                        target: arearuler
+                        group: rulers
+                    about:
+                        title: mb.core.aboutdialog.tag.about
+                        tooltip: mb.core.aboutdialog.tag.about
+                        label: false
+                        class: Mapbender\CoreBundle\Element\AboutDialog
+                    poiButton:
+                        title: mb.core.poi.class.title
+                        tooltip: mb.core.poi.class.description
+                        class: Mapbender\CoreBundle\Element\Button
+                        icon: iconPoi
+                        label: false
+                        target: poi
+                        
+                    simplesearch:
+                        title: mb.core.simplesearch.class.title
+                        class: Mapbender\CoreBundle\Element\SimpleSearch
+                        target: map
+
+                        #PHOTON
+                        # https://github.com/komoot/photon
+                        # https://taginfo.openstreetmap.org/projects/nominatim#tags
+
+                        # search resuls with priority to lat lon
+                        query_url: https://photon.komoot.io/api/?limit=20&&lat=50.739&lon=7.08428
+                        # search restricted to bbox                       
+                        #query_url: https://photon.komoot.io/api/?limit=20&bbox=7.0548523,50.7197792,7.1003085,50.7531732 
+                        # search restricted osm_tag or exclude tag see https://github.com/komoot/photon#filter-results-by-tags-and-values                    
+                        #query_url: https://photon.komoot.io/api/?limit=20&osm_tag=tourism:museum
+
+
+                        #query_url:  "https://osm-search.wheregroup.com/search.php?format=geojson&polygon_geojson=1&addressdetails=1"
+                        #query_url:  "https://nominatim.openstreetmap.org/search?format=geojson&polygon_geojson=1&addressdetails=1"
+                        #query_url: 'http://geodaten.metropoleruhr.de/suche?wt=json&indent=true&rows=10'                        
+                        #only Bonn
+                        #query_url: 'http://geodaten.metropoleruhr.de/suche?wt=json&indent=true&rows=10&fq=onm:Bonn'
+
+                        query_key: q
+                        query_format: '%s'
+                        token_regex: '[^a-zA-Z0-9äöüÄÖÜß]'
+                        token_regex_in: '([a-zA-ZäöüÄÖÜß]{3,})'
+                        token_regex_out: '$1*'
+                        collection_path: features
+                        label_attribute:  '${properties.name} ${properties.street} ${properties.housenumber} (${properties.city} ${properties.country})'
+                        geom_attribute: geometry
+                        sourceSrs: 'EPSG:4326'                        
+                        geom_format: GeoJSON
+                        delay: !!float 300
+                        query_ws_replace: null
+                        result:
+                            buffer: !!float 5
+                            minscale: !!float 100
+                            maxscale: !!float 1000
+                            icon_url: '/bundles/mapbendercore/image/pin_red.png'
+                            icon_offset: '-6,-32'
+                             
+
+                content:
+                    map:
+                        title: mb.core.map.class.title
+                        class: Mapbender\CoreBundle\Element\Map
+                        layersets: [more_maps,'Touristik und Freizeit',Raumbezug,Luftbildinformation,background_maps]
+                        srs: EPSG:25832
+                        extents:
+                            start: [361000,5619000,371150,5625000]
+                            max: [-500000,4350000,1600000,6850000]
+                        scales: [5000000,1000000,500000,100000,50000,25000,10000,7500,5000,2500,1000,500]
+                        otherSrs: ["EPSG:25833","EPSG:31466","EPSG:31467","EPSG:3857","EPSG:4326"]
+                        
+                    zoombar:
+                        class: Mapbender\CoreBundle\Element\ZoomBar
+                        target: map
+                        components:
+                            - rotation
+                            - zoom_max
+                            - zoom_in_out
+                            - zoom_slider
+                            - zoom_home
+                        stepSize: 50
+                        stepByPixel: true
+                        anchor: right-top
+                        draggable: false
+                        
+                    legend:
+                        class: Mapbender\CoreBundle\Element\Legend
+                        target: map
+                        title: mb.core.legend.class.title
+                        elementType: dialog
+                        autoOpen: false
+                        displayType: list
+                        showWmsTitle: true
+                        showLayerTitle: true
+                        showGroupedLayerTitle: true
+                        
+                    featureinfo:
+                        class: Mapbender\CoreBundle\Element\FeatureInfo
+                        title: mb.core.featureinfo.class.title
+                        target: map
+                        deactivateOnClose: false
+                        onlyValid: true
+                        type: dialog
+                        displayType: tabs
+                        autoActivate: false
+                        printResult: true
+                        maxCount: 100
+                        showOriginal: true
+                        width: 500
+                        height: 500
+                        
+                    wmsloader:
+                        title: mb.wms.wmsloader.class.title
+                        class: Mapbender\WmsBundle\Element\WmsLoader
+                        target: map
+                        autoOpen: false
+                        defaultFormat: 'image/png'
+                        defaultInfoFormat: 'text/html'
+                        splitLayers: false
+                                          
+                    imageexport:
+                        class: Mapbender\PrintBundle\Element\ImageExport
+                        target: map
+                        title: Image export
+                        
+                    printclient:
+                        title: mb.core.printclient.class.title
+                        class: Mapbender\CoreBundle\Element\PrintClient
+                        target: map
+                        file_prefix: mapbender
+                        templates:
+                            - { template: a4_portrait_offical, label: A4 Portrait (official)}
+                            - { template: a4_landscape_offical, label: A4 Landscape (official)}                            
+                            - { template: a4portrait, label: A4 Portrait}
+                            - { template: a4landscape, label: A4 Landscape}
+                            - { template: a3portrait, label: A3 Portrait}
+                            - { template: a3landscape, label: A3 Landscape}
+                        scales: [500, 1000, 5000, 10000, 25000, 50000]
+                        quality_levels:
+                            - { dpi: 72 , label: Draft (72dpi)}
+                            - { dpi: 288,  label: Document (288dpi)}
+                        rotatable: true
+                        legend: true
+                        legend_default_behaviour: false
+                        optional_fields:
+                            title:
+                                label: Title              # label of the optional field
+                                options:                  #
+                                    required: true        # true or false
+                                    
+                    lineruler:
+                        title: mb.core.ruler.tag.line
+                        tooltip: 'ruler'
+                        class: Mapbender\CoreBundle\Element\Ruler
+                        target: map
+                        type: line
+                        
+                    arearuler:
+                        title: mb.core.ruler.tag.area
+                        tooltip: 'area'
+                        class: Mapbender\CoreBundle\Element\Ruler
+                        target: map
+                        type: area
+                        
+                    scalebar:
+                        class: Mapbender\CoreBundle\Element\ScaleBar
+                        target: map
+                        anchor: 'left-bottom'
+                        maxWidth: 200
+                        units: km
+
+                    overview:
+                        title: mb.core.overview.class.title
+                        class: Mapbender\CoreBundle\Element\Overview
+                        target: map
+                        layerset: overview
+                        width: 200
+                        height: 100
+                        anchor: 'right-bottom'
+                        maximized: true
+                        fixed: false
+                        
+                    scaledisplay:
+                        title: mb.core.scaledisplay.class.title
+                        class: Mapbender\CoreBundle\Element\ScaleDisplay
+                        target: map
+                        anchor: left-top
+                        scalePrefix: Scale
+                        unitPrefix: true
+                        
+                    poi:
+                        title: mb.core.poi.class.title
+                        class: Mapbender\CoreBundle\Element\POI
+                        target: map
+                        body: 'Please take a look at this POI'
+                        useMailto: false
+
+                sidepane:
+                    layertree:
+                        title: mb.core.layertree.class.title
+                        class: Mapbender\CoreBundle\Element\Layertree
+                        target: map
+                        type: element
+                        autoOpen: false
+                        showBaseSource: true
+                        layerRemove: true
+                        menu: [opacity,zoomtolayer,metadata]
+                        hideNotToggleable: true
+                        hideSelect: true
+                        hideInfo: false
+                        useTheme: true
+                        themes:
+                            -
+                                id: more_maps
+                                title: 'more_maps - show with different title'
+                                useTheme: true
+                                opened: true
+                                sourceVisibility: false
+                                allSelected: false                        
+                            -
+                                id: background_maps
+                                title: 'background_maps'
+                                useTheme: true
+                                opened: true
+                                sourceVisibility: false
+                                allSelected: false
+                            -
+                                id: Raumbezug
+                                title: Raumbezug
+                                useTheme: true
+                                opened: true
+                                sourceVisibility: false
+                                allSelected: false
+                            -
+                                id: Luftbildinformation
+                                title: Luftbildinformation
+                                useTheme: true
+                                opened: true
+                                sourceVisibility: false
+                                allSelected: false
+                            -
+                                id: 'Touristik und Freizeit'
+                                title: 'TITEL: Touristik und Freizeit'
+                                useTheme: true
+                                opened: true
+                                sourceVisibility: false
+                                allSelected: false                                
+
+                    sketch:
+                        title: Sketch
+                        class: Mapbender\CoreBundle\Element\Sketch
+                        target: map
+                        geometrytypes:
+                            - point
+                            - line
+                            - polygon
+                            - text
+                            - rectangle
+                            - circle
+                        display_type: element
+                        auto_activate: false
+                        deactivate_on_close: false
+
+                    coordinatesutility:
+                        title: mb.coordinatesutility.class.title
+                        class: Mapbender\CoordinatesUtilityBundle\Element\CoordinatesUtility
+                        type: element
+                        target: map
+                        srsList: []
+                        addMapSrsList: true
+                        zoomlevel: 6
+
+                    html-about-mapbender:
+                        title: 'About Mapbender'
+                        class: Mapbender\CoreBundle\Element\HTMLElement
+                        classes: html-element-inline
+                        content: "<p>This is a demo of the HTML-element.</p><br><p><b>Applicaton name:</b><br> {{ application.title }}</p><br><p>Mapbender is part of </p><p><a href=\"https://www.osgeo.org/projects/mapbender/\" target=\"_blank\"><img src=\"https://www.osgeo.org/wp-content/themes/roots/assets/img/logo-osgeo.svg\" alt=\"OSGeo Project\"  title=\"OSGeo Project\" width=\"100px\" /></a></p><p><br>Find out more about OSGeo at<br/><a href=\"https://www.osgeo.org\" target=\"_blank\">https://www.osgeo.org</a><br/><a href=\"https://www.osgeo.org/projects/mapbender/\" target=\"_blank\">https://www.osgeo.org/projects/mapbender/</a>"
+
+                footer:
+                    imprintButton:
+                        title: Imprint & Contact
+                        tooltip: Imprint & Contact
+                        class: Mapbender\CoreBundle\Element\Button
+                        label: true
+                        click: https://mapbender.org/en/contact/
+
+                    privacyButton:
+                        title: Privacy-Policy
+                        tooltip: Privacy-Policy
+                        class: Mapbender\CoreBundle\Element\Button
+                        label: true
+                        click: http://mapbender.org/en/privacy-policy
+
+                    activityindicator:
+                        class: Mapbender\CoreBundle\Element\ActivityIndicator
+                        title: mb.core.activityindicator.class.title
+                        activityClass: mb-activity
+                        ajaxActivityClass: mb-activity-ajax
+                        tileActivityClass: mb-activity-tile
+                        
+                    coordinates:
+                        class: Mapbender\CoreBundle\Element\CoordinatesDisplay
+                        title: mb.core.coordinates.class.title
+                        target: map
+                        label: false
+                        empty:  "x: - y: -"
+                        prefix: "x: "
+                        separator:  " y: "
+                        
+                    srs:
+                        class: Mapbender\CoreBundle\Element\SrsSelector
+                        title: mb.core.srsselector.class.title
+                        tooltip: mb.core.srsselector.class.description
+                        label: false
+                        target: map
+                        
+                    scaleselector:
+                        class: Mapbender\CoreBundle\Element\ScaleSelector
+                        title: mb.core.scaleselector.class.title
+                        tooltip: mb.core.scaleselector.class.description
+                        label: false
+                        target: map
+                    applicationswitcher:
+                        class: Mapbender\CoreBundle\Element\ApplicationSwitcher
+                        applications: [mapbender_user, mapbender_user_basic]
+
+                    copyrightButton:
+                        title: © OpenStreetMap contributors
+                        tooltip: © OpenStreetMap contributors
+                        class: Mapbender\CoreBundle\Element\Button
+                        label: true
+                        click: https://www.openstreetmap.org/copyright
+                        
+                    HTML:
+                        title: HTML-powered by Mapbender
+                        class: Mapbender\CoreBundle\Element\HTMLElement
+                        content: '<span style="color: #6FB536; font-weight:bold">powered by Mapbender</span>'
+                        classes: html-element-inline
