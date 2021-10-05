@@ -89,6 +89,10 @@ parameters:
 
     wmsloader.example_url: "https://osm-demo.wheregroup.com/service?VERSION=1.3.0&REQUEST=GetCapabilities&SERVICE=WMS"
 
+    #mapbender.disabled_elements:
+        #- Mapbender\CoreBundle\Element\ResetView
+        # Installed as a collateral Digitizer 1.4 dependency
+        #- Mapbender\DataManagerBundle\Element\DataManager        
 
 # print queue: activates the queued print mode: read more at https://github.com/mapbender/mapbender/pull/1070
     mapbender.print.queueable: true    
