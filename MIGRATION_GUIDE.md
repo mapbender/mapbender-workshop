@@ -62,6 +62,14 @@ Define sourceSrs in your SimpleSearch definition. If not defined the default ('E
 
                      sourceSrs: 'EPSG:25832'
 
+query_ws_replace
+#################
+From version 3.2.5 on set query_ws_replace		     
+
+                     query_ws_replace: +
+
+SimpleSearch Supports Nominatim, Photon from version 3.2.5 - see workshop demo applications
+
  
 BaseSourceSwitcher
 --------------------------
