@@ -9,7 +9,7 @@ You can migrate older Mapbender installations to Mapbender 3.2.
 
 Check the [Mapbender Update process](https://doc.mapbender.org/en/installation/update.html).
 
-* Make sure you have PHP >= 7.1.0
+* Make sure you have PHP >= 7.1.0 and PHP < 8 
 * Provide a backup of your database. 
 * Update your database schema to 3.2 with app/console doctrine:schema:update --force
 
@@ -95,6 +95,7 @@ Digitizer is available for Mapbender >= 3.2.2. The new Digitizer Version is 1.4.
 * see list of deprecated features https://github.com/mapbender/mapbender-digitizer/releases/tag/1.4
 * see also https://github.com/mapbender/mapbender-digitizer/blob/1.4/Element/Digitizer.php
 * you find a demo in the workshop bundle https://github.com/mapbender/mapbender-workshop/blob/release/3.2/app/config/applications/mapbender_digitize_demo.yml
+* maxResults - is supported again to limit the number of features that are loaded to the application (if not defined all features will be used) (digitizer >=1.4.9)
 * font definitions see https://github.com/mapbender/mapbender/issues/1308
   - fontSize: 38 definition without px 
   - labelxOffset: 18 (not supported in 3.2.3)
@@ -104,8 +105,13 @@ Digitizer is available for Mapbender >= 3.2.2. The new Digitizer Version is 1.4.
   - upload
   - select with multiselect
   - coordinates
-* clustering not implemented in 3.2.4
+* clustering not implemented in 3.2.x
 * style definition is limited not all OL2 styles can be defined
+* Support styling features with icons (interpret externalGraphic, graphicWidth, graphicHeight properties) (Mapbender >=3.2.7)
+* Support data placeholder syntax in externalGraphic (e.g. "/bundles/projectbundle/images/${type}.png") (Mapbender >=3.2.7)
+* Save NULL for empty fields works for int/float/decimal columns but not for double precision (Mapbender >= 3.2.6 https://github.com/mapbender/mapbender/issues/1355)
+* Save NULL for empty fields for text fields does not work. Mapbender saves '' instead (https://github.com/mapbender/mapbender/issues/1385)
+
 
 There is a new style unsaved.
 
