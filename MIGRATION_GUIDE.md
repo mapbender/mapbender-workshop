@@ -58,17 +58,17 @@ SimpleSearch
 --------------------------
 SimpleSearch element was improved. You can now define the projection of the result that comes from the Solr Service. Mapbender will then transform the result to the projection of the map.
 
-Define sourceSrs in your SimpleSearch definition. If not defined the default ('EPSG:4326') be be choosen. You find an example at https://github.com/mapbender/mapbender-workshop/blob/release/3.2/app/config/applications/mapbender_demo_nrw.yml
+SimpleSearch Supports Nominatim, Photon from version 3.2.5 - see workshop demo applications
+
+
+1. Define sourceSrs in your SimpleSearch definition. If not defined the default ('EPSG:4326') be be choosen. You find an example at https://github.com/mapbender/mapbender-workshop/blob/release/3.2/app/config/applications/mapbender_demo_nrw.yml
 
                      sourceSrs: 'EPSG:25832'
 
-query_ws_replace
-#################
-From version 3.2.5 on set query_ws_replace		     
+2. query_ws_replace: From version 3.2.8 on set query_ws_replace or modify the code as described in https://github.com/mapbender/mapbender/issues/1391#issuecomment-968645508	     
 
                      query_ws_replace: +
 
-SimpleSearch Supports Nominatim, Photon from version 3.2.5 - see workshop demo applications
 
  
 BaseSourceSwitcher
@@ -111,6 +111,7 @@ Digitizer is available for Mapbender >= 3.2.2. The new Digitizer Version is 1.4.
 * Support data placeholder syntax in externalGraphic (e.g. "/bundles/projectbundle/images/${type}.png") (Mapbender >=3.2.7)
 * Save NULL for empty fields works for int/float/decimal columns but not for double precision (Mapbender >= 3.2.6 https://github.com/mapbender/mapbender/issues/1355)
 * Save NULL for empty fields for text fields does not work. Mapbender saves '' instead (https://github.com/mapbender/mapbender/issues/1385)
+* supports printable: true
 
 
 There is a new style unsaved.
@@ -147,4 +148,11 @@ Redlining was renamed to Sketch (>= 3.2.3)
 FeatureInfo
 --------------
 * showOriginal deprecated - parameter not available anymore from 3.2.3
-* highlighting: true - new >= 3.2.3 highlights the geometry if you have WKT integrated in the featureinfo result - see https://github.com/mapbender/mapbender/issues/1287 
+* highlighting: true - new >= 3.2.3 highlights the geometry if you have WKT integrated in the featureinfo result - see https://github.com/mapbender/mapbender/issues/1287 and also https://wheregroup.com/blog/details/mapbender-featureinfo-mit-highlighting-der-treffer-geometrie/
+
+
+Print - Print queue
+--------------------
+* Mapbender supports print queue
+* see https://wheregroup.com/blog/details/mapbender-druckauftraege-verwalten-und-wiederverwenden-einrichtung-der-warteschleife/
+

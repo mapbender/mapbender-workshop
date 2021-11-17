@@ -211,6 +211,7 @@ parameters:
                             - { template: a4landscape, label: A4 Landscape}
                             - { template: a3portrait, label: A3 Portrait}
                             - { template: a3landscape, label: A3 Landscape}
+                            - { template: a4_portrait_official_feature_data_demo, label: A4 Print with Feature Data}                            
                         scales: [500, 1000, 5000, 10000, 25000, 50000]
                         quality_levels:
                             - { dpi: 72 , label: Draft (72dpi)}
@@ -279,8 +280,7 @@ parameters:
                         schemes:
                             poi:
                                 label: 'point digitizing'
-                                # deprecated 
-                                #deprecated maxResults: 500 #https://github.com/mapbender/mapbender-digitizer/releases/tag/1.4
+                                maxResults: 500 
                                 featureType:
                                     connection: geodata_db
                                     table: poi
@@ -307,6 +307,7 @@ parameters:
                                 refreshLayersAfterFeatureSave: true
                                 inlineSearch: true                                
                                 pageLength: 5
+                                printable: true
                                 copy:
                                     enable: true
                                     overwriteValuesWithDefault: true
@@ -344,7 +345,7 @@ parameters:
                                         pointRadius: 10
                                         label: ${name}
                                         fontColor: black
-                                        fontSize: 28
+                                        fontSize: 12
                                         fontFamily: 'Arial, Courier New, monospace'
                                         fontWeight: bold
                                         labelOutlineColor: white
@@ -410,7 +411,7 @@ parameters:
                                                     -
                                                         type: input
                                                         title: Name
-                                                        mandatory: true
+                                                        mandatory: true # please note that mandatory: false is inter. Delete the row instead.
                                                         name: name
                                                         mandatoryText: 'Please give a name to the poi.'
                                                         infoText: 'Help: Please give a name to the new object.'
