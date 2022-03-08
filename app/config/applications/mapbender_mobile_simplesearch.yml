@@ -124,7 +124,7 @@ parameters:
                         
                     simplesearch-button:
                         title: mb.core.simplesearch.class.title
-                        tooltip: mb.core.simplesearch.class.Description
+                        tooltip: mb.core.simplesearch.class.title
                         class: Mapbender\CoreBundle\Element\Button
                         icon: iconSearch
                         label: false

@@ -3,7 +3,7 @@ parameters:
         mapbender_digitize_demo:
             title: Mapbender Digitize Demo
             screenshot: ~
-            description: Try the Mapbender Digitize Demo with the Tables defined in the documentation (https://doc.mapbender.org/en/functions/editing/digitizer.html#sql-for-the-demo-tables) or with the PostgreSQL backup in the Workshop repository (https://github.com/mapbender/mapbender-workshop/geobasis.backup).
+            description: Try the Mapbender Digitize Demo with the Tables defined in the documentation (https://doc.mapbender.org/en/functions/editing/digitizer/digitizer_configuration.html#sql-for-the-demo-tables) or with the PostgreSQL database backup in the workshop repository (https://github.com/mapbender/mapbender-workshop/geobasis.backup).
             published: true
             persistentView: false             
             template:  Mapbender\CoreBundle\Template\Fullscreen
@@ -57,13 +57,6 @@ parameters:
                         opacity: 100
             elements:
                 toolbar:
-                  #  layertree-button:
-                  #      title: mb.core.layertree.class.title
-                  #      tooltip: mb.core.layertree.class.title
-                  #      class: Mapbender\CoreBundle\Element\Button
-                  #      label: true
-                  #      icon: iconLayertree
-                  #      target: layertreedialog
                     html-application:
                         title: 'HTML About Mapbender'
                         class: Mapbender\CoreBundle\Element\HTMLElement
@@ -106,12 +99,6 @@ parameters:
                         label: false
                         target: wmsloader
                         icon: iconWms
-                    #gps-button:
-                    #    title: mb.core.gpsposition.class.title
-                    #    tooltip: mb.core.gpsposition.class.description
-                    #    class: Mapbender\CoreBundle\Element\GpsPosition
-                    #    label: true
-                    #    target: map
                     linerulerButton:
                         title: mb.core.ruler.tag.measure
                         tooltip: mb.core.ruler.tag.line
@@ -292,11 +279,6 @@ parameters:
                                     #and gid < 10000'
                                     events:
                                         onBeforeSave: $feature->setAttribute('abstract', 'MAPS'); $feature->setAttribute('user_name', $user ); $feature->setAttribute('group_name', implode(',', $userRoles));                             
-                                #deprecated openFormAfterEdit: true #https://github.com/mapbender/mapbender-digitizer/releases/tag/1.4                            
-                                #deprecated zoomScaleDenominator: 2000 #https://github.com/mapbender/mapbender-digitizer/releases/tag/1.4
-                                #deprecated useContextMenu: true #https://github.com/mapbender/mapbender-digitizer/releases/tag/1.4
-                                #deprecated allowCancelButton: true #https://github.com/mapbender/mapbender-digitizer/releases/tag/1.4
-                                #deprecated allowDeleteByCancelNewGeometry: true #https://github.com/mapbender/mapbender-digitizer/releases/tag/1.4
                                 allowEditData: true
                                 allowDelete: true
                                 allowDigitize: true
@@ -307,7 +289,6 @@ parameters:
                                 refreshLayersAfterFeatureSave: true
                                 inlineSearch: true                                
                                 pageLength: 5
-                                printable: true
                                 copy:
                                     enable: true
                                     overwriteValuesWithDefault: true
@@ -370,20 +351,7 @@ parameters:
                                         label: 'Neu - bitte speichern'
                                         fontColor: red
                                         fontSize: 18                                      
-                                #clustering:
-                                #      -
-                                #        scale: 10000
-                                #        distance: 60
-                                #      -
-                                #        scale: 2500
-                                #        distance: 40
-                                #      -
-                                #        scale: 1000
-                                #        distance: 20
-                                #      -
-                                #        scale: 500
-                                #        distance: 1
-                                #        disable: true                                
+                             
                                 tableFields:
                                     gid:
                                         label: Nr.
@@ -430,26 +398,35 @@ parameters:
                                                         type: select
                                                         title: Type
                                                         name: type
-                                                        mandatory: true
-                                                        mandatoryText: 'Please give a name to the new object.'
-                                                        infoText: 'Help: Please give a name to the new object.'                                                        
+                                                        #mandatory: true
+                                                        #mandatoryText: 'Please give a name to the new object.'
+                                                        infoText: 'Help: Please choose a type.'
+                                                        attr:
+                                                            required: required                                            
                                                         options:
-                                                            A: A
-                                                            B: B
-                                                            C: C
-                                                            D: D
-                                                            E: E
+                                                            - label: 'Please select a type...'
+                                                              value: ''
+                                                            - label: 'Type A'
+                                                              value: 'A'
+                                                            - label: 'Type B'
+                                                              value: 'B'
+                                                            - label: 'Type C'
+                                                              value: 'C'
+                                                            - label: 'Type D'
+                                                              value: 'D'                                                                                                                            
+                                                            - label: 'Type E'
+                                                              value: 'E'                                                              
                                                     -
                                                         type: breakLine
 
-                                                    -   type: text                     # Typ text zur Generierung von dynamischen Texten aus der Datenbank
+                                                    -   type: text    # Typ text zur Generierung von dynamischen Texten aus der Datenbank
                                                         title: 'Mapbender user/group'   # Beschriftung (optional)
                                                         #text: data.name  #+ ' ' + data.firstname + ' ' + data.lastname + ' Email:' + data.email
                                                         #text: "'user: ' + data.user_name + ' group:' + data.group_name"
                                                         text: |
                                                               'user: ' + data.user_name + ' group:' + data.group_name
 
-                                                    -   type: text                     # Typ text zur Generierung von dynamischen Texten aus der Datenbank
+                                                    -   type: text     # Typ text zur Generierung von dynamischen Texten aus der Datenbank
                                                         title: Text with function type:text   # Beschriftung (optional)
                                                         text: |
                                                               (function(){ var result = '';
@@ -487,8 +464,8 @@ parameters:
                                                                 type: input
                                                                 title: Lastname
                                                                 name: lastname
-                                                                mandatory: '/^[0-9]+$/'
-                                                                mandatoryText: 'Only numbers'
+                                                                #mandatory: '/^[0-9]+$/'
+                                                                #mandatoryText: 'Only numbers'
                                                                 css:
                                                                     width: 30%
                                                             -
@@ -538,7 +515,6 @@ parameters:
                                     geomField: geom
                                     srid: 4326
                                     filter: 'st_isempty(geom) = false'
-                                #deprecated openFormAfterEdit: true
                                 allowDelete: true
                                 toolset:
                                     -
@@ -562,7 +538,7 @@ parameters:
                                         strokeOpacity: 0.6
                                         label: ${name}
                                         fontColor: "#0000ff" #'${fontcolor}'
-                                        fontSize: 28
+                                        fontSize: 18
                                         fontFamily: 'Arial, Courier New, monospace'
                                         fontWeight: bold
                                         labelOutlineColor: white
@@ -610,12 +586,22 @@ parameters:
                                                 type: select
                                                 title: Type
                                                 name: type
+                                                infoText: 'Help: Please choose a type...'
+                                                attr:
+                                                    required: required                                            
                                                 options:
-                                                    A: A
-                                                    B: B
-                                                    C: C
-                                                    D: D
-                                                    E: E                                                 
+                                                    - label: 'Please select a type...'
+                                                      value: ''
+                                                    - label: 'Type A'
+                                                      value: 'A'
+                                                    - label: 'Type B'
+                                                      value: 'B'
+                                                    - label: 'Type C'
+                                                      value: 'C'
+                                                    - label: 'Type D'
+                                                      value: 'D'                                                                                                                            
+                                                    - label: 'Type E'
+                                                      value: 'E'                                                  
                                                     
                             polygon:
                                 label: 'polygon digitizing'
@@ -667,7 +653,7 @@ parameters:
                                         strokeOpacity: 0.6
                                         label: ${name}
                                         fontColor: "#0000ff" 
-                                        fontSize: 28
+                                        fontSize: 18
                                         fontFamily: 'Arial, Courier New, monospace'
                                         fontWeight: bold
                                         labelOutlineColor: white
@@ -708,14 +694,14 @@ parameters:
                                                 type: select
                                                 title: Type
                                                 name: type
-                                                mandatoryText: 'Please give a type to the new object.'
                                                 infoText: 'Help: Please give a type to the new object.'                                                
+                                                attr:
+                                                    required: required                                            
                                                 options:
-                                                    A: A
-                                                    B: B
-                                                    C: C
-                                                    D: D
-                                                    E: E
+                                                    - label: 'Please select a type...'
+                                                      value: ''
+                                                connection: geodata_db
+                                                sql: "Select chr(a) || '-Type' as value , chr(a) as key FROM generate_series(65,70) as a order by a;"
 
 
                     layertree:

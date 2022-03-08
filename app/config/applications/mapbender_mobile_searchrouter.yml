@@ -124,7 +124,7 @@ parameters:
                         
                     searchrouter-button:
                         title: mb.core.searchrouter.class.title
-                        tooltip: mb.core.searchrouter.class.Description
+                        tooltip: mb.core.searchrouter.class.title
                         class: Mapbender\CoreBundle\Element\Button
                         icon: iconSearch
                         label: false
@@ -242,6 +242,8 @@ parameters:
                                         - name
                                         - gemeinde
                                         - hoehe_ger
+                                        - bundesland
+                                        - ewz_ger
                                     geometry_attribute: geom
                                 form:
                                     name:
