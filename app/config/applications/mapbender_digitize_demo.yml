@@ -731,7 +731,7 @@ parameters:
                                 class: Mapbender\CoreBundle\Component\SQLSearchEngine  
                                 class_options:
                                     connection: geodata_db
-                                    relation: brd.qry_gn250_p_ortslage_order_hoehe
+                                    relation: brd.qry_gn250_p_ortslage
                                     attributes:
                                         - gid
                                         - name
