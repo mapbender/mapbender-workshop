@@ -3,28 +3,28 @@ parameters:
 ###       To avoid suprises, a DSN can be constructed here from parts, at least for the shipping default parameters
 ###       Connection definition in config.yml should only use url: %database_dsn% though
     database_driver:   pdo_pgsql
-    database_host:     localhost
-    database_port:     5432
-    database_name:     mapbender
+    database_host:     'localhost'
+    database_port:     '5432'
+    database_name:     'mapbender'
     database_path:     ~
-    database_user:     mapbender
+    database_user:     'mapbender'
     database_password: TBD
 
     database2_driver:   pdo_pgsql
-    database2_host:     localhost
-    database2_port:     5432
-    database2_name:     geobasis
+    database2_host:     'localhost'
+    database2_port:     '5432'
+    database2_name:     'geobasis'
     database2_path:     ~
-    database2_user:     user
-    database2_password: user
+    database2_user:     'user'
+    database2_password: 'user'
 
     database3_driver:   pdo_pgsql
-    database3_host:     localhost
-    database3_port:     5432
-    database3_name:     natural_earth2
+    database3_host:     'localhost'
+    database3_port:     '5432'
+    database3_name:     'natural_earth2'
     database3_path:     ~
-    database3_user:     user
-    database3_password: user
+    database3_user:     'user'
+    database3_password: 'user'
 
 
 
