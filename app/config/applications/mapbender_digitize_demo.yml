@@ -345,7 +345,7 @@ parameters:
                                     unsaved:
                                         strokeWidth: 3
                                         strokeColor: "#f0f0f0" 
-                                        fillColor:   "#ffff" 
+                                        fillColor:   "#ffffff" 
                                         fillOpacity: 0.5
                                         pointRadius: 6
                                         label: 'Neu - bitte speichern'
