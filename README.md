@@ -1,7 +1,7 @@
 mapbender-workshop
 ==================
 
-* this templates works with 3.2.4
+* this templates works with 3.3.x
 * mapbender-workshop provides a bundle that can be used for individualized design templates 
 * you can use this for the adaptation of the frontend and backend
 * currently this bundle is used in workshops and various projects

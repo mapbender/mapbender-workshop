@@ -33,6 +33,7 @@ parameters:
     mailer_user:       ~
     mailer_password:   ~
 
+    # Mapbender will refer to your preferred browser language and will use it
     # locale en, de, it, es, ru, nl, pt are available
     fallback_locale:   en
     locale:            de
@@ -95,7 +96,7 @@ parameters:
         #- Mapbender\DataManagerBundle\Element\DataManager        
 
 # print queue: activates the queued print mode: read more at https://github.com/mapbender/mapbender/pull/1070
-    mapbender.print.queueable: true    
+    mapbender.print.queueable: false    
     # specifies an absolute path for the generated PDF files 
     # default is [your mapbender installation]/web/prints
     # mapbender.print.queue.storage_dir: "/dat/example-installation/prints"

@@ -1,6 +1,44 @@
 Migration Guide
 ***************************
 
+Migration to Mapbender 3.3
+==========================
+
+Check the [Mapbender Update process](https://doc.mapbender.org/en/installation/update.html).
+
+* Make sure you have PHP >= 7.4 or PHP 8.x
+* Provide a backup of your database. 
+* Update your database schema to 3.3 with app/console doctrine:schema:update --force
+
+To update from 3.2.x to 3.3.x should be quite easy.
+
+If you update from a version < 3.2 you have to follow the steps described at section "Migration to Mapbender 3.2"
+
+New feature
+-----------
+
+Styling
+*******
+
+Styling is now possible via variables that can be passed to your application. 
+
+* Mapbender https://github.com/mapbender/mapbender/blob/master/src/Mapbender/CoreBundle/Resources/public/sass/libs/_variables.scss
+* Create your own scss file see for example https://github.com/mapbender/mapbender-workshop/tree/master/src/Workshop/DemoBundle/Resources/public/demo_variables_blue.scss
+* Modify your template - add function getSassVariablesAssets and refer to your scss file see for example https://github.com/mapbender/mapbender-workshop/blob/master/src/Workshop/DemoBundle/Template/DemoFullscreen.php#L23
+
+
+Sketch
+------
+
+* Sketch now supports to draw a circle with a defined radius. You draw the circle first and den edit the circle and define a radius.
+* Sketch now allows to define colors to be offered to draw. You can also activate a color picker
+
+
+FeatureInfo
+-----------
+
+* featureInfo Highlight now allows to style the fill and stroke and opacity
+
 
 Migration to Mapbender 3.2
 ==========================
