@@ -3,6 +3,7 @@
 namespace Workshop\DemoBundle\Template;
 
 use Mapbender\CoreBundle\Template\Fullscreen;
+use Mapbender\CoreBundle\Entity\Application;
 
 /**
  * Template DemoFullscreen
@@ -19,7 +20,16 @@ class DemoFullscreen extends Fullscreen
         return 'Fullscreen Template Workshop';
     }
 
+    public function getSassVariablesAssets(Application $application)
+    {
+        return array(
+            '@MapbenderCoreBundle/Resources/public/sass/libs/_variables.scss',
+            '@WorkshopDemoBundle/Resources/public/demo_variables_blue.scss',
+        );
+    }
 
+
+//                    '@WorkshopDemoBundle/Resources/public/demo_fullscreen.css',
     /**
      * @inheritdoc
      */
@@ -29,7 +39,7 @@ class DemoFullscreen extends Fullscreen
             case 'css':
                 return array(
                     '@MapbenderCoreBundle/Resources/public/sass/template/fullscreen.scss',
-                    '@WorkshopDemoBundle/Resources/public/demo_fullscreen.css',
+
                 );
             case 'js':
                 return array(

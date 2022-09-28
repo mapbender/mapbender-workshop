@@ -6,6 +6,8 @@ imports:
 
 
 parameters:
+  log_path: '%kernel.logs_dir%/%kernel.environment%.log'
+     
   featureTypes:
     poi:
       connection: geodata_db   # Name of the database-connection from the config.yml

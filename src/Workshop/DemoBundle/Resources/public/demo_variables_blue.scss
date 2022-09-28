@@ -1,0 +1,99 @@
+//https://github.com/mapbender/mapbender/blob/master/src/Mapbender/CoreBundle/Resources/public/sass/libs/_variables.scss
+//--------------------------------------------------------------patterns
+/*$rootPath:  "bundles/mapbendercore/"; // !default;
+$imageBasePath: $rootPath + "image";
+$iconBasePath: $rootPath + "fonts";
+*/
+
+//------------------------------------------------------------------font
+$fontFamily: "Times New Roman, Open Sans", "Calluna Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+$fontSize:15px;
+$uiFontSize: 15px;
+
+// Colors applied on body / normal content containers (sidepane, popups, mobile pane)
+$textColor: #002647;
+$backgroundColor: #f4f4f4;
+$panelBorderColor: #002647;
+
+//-----------------------------------------------------------------other
+//WEG? $lineHeight:31px;
+$space: 30px;
+$radius: 3px;
+$popupModalWidth: 1000px;
+//WEG? $popupMaxHeight:870px;
+//WEG? $inputHeight:48px;
+$desktopBreakpointWidth: 1200px;
+
+//WEG? $elementPopupWidth: $popupModalWidth;
+//WEG? $elementPopupBodyWidth: $elementPopupWidth - ($space * 3);
+//----------------------------------------------------------------colors
+$firstColor:#002647; // dark gray
+//WEG? $secondColor:#ff0000; // middle gray
+//WEG? $thirdColor:#00ff00;  // light gray
+//WEG? $contentColor:#0000ff; // very light gray
+$errorColor:#ff0000; // pink
+//WEG? $hintColor:#2375a8; // blue
+//WEG? $noticeColor:#22a522; // green
+//WEG? $warningColor:#cece2a; // yellow
+
+//WEG? $darkFontColor:#0000ff; // darker gray
+//WEG? $middleFontColor:#3333FF; // lighter gray
+$lightFontColor:#ffffff; // white
+
+// Toolbar colors (frontend)
+$toolBarFontColor: #002647; //lila
+$toolBarBackgroundColor: $backgroundColor;
+$toolBarOpacity: 1;
+// Default and hover opacity for Button (and Button-like) Elements in toolbars
+$toolBarButtonDefaultOpacity: 0.7;
+$toolBarButtonHoverOpacity: 0.4;
+$toolBarButtonActiveOpacity: $toolBarButtonHoverOpacity;
+
+// the holy colors
+$ciColor:#002647; // blue
+//WEG? $ciColor2:#4899ba; // blue
+
+// Button colors
+$buttonCriticalFirstColor: #d36565; //red
+$buttonCriticalSecondColor: darken($buttonCriticalFirstColor, 10%); //darkred
+$buttonFirstColor: $firstColor;
+$buttonSecondColor: #ff00ff;
+$buttonTextColor: $lightFontColor;
+$buttonBorderColor: $firstColor;
+$buttonHoverColor: lighten($firstColor,40%);
+$buttonHoverTextColor: $buttonTextColor;
+$buttonFirstActiveColor: lighten($firstColor,20%);
+$buttonActiveTextColor: $buttonTextColor;
+
+$buttonCriticalTextColor: $lightFontColor;
+$buttonCriticalHoverTextColor: $buttonCriticalTextColor;
+$buttonCriticalBorderColor: #9f3434;
+$buttonCriticalHoverColor: #cd5151;
+
+// Button sizing
+$buttonFontSize: 100%;
+
+// Form inputs
+$inputBackgroundColor: $contentColor;
+$inputForegroundColor: $secondColor;
+
+$sliderHandleBackgroundColor: $ciColor;
+
+//WEG? $containerBorderRadius: 5px !default;
+//WEG? $elementBorderRadius: $containerBorderRadius - 2px;
+
+$accordionFontSize: 100%;
+$accordionBackgroundColor: lighten($firstColor,20%);
+$accordionTextColor: $lightFontColor;
+$accordionActiveBackgroundColor: darken($accordionBackgroundColor, 10%);
+$accordionActiveTextColor: $accordionTextColor;
+$accordionHoverBackgroundColor: lighten($accordionBackgroundColor, 40%);
+
+// Header buttons in type "buttons" sidepane
+$sidepaneButtonFontSize: $buttonFontSize;
+$sidepaneButtonTextColor: $buttonTextColor;
+$sidepaneButtonBackgroundColor: $buttonFirstColor;
+$sidepaneButtonBorderColor: $buttonBorderColor;
+$sidepaneButtonHoverColor: $buttonHoverColor;
+$sidepaneButtonActiveTextColor: $buttonTextColor;
+$sidepaneButtonActiveBackgroundColor: $buttonFirstActiveColor;
