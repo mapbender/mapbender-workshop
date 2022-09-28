@@ -1,5 +1,5 @@
-mapbender-workshop
-==================
+# mapbender-workshop
+
 
 * this templates works with 3.3.x
 * mapbender-workshop provides a bundle that can be used for individualized design templates 
@@ -9,8 +9,7 @@ mapbender-workshop
 * http://doc.mapbender.org/en/book/templates.html
 
 
-Digitizer Demo 
-***************
+## Digitizer Demo 
 
 If you would like to try the digitize demo you need a PostgreSQL database with the demo tables. 
 
