@@ -345,6 +345,15 @@ parameters:
                         showOriginal: true
                         width: 500
                         height: 500
+                        highlighting: true
+                        fillColorDefault: '#ffff00'
+                        strokeColorDefault: '#ff00ff'
+                        opacityDefault: 25
+                        strokeWidthDefault: 3
+                        fillColorHover: '#00ffff'
+                        strokeColorHover: '#0000ff'
+                        opacityHover: 50
+                        strokeWidthHover: 5
                         
                     wmsloader:
                         title: mb.wms.wmsloader.class.title

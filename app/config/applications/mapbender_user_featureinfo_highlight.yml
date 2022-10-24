@@ -195,6 +195,14 @@ parameters:
                         width: 500
                         height: 500
                         highlighting: true
+                        fillColorDefault: '#ffff00'
+                        fillColorHover: '#00ffff'
+                        strokeColorDefault: '#ff00ff'
+                        strokeWidthDefault: 5
+                        strokeColorHover: '#0000ff'
+                        strokeWidthHover: 20
+                        opacityDefault: 25
+                        opacityHover: 50
                     wmsloader:
                         title: mb.wms.wmsloader.class.title
                         class: Mapbender\WmsBundle\Element\WmsLoader
