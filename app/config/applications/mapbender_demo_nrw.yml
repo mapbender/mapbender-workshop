@@ -423,7 +423,7 @@ parameters:
                         width: 200
                         height: 100
                         anchor: 'right-bottom'
-                        maximized: true
+                        visibility: open # open/closed/open-permanent
                         fixed: false
                         screenType: desktop
                     scaledisplay:
