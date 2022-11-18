@@ -556,6 +556,7 @@ parameters:
                                             # (autocomplete und Pflichtfeld)
                                             attr:
                                                 data-autocomplete: 'on'
+                                                placeholder: 'Please provide a name.'
                                         compare: ilike
                                     gemeinde:
                                         type: 'Symfony\Component\Form\Extension\Core\Type\TextType'
