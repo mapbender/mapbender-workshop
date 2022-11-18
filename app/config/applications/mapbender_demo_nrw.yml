@@ -507,6 +507,8 @@ parameters:
                         display_type: element
                         auto_activate: false
                         deactivate_on_close: false
+                        colors: ["#ff3333","#3333ff","#44ee44","#ff00ff","#000000","#00ffff","#ffff00"]
+                        allow_custom_color: true                        
 
                     coordinatesutility:
                         title: mb.coordinatesutility.class.title
