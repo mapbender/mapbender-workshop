@@ -269,6 +269,7 @@ parameters:
                         
                     simplesearch:
                         title: mb.core.simplesearch.class.title
+                        placeholder: 'Please provide an address'
                         class: Mapbender\CoreBundle\Element\SimpleSearch
                         target: map
                         query_url: 'http://geodaten.metropoleruhr.de/suche?wt=json&indent=true&rows=10'                        
