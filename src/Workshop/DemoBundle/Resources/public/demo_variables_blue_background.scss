@@ -8,43 +8,28 @@ $iconBasePath: $rootPath + "fonts";
 //------------------------------------------------------------------font
 $fontFamily: "Times New Roman, Open Sans", "Calluna Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
 $fontSize:15px;
-$uiFontSize: 15px;
 
 // Colors applied on body / normal content containers (sidepane, popups, mobile pane)
-$textColor: #f4f4f4;
+$textColor: #94CDFF; # light blue
 $backgroundColor: #002647;
 $panelBorderColor: #ff0000;
 
 //-----------------------------------------------------------------other
-//WEG? $lineHeight:31px;
 $space: 30px;
 $radius: 3px;
 $popupModalWidth: 1000px;
-//WEG? $popupMaxHeight:870px;
-//WEG? $inputHeight:48px;
 $desktopBreakpointWidth: 1200px;
 
-//WEG? $elementPopupWidth: $popupModalWidth;
-//WEG? $elementPopupBodyWidth: $elementPopupWidth - ($space * 3);
 //----------------------------------------------------------------colors
 $firstColor:#ffffff; // white
-$secondColor:#dddddd; // middle gray
-$thirdColor:#00ff00;  // light gray
-$contentColor:#bbbbbb; // very light gray
-$errorColor:#ff0000; // pink
-//WEG? $hintColor:#2375a8; // blue
-//WEG? $noticeColor:#22a522; // green
-//WEG? $warningColor:#cece2a; // yellow
+$errorColor:#ff00ff; // pink
 
-$darkFontColor:#002647; // 
-$middleFontColor:#3333FF; // lighter 
-$lightFontColor:#d0d0d0; // white
+$lightFontColor:#F7F7F7; // light gray
 
 // Toolbar colors (frontend)
 $toolBarFontColor: #f4f4f4; //
 $toolBarBackgroundColor: $backgroundColor;
 $toolBarOpacity: 1;
-
 // Default and hover opacity for Button (and Button-like) Elements in toolbars
 $toolBarButtonDefaultOpacity: 0.7;
 $toolBarButtonHoverOpacity: 0.4;
@@ -52,14 +37,13 @@ $toolBarButtonActiveOpacity: $toolBarButtonHoverOpacity;
 
 // the holy colors
 $ciColor:#002647; // blue
-//WEG? $ciColor2:#4899ba; // blue
 
 // Button colors
 $buttonCriticalFirstColor: #d36565; //red
 $buttonCriticalSecondColor: darken($buttonCriticalFirstColor, 10%); //darkred
 $buttonFirstColor: $firstColor;
 $buttonSecondColor: #ff00ff;
-$buttonTextColor: $darkFontColor;
+$buttonTextColor: darken($textColor, 10%); //darkred
 $buttonBorderColor: $firstColor;
 $buttonHoverColor: darken($firstColor,20%);
 $buttonHoverTextColor: $buttonTextColor;
@@ -75,20 +59,17 @@ $buttonCriticalHoverColor: #cd5151;
 $buttonFontSize: 100%;
 
 // Form inputs
-$inputBackgroundColor: $contentColor;
-$inputForegroundColor: $secondColor;
+$inputBackgroundColor: #d2f8f4;
+$inputForegroundColor: #168B7F;
 
 $sliderHandleBackgroundColor: $ciColor;
 
-//WEG? $containerBorderRadius: 5px !default;
-//WEG? $elementBorderRadius: $containerBorderRadius - 2px;
-
 $accordionFontSize: 100%;
-$accordionBackgroundColor: $firstColor;
-$accordionTextColor: $darkFontColor;
-$accordionActiveBackgroundColor: darken($accordionBackgroundColor, 40%);
+$accordionBackgroundColor: lighten($backgroundColor, 10%);;
+$accordionTextColor: lighten($textColor, 10%); //light grey
+$accordionActiveBackgroundColor: lighten($accordionBackgroundColor, 20%);
 $accordionActiveTextColor: $accordionTextColor;
-$accordionHoverBackgroundColor: darken($accordionBackgroundColor, 20%);
+$accordionHoverBackgroundColor: lighten($accordionBackgroundColor, 10%);
 
 // Header buttons in type "buttons" sidepane
 $sidepaneButtonFontSize: $buttonFontSize;
