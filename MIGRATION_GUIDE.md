@@ -7,6 +7,7 @@ Check the [Mapbender Update process](https://doc.mapbender.org/en/installation/u
 * Make sure you have PHP >= 7.4 or PHP 8.x
 * Provide a backup of your database. 
 * Update your database schema to 3.3 with app/console doctrine:schema:update --force
+* CAUTION: Please note that the eye at application is from (3.2.x) used to make the application available for the anonymous user (public access). Before the eye /checkbox at security was used to publish an application.  
 
 To update from 3.2.x to 3.3.x should be quite easy.
 
@@ -44,6 +45,7 @@ Check the [Mapbender Update process](https://doc.mapbender.org/en/installation/u
 * Make sure you have PHP >= 7.1.0 and PHP < 8 
 * Provide a backup of your database. 
 * Update your database schema to 3.2 with app/console doctrine:schema:update --force
+* CAUTION: Please note that the eye at application is from (3.2.x) used to make the application available for the anonymous user (public access). Before the eye /checkbox at security was used to publish an application.  
 
 Some elements may not work after the update and  need a closer look.
 
