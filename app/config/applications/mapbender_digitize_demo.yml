@@ -278,7 +278,7 @@ parameters:
                                     filter: ~
                                     #filter: gid < 10000'
                                     #filter: 'user_name = :userName'
-                                    styleField: style
+                                    #styleField: style
                                     events:
                                         onBeforeSave: $feature->setAttribute('abstract', 'MAPS'); $feature->setAttribute('user_name', $user ); $feature->setAttribute('group_name', implode(',', $userRoles));                             
                                 allowEditData: true
@@ -286,7 +286,7 @@ parameters:
                                 allowDigitize: true
                                 printable: false
                                 allowChangeVisibility: true
-                                allowCustomStyle: true  # needs styleField definition in featureType section
+                                #allowCustomStyle: true  # needs styleField definition in featureType section
                                 refreshLayersAfterFeatureSave:
                                     - mapbender_users # or WMS InstanceID
                                 inlineSearch: true                                
@@ -520,7 +520,9 @@ parameters:
                                     geomField: geom
                                     srid: 4326
                                     filter: 'st_isempty(geom) = false'
+                                    styleField: style
                                 allowDelete: true
+                                allowCustomStyle: true  # needs styleField definition in featureType section
                                 toolset:
                                     -
                                         type: drawLine
@@ -618,8 +620,10 @@ parameters:
                                     geomType: polygon
                                     geomField: geom
                                     srid: 4326
+                                    styleField: style
                                 openFormAfterEdit: true
                                 allowDelete: true
+                                allowCustomStyle: true  # needs styleField definition in featureType section
                                 toolset:
                                     -
                                         type: drawPolygon
