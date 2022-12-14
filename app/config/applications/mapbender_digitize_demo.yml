@@ -276,7 +276,8 @@ parameters:
                                     geomField: geom
                                     srid: 4326
                                     filter: ~
-                                    #and gid < 10000'
+                                    #filter: gid < 10000'
+                                    #filter: 'user_name = :userName'
                                     events:
                                         onBeforeSave: $feature->setAttribute('abstract', 'MAPS'); $feature->setAttribute('user_name', $user ); $feature->setAttribute('group_name', implode(',', $userRoles));                             
                                 allowEditData: true
@@ -285,8 +286,8 @@ parameters:
                                 printable: false
                                 allowChangeVisibility: true
                                 allowCustomStyle: true
-                                refreshFeaturesAfterSave: true
-                                refreshLayersAfterFeatureSave: true
+                                refreshLayersAfterFeatureSave:
+                                    - mapbender_users # or WMS InstanceID
                                 inlineSearch: true                                
                                 pageLength: 5
                                 copy:
@@ -372,10 +373,10 @@ parameters:
                                                     -
                                                         type: label
                                                         title: 'Welcome to the digitize demo. Try the new Mapbender feature!'                                                        
-                                                    #-
-                                                    #    type: input
-                                                    #    title: Benutzername
-                                                    #    name: user_name                                                          
+                                                    -
+                                                        type: text
+                                                        title: user_name
+                                                        text: data.user_name                                                       
                                                     -
                                                         type: input
                                                         title: Name
@@ -487,6 +488,10 @@ parameters:
                                                     #        beer: beer
                                                     #        flowers: flowers
                                                     -
+                                                        type: colorPicker
+                                                        title: 'Fill Color'
+                                                        name: fill_color
+                                                    -
                                                         type: date
                                                         title: 'favorite Date'
                                                         name: date_favorite
@@ -496,12 +501,11 @@ parameters:
                                                     -
                                                         type: breakLine
                                                     -
-                                                        type: breakLine
-                                                    -
                                                         type: checkbox
                                                         name: public
                                                         value: true
                                                         title: 'public (this new object is public)'
+
                                                     
 
                             line:
