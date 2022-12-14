@@ -278,6 +278,7 @@ parameters:
                                     filter: ~
                                     #filter: gid < 10000'
                                     #filter: 'user_name = :userName'
+                                    styleField: style
                                     events:
                                         onBeforeSave: $feature->setAttribute('abstract', 'MAPS'); $feature->setAttribute('user_name', $user ); $feature->setAttribute('group_name', implode(',', $userRoles));                             
                                 allowEditData: true
@@ -285,7 +286,7 @@ parameters:
                                 allowDigitize: true
                                 printable: false
                                 allowChangeVisibility: true
-                                allowCustomStyle: true
+                                allowCustomStyle: true  # needs styleField definition in featureType section
                                 refreshLayersAfterFeatureSave:
                                     - mapbender_users # or WMS InstanceID
                                 inlineSearch: true                                
