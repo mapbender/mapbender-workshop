@@ -249,7 +249,7 @@ parameters:
                         title: mb.core.simplesearch.class.title
                         class: Mapbender\CoreBundle\Element\SimpleSearch
                         target: map
-                        query_url:  "https://www.ldproxy.nrw.de/dvg/collections/nw_dvg2_krs/items?f=geojson&limit=100"
+                        query_url:  "https://ogc-api.nrw.de/lika/v1/collections/verwaltungseinheit/items?f=json&limit=100"
 
                         query_key: name
                         query_format: '%s'
@@ -257,7 +257,7 @@ parameters:
                         token_regex_in: '([a-zA-ZäöüÄÖÜß]{3,})'
                         token_regex_out: '$1*'
                         collection_path: features
-                        label_attribute:  '${properties.Name}'
+                        label_attribute:  '${properties.name} - ${properties.art} (${properties.ags})'
                         geom_attribute: geometry
                         sourceSrs: 'EPSG:4326'                        
                         geom_format: GeoJSON
