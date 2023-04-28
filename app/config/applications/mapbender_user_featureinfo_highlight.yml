@@ -15,7 +15,7 @@ parameters:
                     guetersloh_bplan_fi:
                         class: Mapbender\WmsBundle\Entity\WmsInstance
                         title: Bebauungspläne der Stadt Gütersloh
-                        url: http://www.geodaten.guetersloh.de/cgi-bin//mapserv.exe?map=D:/Daten/mapfiles/Bebauungsplaene_online/bebauungsplaene2018.map
+                        url: https://geodaten.guetersloh.de/cgi-bin/mapserv.fcgi?map=D:/Daten/mapfiles/Bebauungsplaene_online/bebauungsplaene.map
                         version: 1.3.0
                         layers:
                             100: { name: Infoabfrage-in-Aufstellung,    title : Infoabfrage-in-Aufstellung, visible: true, queryable: true}
@@ -34,10 +34,27 @@ parameters:
                         url: http://wms2016.wheregroup.lan/cgi-bin/mapserv?map=/data/umn/germany/germany_feature_info_highlight.map
                         version: 1.3.0
                         layers:
-                            200: { name: countries,    title : countries, visible: true, queryable: true}
+                            200: { name: countries,    title : countries, visible: false, queryable: true}
                             201: { name: plz,   title : postcode areas, visible: true, queryable: true}
-                            202: { name: rivers,   title : rivers, visible: true, queryable: true}
-                            203: { name: cities,   title : cities, visible: true, queryable: true}
+                            202: { name: rivers,   title : rivers, visible: false, queryable: true}
+                            203: { name: cities,   title : cities, visible: false, queryable: true}
+                        info_format: text/html
+                        visible: true
+                        format: image/png
+                        transparent: true
+                        tiled: false
+                        opacity: 100
+
+                    germany_fi_cities:
+                        class: Mapbender\WmsBundle\Entity\WmsInstance
+                        title: Germany with FeatureInfo Highlight
+                        url: http://wms2016.wheregroup.lan/cgi-bin/mapserv?map=/data/umn/germany/germany_feature_info_highlight.map
+                        version: 1.3.0
+                        layers:
+                            204: { name: countries,    title : countries, visible: false, queryable: true}
+                            205: { name: plz,   title : postcode areas, visible: false, queryable: true}
+                            206: { name: rivers,   title : rivers, visible: false, queryable: true}
+                            207: { name: cities,   title : cities, visible: true, queryable: true}
                         info_format: text/html
                         visible: true
                         format: image/png
@@ -195,14 +212,12 @@ parameters:
                         width: 500
                         height: 500
                         highlighting: true
-                        fillColorDefault: '#ffff00'
-                        fillColorHover: '#00ffff'
-                        strokeColorDefault: '#ff00ff'
+                        fillColorDefault: 'rgba(255,255,0,0.1)'
+                        fillColorHover: 'rgba(0,255,255,0.5)'
+                        strokeColorDefault: 'rgba(0,255,0,0.25)'
                         strokeWidthDefault: 5
-                        strokeColorHover: '#0000ff'
-                        strokeWidthHover: 20
-                        opacityDefault: 25
-                        opacityHover: 50
+                        strokeColorHover: 'rgba(0,0,255,0.5)'
+                        strokeWidthHover: 10
                     wmsloader:
                         title: mb.wms.wmsloader.class.title
                         class: Mapbender\WmsBundle\Element\WmsLoader
