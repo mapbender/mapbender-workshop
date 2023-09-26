@@ -50,3 +50,41 @@ parameters:
     ows_proxy3_user: ~
     ows_proxy3_password: ~
     ows_proxy3_noproxy: ~
+
+
+# Define your own branding parameters
+    branding.project_name: Geoportal powered by Mapbender
+    branding.logo: ./bundles/workshopdemo/image/workshop_logo.png
+
+# Definition for the Login-Landscape-Image
+    branding.login_backdrop: ./bundles/mapbendercore/image/body.png
+
+
+# Links & Disclaimer https://doc.mapbender.org/de/customization/yaml.html#disclaimer
+    mapbender.sitelinks:
+      - link: https://mapbender.org/impressum-kontakt  # Link URL
+        text: Impressum & Kontakt                      # Link Text
+      - link: https://mapbender.org/datenschutz
+        text: Datenschutz
+
+    mapbender.cookieconsent: true
+
+# default layer order when creating *new* WMS layerset instances
+# allowed values are either
+# * "standard": Traditional Mapbender behaviour: top-down rendering in GetCapabilities order;
+#               also the default if this parameter is not defined
+# * "reverse": bottom-up, for QGIS server, ArcGIS etc
+#     wms.default_layer_order: standard
+
+    wmsloader.example_url: "https://osm-demo.wheregroup.com/service?VERSION=1.3.0&REQUEST=GetCapabilities&SERVICE=WMS"
+
+    #mapbender.disabled_elements:
+        #- Mapbender\CoreBundle\Element\ResetView
+        # Installed as a collateral Digitizer 1.4 dependency
+        #- Mapbender\DataManagerBundle\Element\DataManager
+
+# print queue: activates the queued print mode: read more at https://github.com/mapbender/mapbender/pull/1070
+    mapbender.print.queueable: false
+    # specifies an absolute path for the generated PDF files
+    # default is [your mapbender installation]/web/prints
+    # mapbender.print.queue.storage_dir: "/dat/example-installation/prints"
