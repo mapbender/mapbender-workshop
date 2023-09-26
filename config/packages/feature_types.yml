@@ -1,0 +1,26 @@
+parameters:
+  featureTypes:
+    poi:
+      connection: geodata_db   # Name of the database-connection from the config.yml
+      table: public.poi       # Table-name in which the FeatureTypes are stored
+      uniqueId: gid         # Column-name with the unique identifier
+      geomType: point         # Geometry-type
+      geomField: geom         # Column-name in which the geometry is stored
+      srid: 4326              # source EPSG-code of data
+      print:                  # print template to offer for feature data print
+        templates:
+         - template: a4_portrait_official_feature_data_demo
+           label: Demo with feature information print (portrait)
+         - template: a4_landscape_official_feature_data_demo
+           label: Demo with feature information print (landscape)
+        optional_fields:               
+          title:                      
+          label: Title           
+          options:             
+            required: false     
+          comment1:
+            label: Comment 1
+            options: { required: false }
+          comment2:
+            label: Comment 2
+            options: { required: false }
