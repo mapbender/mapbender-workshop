@@ -1,6 +1,6 @@
 <?php
 
-namespace Workshop\DemoBundle\Template;
+namespace Workshop\DemoBundle\Templates;
 
 use Mapbender\CoreBundle\Template\Fullscreen;
 use Mapbender\CoreBundle\Entity\Application;

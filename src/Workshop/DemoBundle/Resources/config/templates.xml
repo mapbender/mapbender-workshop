@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<container xmlns="http://symfony.com/schema/dic/services"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://symfony.com/schema/dic/services
+        https://symfony.com/schema/dic/services/services-1.0.xsd">
+    <parameters>
+        <parameter key="mapbender.application_template.fallback">Workshop\DemoBundle\Templates\DemoFullscreen</parameter>
+    </parameters>
+    <services>
+        <service id="workshop.application_template.demofullscreen"
+                 class="Workshop\DemoBundle\Templates\DemoFullscreen"
+                 abstract="true">
+            <tag name="mapbender.application_template"
+                 replaces="Mapbender\CoreBundle\Templates\Fullscreen" />
+        </service>
+    </services>
+</container>
+
