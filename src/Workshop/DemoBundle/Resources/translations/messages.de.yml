@@ -1,0 +1,4 @@
+mb:
+  click:
+    help: "Hilfe: Klicken Sie in die Karte."
+    test: "Test-Click-Element"

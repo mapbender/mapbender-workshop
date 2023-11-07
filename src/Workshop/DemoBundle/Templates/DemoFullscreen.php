@@ -5,6 +5,7 @@ namespace Workshop\DemoBundle\Templates;
 use Mapbender\CoreBundle\Template\Fullscreen;
 use Mapbender\CoreBundle\Entity\Application;
 
+
 /**
  * Template DemoFullscreen
  * 
@@ -55,7 +56,7 @@ class DemoFullscreen extends Fullscreen
 
     public function getTwigTemplate()
     {
-        return 'WorkshopDemoBundle:Template:demo_fullscreen.html.twig';
+        return '@WorkshopDemoBundle/Resources/views/Template/demo_fullscreen.html.twig';
     }
 
     public function getBodyClass(\Mapbender\CoreBundle\Entity\Application $application)

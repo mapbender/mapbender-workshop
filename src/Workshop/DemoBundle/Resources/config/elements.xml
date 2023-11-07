@@ -7,5 +7,11 @@
                  class="Workshop\DemoBundle\Element\MapKlick">
             <tag name="mapbender.element" />                 
         </service>
+       <!--    -->
+        <service id="workshop.click"
+                 class="Workshop\DemoBundle\Element\Click">
+            <tag name="mapbender.element" />
+        </service>
+
     </services>
 </container>

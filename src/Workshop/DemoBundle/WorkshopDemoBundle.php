@@ -44,7 +44,7 @@ class WorkshopDemoBundle extends MapbenderBundle
         // Auto-rebuild on config change
         $container->addResource(new FileResource($xmlLoader->getLocator()->locate('elements.xml')));
         //$container->addResource(new FileResource($xmlLoader->getLocator()->locate('services.xml')));
-        //$container->addResource(new FileResource($xmlLoader->getLocator()->locate('templates.xml')));        
+        $container->addResource(new FileResource($xmlLoader->getLocator()->locate('templates.xml')));
     }
 
 
@@ -52,5 +52,12 @@ class WorkshopDemoBundle extends MapbenderBundle
     {
         return null;
     }
-    
+
+/*    public function boot(): void
+    {
+        parent::boot();
+        $assetService = $this->container->get('mapbender.application_asset.service');
+        $assetService->registerAssetOverride('@MapbenderCoreBundle/Resources/public/sass/element/button.scss', '@WorkshopDemoBundle/Resources/public/element/demo_button.scss');
+    }
+  */
 }
