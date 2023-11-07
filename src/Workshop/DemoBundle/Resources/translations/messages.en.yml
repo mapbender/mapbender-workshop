@@ -1,4 +1,5 @@
 mb:
-  click:
-    help: "Help: Please click on the map."
-    test: "Test: Click-Element"
+  workshop:
+    click:
+      help: "Help: Please click on the map."
+      test: "Test: Click-Element"

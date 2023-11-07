@@ -1,4 +1,8 @@
 mb:
-  click:
-    help: "Hilfe: Klicken Sie in die Karte."
-    test: "Test-Click-Element"
+  workshop:
+    click:
+      help: "Hilfe: Klicken Sie in die Karte."
+      test: "Test-Click-Element"
+      admin:
+          help: Hilfe
+          help_help: Hilfe zur Hilfe

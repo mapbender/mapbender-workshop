@@ -5,12 +5,10 @@ namespace Workshop\DemoBundle\Element;
 use Mapbender\Component\Element\AbstractElementService;
 use Mapbender\Component\Element\StaticView;
 use Mapbender\CoreBundle\Entity\Element;
+use Workshop\DemoBundle\Element\Type\ClickAdminType;
 
-/**
- * Class Click
- * @package Workshop\DemoBundle\Element
- */
-class Click extends AbstractElementService
+
+class ClickButtonTriggered extends AbstractElementService
 {
 
     /**
@@ -18,15 +16,16 @@ class Click extends AbstractElementService
      */
     public static function getClassTitle()
     {
-        return "Click";
+        return "Click - Button Triggered";
     }
 
     /**
      * @inheritdoc
      */
-    public static function getClassDescription() 
+    public static function getClassDescription()
     {
-        return "Click Description - click in the map and get some action.";
+        return "Click Description - click in the map and get some action. Add this element to the
+        map area and add a button to trigger it";
     }
 
     /**
@@ -34,26 +33,27 @@ class Click extends AbstractElementService
      */
     public static function getType()
     {
-        return 'Workshop\DemoBundle\Element\Type\ClickAdminType';
+        return ClickAdminType::class;
     }
 
-    public static function getDefaultConfiguration() {
+    public static function getDefaultConfiguration()
+    {
         return array(
-            'help' => 'mb.core.click.help',
+            'help' => 'mb.workshop.click.help',
         );
     }
-    
+
 
     public function getRequiredAssets(Element $element)
     {
         return array(
             'js' => array(
-                '@WorkshopDemoBundle/Resources/public/mapbender.element.click.js',
+                '@WorkshopDemoBundle/Resources/public/mapbender.element.click_button_triggered.js',
             ),
             'css' => array(),
             'trans' => array(
-                'mb.core.click.help',
-                'mb.core.click.test',
+                'mb.workshop.click.help',
+                'mb.workshop.click.test',
             ),
         );
     }
@@ -64,9 +64,9 @@ class Click extends AbstractElementService
      */
     public function getWidgetName(Element $element)
     {
-        return 'mapbender.mbClick';
+        return 'mapbender.mbClickButtonTriggered';
     }
-  
+
 
     /**
      * @inheritdoc
@@ -76,8 +76,8 @@ class Click extends AbstractElementService
         return '@WorkshopDemoBundle/Resources/views/ElementAdmin/clickadmin.html.twig';
     }
 
-
-    public function httpAction($action) {
+    public function httpAction($action)
+    {
         $response = new Response();
 
         $data = array(
@@ -90,10 +90,7 @@ class Click extends AbstractElementService
 
     public function getView(Element $element)
     {
-        $view = new StaticView('');
-        $view->attributes['class'] = 'mb-element-click';
-        $view->attributes['data-title'] = $element->getTitle();
-        return $view;
+        return new StaticView('');
     }
 
 }

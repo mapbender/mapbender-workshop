@@ -2,6 +2,7 @@
 
 namespace Workshop\DemoBundle\Element\Type;
 
+use Mapbender\CoreBundle\Element\Type\MapbenderTypeTrait;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\IntegerType;
@@ -13,17 +14,25 @@ use Symfony\Contracts\Translation\TranslatorInterface;
 class ClickAdminType extends AbstractType
 {
 
+    use MapbenderTypeTrait;
+
+    private TranslatorInterface $translator;
+
+    public function __construct(TranslatorInterface $translator) {
+        $this->translator = $translator;
+    }
+
     /**
      * @inheritdoc
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('help', TextType::class,array(
+            ->add('help', TextType::class,$this->createInlineHelpText([
                 'required' => false,
-                'label' => 'mb.core.click.admin.help',
-                'help' => 'mb.core.click.admin.help_help'
-             ))
+                'label' => 'mb.workshop.click.admin.help',
+                'help' => 'mb.workshop.click.admin.help_help',
+             ], $this->translator))
            ;
     }
 

@@ -43,7 +43,7 @@ $.widget('mapbender.mbMapKlick', $.mapbender.mbButton, {
     activate: function() {
         this._super('activate');
         if(this.mbMap.length !== 0) {
-            this.mbMap.bind('click', this.mapClickProxy);
+            this.mbMap.element.off('mbmapclick', this.mapClickProxy);
         }
     },
 
@@ -53,7 +53,7 @@ $.widget('mapbender.mbMapKlick', $.mapbender.mbButton, {
     deactivate: function() {
         this._super('deactivate');
         if(this.mbMap.length !== 0) {
-            this.mbMap.unbind('click', this.mapClickProxy);
+            this.mbMap.element.off('mbmapclick', this.mapClickProxy);
         }
     },
 
@@ -84,13 +84,13 @@ $.widget('mapbender.mbMapKlick', $.mapbender.mbButton, {
     /**
      * This should be used for your own logic. This function receives an
      * coordinates object which has two properties 'world' and 'srs' which
-     * hold the coordinates and the current of the mouse click. 
+     * hold the coordinates and the current of the mouse click.
      */
     _mapClickWorker: function(coordinates) {
         alert('You clicked: ' +
                 coordinates.world.x + ' x ' + coordinates.world.y +
                 ' (' + coordinates.srs.current + ')');
-       
+
 
       // or open OpenStreetMap
       // window.open('http://www.openstreetmap.org/export#map=15/' + coordinates.world.y + '/' + coordinates.world.x);

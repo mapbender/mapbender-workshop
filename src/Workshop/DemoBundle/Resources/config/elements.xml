@@ -5,12 +5,18 @@
     <services>
         <service id="workshop.mapklick"
                  class="Workshop\DemoBundle\Element\MapKlick">
-            <tag name="mapbender.element" />                 
+            <tag name="mapbender.element"/>
         </service>
-       <!--    -->
+        <!--    -->
         <service id="workshop.click"
-                 class="Workshop\DemoBundle\Element\Click">
-            <tag name="mapbender.element" />
+                 class="Workshop\DemoBundle\Element\ClickButtonTriggered">
+            <tag name="mapbender.element"/>
+        </service>
+
+        <service id="workshop.click.admin"
+                 class="Workshop\DemoBundle\Element\Type\ClickAdminType">
+            <tag name="form.type"/>
+            <argument type="service" id="translator"/>
         </service>
 
     </services>
