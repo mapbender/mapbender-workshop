@@ -3,6 +3,7 @@
     $.widget('mapbender.mbClickButtonTriggered', {
         options: {
             help: undefined,
+            link: undefined,
         },
         mbMap: null,
         clickProxy: null,
@@ -19,6 +20,7 @@
             // (so "this" is always safe to use within the handler)
             this.mbMap = mbMap;
             this.clickProxy = $.proxy(this._clickHandler, this);
+            // this.clickProxy = this._clickHandler.bind(this);
         },
 
         /**
@@ -73,13 +75,20 @@
          * hold the coordinates and the current of the mouse click.
          */
         _clickMapWorker: function (coordinates) {
-            alert('You clicked: ' +
+            if (confirm('You clicked: ' +
                 coordinates.world.x + ' x ' + coordinates.world.y +
-                ' (' + coordinates.srs.current + ')');
+                ' (' + coordinates.srs.current + '). Open link?')) {
 
+                const transformedCoordinate = Mapbender.mapEngine.transformCoordinate(
+                    coordinates.world,
+                    coordinates.srs.current,
+                    'EPSG:4326'
+                );
 
-            // or open OpenStreetMap
-            // window.open('http://www.openstreetmap.org/export#map=15/' + coordinates.world.y + '/' + coordinates.world.x);
+                let url = this.options.link || 'http://www.openstreetmap.org/export#map=15/';
+                window.open(url + transformedCoordinate.y + '/' + transformedCoordinate.x);
+            }
+
 
         }
     });

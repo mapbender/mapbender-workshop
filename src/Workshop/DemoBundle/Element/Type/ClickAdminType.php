@@ -33,6 +33,11 @@ class ClickAdminType extends AbstractType
                 'label' => 'mb.workshop.click.admin.help',
                 'help' => 'mb.workshop.click.admin.help_help',
              ], $this->translator))
+            ->add('link', TextType::class,$this->createInlineHelpText([
+                'required' => false,
+                'label' => 'mb.workshop.click.admin.link',
+                'help' => 'mb.workshop.click.admin.link_help',
+             ], $this->translator))
            ;
     }
 

@@ -1,8 +1,10 @@
 mb:
   workshop:
     click:
-      help: "Hilfe: Klicken Sie in die Karte."
-      test: "Test-Click-Element"
+      help: 'Hilfe: Klicken Sie in die Karte.'
+      test: Test-Click-Element
       admin:
-          help: Hilfe
-          help_help: Hilfe zur Hilfe
+        help: Hilfe
+        help_help: Hilfe zur Hilfe
+        link: Linktext
+        link_help: Falls gesetzt, wird der Link geöffnet, wenn im Popup "OK" gedrückt wird

@@ -40,6 +40,7 @@ class ClickButtonTriggered extends AbstractElementService
     {
         return array(
             'help' => 'mb.workshop.click.help',
+            'link' => '',
         );
     }
 
