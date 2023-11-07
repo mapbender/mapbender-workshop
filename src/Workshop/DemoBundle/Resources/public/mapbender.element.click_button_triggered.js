@@ -7,6 +7,7 @@
         },
         mbMap: null,
         clickProxy: null,
+        isActive: false,
 
         _create: function () {
             // on creation, wait for the map to be loaded before continuing setup
@@ -21,17 +22,22 @@
             this.mbMap = mbMap;
             this.clickProxy = $.proxy(this._clickHandler, this);
             // this.clickProxy = this._clickHandler.bind(this);
+            this._trigger('ready');
         },
-
         /**
          * On activation, bind the onClick function to handle map click events.
          * For the call to be made in the right context, the onClickProxy must
          * be used.
          */
-        activate: function () {
+        activate: function (suppressInfo) {
             console.log('activate');
-            if (this.mbMap) {
-                this.mbMap.element.on('mbmapclick', this.clickProxy);
+            if (this.isActive) return;
+            this.isActive = true;
+
+            if (!this.mbMap) return;
+
+            this.mbMap.element.on('mbmapclick', this.clickProxy);
+            if (suppressInfo !== true) {
                 Mapbender.info(Mapbender.trans(this.options.help), 2000);
             }
         },
@@ -41,11 +47,24 @@
          */
         deactivate: function () {
             console.log('deactivate');
+            if (!this.isActive) return;
+            this.isActive = false;
+
             if (this.mbMap) {
                 this.mbMap.element.off('mbmapclick', this.clickProxy);
             }
         },
 
+        /**
+         * Reveal and hide are called when the element is placed in the sidepane.
+         * Just forward to activate / deactivate methods
+         */
+        reveal: function () {
+            this.activate(true);
+        },
+        hide: function () {
+            this.deactivate()
+        },
 
         /**
          * The actual click event handler. The coordinates

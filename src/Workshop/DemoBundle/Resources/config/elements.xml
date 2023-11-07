@@ -6,6 +6,7 @@
         <service id="workshop.click"
                  class="Workshop\DemoBundle\Element\ClickButtonTriggered">
             <tag name="mapbender.element"/>
+            <argument type="service" id="translator"/>
         </service>
 
         <service id="workshop.click.admin"

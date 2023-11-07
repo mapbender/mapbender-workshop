@@ -5,11 +5,19 @@ namespace Workshop\DemoBundle\Element;
 use Mapbender\Component\Element\AbstractElementService;
 use Mapbender\Component\Element\StaticView;
 use Mapbender\CoreBundle\Entity\Element;
+use Mapbender\Utils\HtmlUtil;
+use Symfony\Contracts\Translation\TranslatorInterface;
 use Workshop\DemoBundle\Element\Type\ClickAdminType;
 
 
 class ClickButtonTriggered extends AbstractElementService
 {
+    private TranslatorInterface $translator;
+
+    public function __construct(TranslatorInterface $translator)
+    {
+        $this->translator = $translator;
+    }
 
     /**
      * @inheritdoc
@@ -77,21 +85,16 @@ class ClickButtonTriggered extends AbstractElementService
         return '@WorkshopDemoBundle/Resources/views/ElementAdmin/clickadmin.html.twig';
     }
 
-    public function httpAction($action)
-    {
-        $response = new Response();
-
-        $data = array(
-            'message' => 'Hello World'
-        );
-        $response->setContent(json_encode($data));
-        $response->headers->set('Content-Type', 'application/json');
-        return $response;
-    }
 
     public function getView(Element $element)
     {
-        return new StaticView('');
+        $help = $this->translator->trans($element->getConfiguration()['help']);
+        $pTag = HtmlUtil::renderTag('p', $help, [
+            'class' => 'mb-element mb-element-click',
+            'id' => $element->getId(),
+            'data-title' => $element->getTitle()
+        ]);
+        return new StaticView($pTag);
     }
 
 }
