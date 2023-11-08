@@ -2,7 +2,9 @@ mb:
   workshop:
     click:
       help: 'Hilfe: Klicken Sie in die Karte.'
-      test: Test-Click-Element
+      class:
+        title: Klick - Aktion bei Klick
+        description: Ein Klick in die Karte löst eine Aktion aus.
       admin:
         help: Hilfe
         help_help: Hilfe zur Hilfe

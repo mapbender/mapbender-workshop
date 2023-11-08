@@ -24,7 +24,7 @@ class ClickButtonTriggered extends AbstractElementService
      */
     public static function getClassTitle()
     {
-        return "Click - Button Triggered";
+        return "mb.workshop.click.class.title";
     }
 
     /**
@@ -32,8 +32,7 @@ class ClickButtonTriggered extends AbstractElementService
      */
     public static function getClassDescription()
     {
-        return "Click Description - click in the map and get some action. Add this element to the
-        map area and add a button to trigger it";
+        return "mb.workshop.click.class.description";
     }
 
     /**

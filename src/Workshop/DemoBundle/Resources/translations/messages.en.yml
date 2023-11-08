@@ -2,7 +2,11 @@ mb:
   workshop:
     click:
       help: 'Help: Please click on the map.'
-      test: 'Test: Click-Element'
+      class:
+        title: Click - Button Triggered
+        description: Click on the map and get some action.
       admin:
+        help: Help
+        help_help: Please define a help text.
         link: Link Text
         link_help: If set, the link is opened when clicking ok in the alert
