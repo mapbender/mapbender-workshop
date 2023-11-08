@@ -1,0 +1,8 @@
+mb:
+  workshop:
+    click:
+      help: 'Help: Please click on the map.'
+      test: 'Test: Click-Element'
+      admin:
+        link: Link Text
+        link_help: If set, the link is opened when clicking ok in the alert

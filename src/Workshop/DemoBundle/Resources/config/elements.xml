@@ -3,9 +3,17 @@
            xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
            xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
     <services>
-        <service id="workshop.mapklick"
-                 class="Workshop\DemoBundle\Element\MapKlick">
-            <tag name="mapbender.element" />                 
+        <service id="workshop.click"
+                 class="Workshop\DemoBundle\Element\ClickButtonTriggered">
+            <tag name="mapbender.element"/>
+            <argument type="service" id="translator"/>
         </service>
+
+        <service id="workshop.click.admin"
+                 class="Workshop\DemoBundle\Element\Type\ClickAdminType">
+            <tag name="form.type"/>
+            <argument type="service" id="translator"/>
+        </service>
+
     </services>
 </container>
