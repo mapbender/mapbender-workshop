@@ -16,7 +16,7 @@ parameters:
     database2_name:     'geobasis'
     database2_path:     ~
     database2_user:     'user'
-    database2_password: 'user'
+    database2_password: TBD
 
     database3_driver:   pdo_pgsql
     database3_host:     'localhost'
@@ -24,7 +24,7 @@ parameters:
     database3_name:     'natural_earth2'
     database3_path:     ~
     database3_user:     'user'
-    database3_password: 'user'
+    database3_password:  TBD
 
 
     # Might also use third-party providers like e.g. Mailchimp, see https://symfony.com/doc/current/mailer.html#using-built-in-transports
@@ -56,9 +56,8 @@ parameters:
     branding.project_name: Geoportal powered by Mapbender
     branding.logo: ./bundles/workshopdemo/image/workshop_logo.png
 
-# Definition for the Login-Landscape-Image
-    branding.login_backdrop: ./bundles/mapbendercore/image/body.png
-
+# Definition for the Login-Image
+    branding.login_backdrop: ./bundles/workshopdemo/images/workshop_login_image.png
 
 # Links & Disclaimer https://doc.mapbender.org/de/customization/yaml.html#disclaimer
     mapbender.sitelinks:
@@ -88,3 +87,20 @@ parameters:
     # specifies an absolute path for the generated PDF files
     # default is [your mapbender installation]/web/prints
     # mapbender.print.queue.storage_dir: "/dat/example-installation/prints"
+
+#
+#    mapbender.asset_overrides:
+#      "@MapbenderCoreBundle/Resources/public/sass/element/featureinfo.scss": "@@WorkshopDemoBundle/Resources/public/element/demo_featureinfo.scss"
+#      "@MapbenderCoreBundle/Resources/public/sass/element/button.scss": "@@WorkshopDemoBundle/Resources/public/element/demo_button.scss"
+#      "@MapbenderCoreBundle/Resources/public/sass/element/scalebar.scss": "@@WorkshopDemoBundle/Resources/public/element/demo_scalebar.scss"
+
+# 
+#    mapbender.icons.disable_default: false
+#    mapbender.icons.disable_default_fa: false
+#    mapbender.icons.custom:
+#      - name: iconSnowflake
+#        title: Snowflake
+#        class: fa-solid fa-snowflake
+#      - name: iconHeartbeat
+#        title: Heartbeat
+#        class: fa fa-heartbeat
