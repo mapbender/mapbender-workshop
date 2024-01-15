@@ -11,7 +11,7 @@ parameters:
             regionProperties:
               - name: toolbar
                 properties:
-                    item_alignment": right  # right/left/center
+                    item_alignment": left  # left/right/center
                     screenType: all         # desktop/mobile/all
                     generate_button_menu: false # true/false
                     menu_label: "Menu" # NULL or text
@@ -282,9 +282,23 @@ parameters:
                     shareUrl:
                         class: Mapbender\CoreBundle\Element\ShareUrl
                         label: false
-                        
+
+                content:
+                    map:
+                        title: mb.core.map.class.title
+                        class: Mapbender\CoreBundle\Element\Map
+                        layersets: [Themen,'Touristik und Freizeit',Raumbezug,Luftbildinformation,Hintergrundthemen]
+                        srs: EPSG:25832
+                        extents:
+                            start: [361000,5619000,371150,5625000]
+                            max: [-500000,4350000,1600000,6850000]
+                        scales: [5000000,1000000,500000,100000,50000,25000,10000,7500,5000,2500,1000,500]
+                        otherSrs: ["EPSG:25833","EPSG:31466","EPSG:31467","EPSG:3857","EPSG:4326"]
+
+
                     simplesearch:
                         title: mb.core.simplesearch.class.title
+                        anchor: 'right-top'
                         placeholder: 'Please provide an address'
                         class: Mapbender\CoreBundle\Element\SimpleSearch
                         target: map
@@ -304,25 +318,12 @@ parameters:
                         delay: !!float 300
                         query_ws_replace: null
                         result:
-                            buffer: !!float 5
+                            buffer: ~
                             minscale: !!float 100
                             maxscale: !!float 1000
                             icon_url: '/bundles/mapbendercore/image/pin_red.png'
                             icon_offset: '-6,-32'
-                             
 
-                content:
-                    map:
-                        title: mb.core.map.class.title
-                        class: Mapbender\CoreBundle\Element\Map
-                        layersets: [Themen,'Touristik und Freizeit',Raumbezug,Luftbildinformation,Hintergrundthemen]
-                        srs: EPSG:25832
-                        extents:
-                            start: [361000,5619000,371150,5625000]
-                            max: [-500000,4350000,1600000,6850000]
-                        scales: [5000000,1000000,500000,100000,50000,25000,10000,7500,5000,2500,1000,500]
-                        otherSrs: ["EPSG:25833","EPSG:31466","EPSG:31467","EPSG:3857","EPSG:4326"]
-                        
                     zoombar:
                         class: Mapbender\CoreBundle\Element\ZoomBar
                         target: map
@@ -336,7 +337,7 @@ parameters:
                         stepByPixel: true
                         anchor: right-top
                         draggable: false
-                        
+
                     legend:
                         class: Mapbender\CoreBundle\Element\Legend
                         target: map
@@ -347,7 +348,7 @@ parameters:
                         showWmsTitle: true
                         showLayerTitle: true
                         showGroupedLayerTitle: true
-                        
+
                     featureinfo:
                         class: Mapbender\CoreBundle\Element\FeatureInfo
                         title: mb.core.featureinfo.class.title
@@ -371,7 +372,7 @@ parameters:
                         strokeColorHover: '#0000ff'
                         opacityHover: 50
                         strokeWidthHover: 5
-                        
+
                     wmsloader:
                         title: mb.wms.wmsloader.class.title
                         class: Mapbender\WmsBundle\Element\WmsLoader
@@ -380,12 +381,12 @@ parameters:
                         defaultFormat: 'image/png'
                         defaultInfoFormat: 'text/html'
                         splitLayers: false
-                                          
+
                     imageexport:
                         class: Mapbender\PrintBundle\Element\ImageExport
                         target: map
                         title: Image export
-                        
+
                     printclient:
                         title: mb.core.printclient.class.title
                         class: Mapbender\CoreBundle\Element\PrintClient
@@ -393,7 +394,7 @@ parameters:
                         file_prefix: mapbender
                         templates:
                             - { template: a4_portrait_offical, label: A4 Portrait (official)}
-                            - { template: a4_landscape_offical, label: A4 Landscape (official)}                            
+                            - { template: a4_landscape_offical, label: A4 Landscape (official)}
                             - { template: a4portrait, label: A4 Portrait}
                             - { template: a4landscape, label: A4 Landscape}
                             - { template: a3portrait, label: A3 Portrait}
@@ -410,21 +411,21 @@ parameters:
                                 label: Title              # label of the optional field
                                 options:                  #
                                     required: true        # true or false
-                                    
+
                     lineruler:
                         title: mb.core.ruler.tag.line
                         tooltip: 'ruler'
                         class: Mapbender\CoreBundle\Element\Ruler
                         target: map
                         type: line
-                        
+
                     arearuler:
                         title: mb.core.ruler.tag.area
                         tooltip: 'area'
                         class: Mapbender\CoreBundle\Element\Ruler
                         target: map
                         type: area
-                        
+
                     scalebar:
                         class: Mapbender\CoreBundle\Element\ScaleBar
                         target: map
@@ -450,7 +451,7 @@ parameters:
                         anchor: left-top
                         scalePrefix: Scale
                         unitPrefix: true
-                        
+
                     poi:
                         title: mb.core.poi.class.title
                         class: Mapbender\CoreBundle\Element\POI
@@ -479,7 +480,7 @@ parameters:
                                 useTheme: true
                                 opened: true
                                 sourceVisibility: false
-                                allSelected: false                        
+                                allSelected: false
                             -
                                 id: Hintergrundthemen
                                 title: 'Hintergrundthemen'
@@ -507,7 +508,7 @@ parameters:
                                 useTheme: true
                                 opened: true
                                 sourceVisibility: false
-                                allSelected: false                                
+                                allSelected: false
 
                     sketch:
                         title: Sketch
@@ -524,7 +525,7 @@ parameters:
                         auto_activate: false
                         deactivate_on_close: false
                         colors: ["#ff3333","#3333ff","#44ee44","#ff00ff","#000000","#00ffff","#ffff00"]
-                        allow_custom_color: true                        
+                        allow_custom_color: true
 
                     coordinatesutility:
                         class: Mapbender\CoordinatesUtilityBundle\Element\CoordinatesUtility
@@ -563,7 +564,7 @@ parameters:
                                         - gemeinde
                                         - hoehe_ger
                                         - bundesland
-                                        - ewz_ger                                        
+                                        - ewz_ger
                                     geometry_attribute: geom
                                 form:
                                     name:
@@ -586,6 +587,7 @@ parameters:
                                 results:
                                     view: table
                                     count: true
+                                    exportcsv: true
                                     headers:
                                         name: Name
                                         gemeinde: Gemeinde
@@ -604,22 +606,22 @@ parameters:
                                             strokeWidth: 4
                                             strokeOpacity: 1
                                             fillOpacity: 0
-                                            pointRadius: 6                                           
+                                            pointRadius: 6
                                         select:
                                             strokeColor: '#ff00ff'
                                             fillColor: '#ff00ff'
                                             fillOpacity: 0.8
-                                            pointRadius: 6                                            
+                                            pointRadius: 6
                                         temporary:
                                             strokeColor: '#0000ff'
                                             fillColor: '#0000ff'
                                             fillOpacity: 1
-                                            pointRadius: 10                                                                                                                               
+                                            pointRadius: 10
 
                             2-route:
                                 title: Orte mit Gemeindeauswahl
                                 #(mit Choice und autocomplete-using)
-                                class: Mapbender\CoreBundle\Component\SQLSearchEngine  
+                                class: Mapbender\CoreBundle\Component\SQLSearchEngine
                                 class_options:
                                     connection: geodata_db
                                     relation: brd.qry_gn250_p_ortslage
@@ -629,7 +631,7 @@ parameters:
                                         - gemeinde
                                         - hoehe_ger
                                         - bundesland
-                                        - ewz_ger                                        
+                                        - ewz_ger
                                     geometry_attribute: geom
                                 form:
                                     name:
@@ -641,7 +643,7 @@ parameters:
                                             attr:
                                                 data-autocomplete: 'on'
                                                 data-autocomplete-distinct: on
-                                                data-autocomplete-using: gemeinde                                                    
+                                                data-autocomplete-using: gemeinde
                                         compare: ilike
                                     gemeinde:
                                         compare: exact
@@ -656,10 +658,11 @@ parameters:
                                                 Bornheim: Bornheim
                                                 Köln: Köln
                                                 Siegburg: Siegburg
-                                                Wesseling: Wesseling                                   
+                                                Wesseling: Wesseling
                                 results:
                                     view: table
-                                    count: true
+                                    count: false
+                                    exportcsv: false
                                     headers:
                                         name: Name
                                         gemeinde: Gemeinde
@@ -679,13 +682,13 @@ parameters:
                                             strokeOpacity: 1
                                             fillOpacity: 0.8
                                             fillColor: '#00ff00'
-                                            pointRadius: 6                                           
+                                            pointRadius: 6
                                         select:
                                             strokeColor: '#ff00ff'
                                             strokeWidth: 4
                                             fillColor: '#ff00ff'
                                             fillOpacity: 0.8
-                                            pointRadius: 20                                           
+                                            pointRadius: 20
                                         temporary:
                                             strokeColor: '#0000ff'
                                             strokeWidth: 4
@@ -695,14 +698,14 @@ parameters:
 
                             3-route:
                                 title: Städte und Gemeinden
-                                class: Mapbender\CoreBundle\Component\SQLSearchEngine  
+                                class: Mapbender\CoreBundle\Component\SQLSearchEngine
                                 class_options:
                                     connection: geodata_db
                                     relation: brd.vg_250_gem
                                     attributes:
                                         - gid
                                         - gen
-                                        - des                                        
+                                        - des
                                     geometry_attribute: geom
                                 form:
                                     gen:
@@ -714,7 +717,7 @@ parameters:
                                             attr:
                                                 data-autocomplete: 'on'
                                                 data-autocomplete-distinct: on
-                                                data-autocomplete-using: des                                                    
+                                                data-autocomplete-using: des
                                         compare: ilike
                                     des:
                                         compare: exact
@@ -725,10 +728,11 @@ parameters:
                                             placeholder: Bitte wählen Sie Stadt oder Gemeinde aus
                                             choices:
                                                 Gemeinde: Gemeinde
-                                                Stadt: Stadt                                   
+                                                Stadt: Stadt
                                 results:
                                     view: table
                                     count: true
+                                    exportcsv: true
                                     headers:
                                         gen: Gemeinde
                                         des: Stadt/Gemeinde
