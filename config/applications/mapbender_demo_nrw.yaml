@@ -9,9 +9,25 @@ parameters:
             template:  Mapbender\CoreBundle\Template\Fullscreen
             mapEngineCode: current            
             regionProperties:
+              - name: toolbar
+                properties:
+                    item_alignment": right  # right/left/center
+                    screenType: all         # desktop/mobile/all
+                    generate_button_menu: false # true/false
+                    menu_label: "Menu" # NULL or text
               - name: sidepane
                 properties:
-                  name: accordion
+                    name: accordion # tabs (for button) / accordion / NULL
+                    align: right # right/left
+                    closed: false # true/false
+                    screenType: all # all/desktop/mobile
+                    width: "654px"
+              - name: footer
+                properties:
+                    item_alignment": right # right/left/center
+                    screenType: all # all/desktop/mobile
+                    generate_button_menu: false # true/false
+                    menu_label: "Menu" # NULL or text
             layersets:
                 Themen:
                     mapbender_users:
