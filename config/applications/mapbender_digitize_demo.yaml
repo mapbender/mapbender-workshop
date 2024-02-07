@@ -41,7 +41,7 @@ parameters:
                         transparent: true
                         tiled: true
                         opacity: 100
-                        basesource: false                 
+                        basesource: false
                 overview:
                     osm_overview:
                         class: Mapbender\WmsBundle\Entity\WmsInstance
@@ -62,7 +62,7 @@ parameters:
                         class: Mapbender\CoreBundle\Element\HTMLElement
                         classes: html-element-inline
                         content: "{{ application.title }}"
-                  
+
                     fi-button:
                         title: mb.core.featureinfo.class.title
                         tooltip: mb.core.featureinfo.class.title
@@ -108,7 +108,7 @@ parameters:
                         target: lineruler
                         group: rulers
                     arearulerButton:
-                        title: mb.core.ruler.tag.measure 
+                        title: mb.core.ruler.tag.measure
                         tooltip: mb.core.ruler.tag.area
                         class: Mapbender\CoreBundle\Element\Button
                         icon: icon-area-ruler
@@ -123,7 +123,7 @@ parameters:
                         icon: iconPoi
                         label: false
                         target: poi
-                     
+
                 content:
                     map:
                         title: mb.core.map.class.title
@@ -135,7 +135,7 @@ parameters:
                             max: [-500000,4350000,1600000,6850000]
                         scales: [5000000,1000000,500000,100000,50000,25000,10000,7500,5000,2500,1000,500,250,100,50]
                         otherSrs: ["EPSG:25833","EPSG:31466","EPSG:31467","EPSG:3857","EPSG:4326"]
-                        
+
                     zoombar:
                         class: Mapbender\CoreBundle\Element\ZoomBar
                         target: map
@@ -147,7 +147,7 @@ parameters:
                             - zoom_home
                         anchor: right-top
                         draggable: false
-                        
+
                     legend:
                         class: Mapbender\CoreBundle\Element\Legend
                         target: map
@@ -158,7 +158,7 @@ parameters:
                         showWmsTitle: true
                         showLayerTitle: true
                         showGroupedLayerTitle: true
-                        
+
                     featureinfo:
                         class: Mapbender\CoreBundle\Element\FeatureInfo
                         title: mb.core.featureinfo.class.title
@@ -171,7 +171,7 @@ parameters:
                         printResult: true
                         width: 500
                         height: 500
-                        
+
                     wmsloader:
                         title: mb.wms.wmsloader.class.title
                         class: Mapbender\WmsBundle\Element\WmsLoader
@@ -180,12 +180,12 @@ parameters:
                         defaultFormat: 'image/png'
                         defaultInfoFormat: 'text/html'
                         splitLayers: false
-                                            
+
                     imageexport:
                         class: Mapbender\PrintBundle\Element\ImageExport
                         target: map
                         title: Image export
-                        
+
                     printclient:
                         title: mb.core.printclient.class.title
                         class: Mapbender\CoreBundle\Element\PrintClient
@@ -193,12 +193,12 @@ parameters:
                         file_prefix: mapbender
                         templates:
                             - { template: a4_portrait_offical, label: A4 Portrait (official)}
-                            - { template: a4_landscape_offical, label: A4 Landscape (official)}                           
+                            - { template: a4_landscape_offical, label: A4 Landscape (official)}
                             - { template: a4portrait, label: A4 Portrait}
                             - { template: a4landscape, label: A4 Landscape}
                             - { template: a3portrait, label: A3 Portrait}
                             - { template: a3landscape, label: A3 Landscape}
-                            - { template: a4_portrait_official_feature_data_demo, label: A4 Print with Feature Data}                            
+                            - { template: a4_portrait_official_feature_data_demo, label: A4 Print with Feature Data}
                         scales: [500, 1000, 5000, 10000, 25000, 50000]
                         quality_levels:
                             - { dpi: 72 , label: Draft (72dpi)}
@@ -211,21 +211,21 @@ parameters:
                                 label: Title              # label of the optional field
                                 options:                  #
                                     required: true        # true or false
-                                    
+
                     lineruler:
                         title: mb.core.ruler.tag.line
                         tooltip: 'ruler'
                         class: Mapbender\CoreBundle\Element\Ruler
                         target: map
                         type: line
-                        
+
                     arearuler:
                         title: mb.core.ruler.tag.area
                         tooltip: 'area'
                         class: Mapbender\CoreBundle\Element\Ruler
                         target: map
                         type: area
-                        
+
                     scalebar:
                         class: Mapbender\CoreBundle\Element\ScaleBar
                         target: map
@@ -243,7 +243,7 @@ parameters:
                         anchor: 'right-bottom'
                         maximized: true
                         fixed: false
-                        
+
                     scaledisplay:
                         title: mb.core.scaledisplay.class.title
                         class: Mapbender\CoreBundle\Element\ScaleDisplay
@@ -251,7 +251,7 @@ parameters:
                         anchor: left-top
                         scalePrefix: Scale
                         unitPrefix: true
-                        
+
                     poi:
                         title: mb.core.poi.class.title
                         class: Mapbender\CoreBundle\Element\POI
@@ -265,9 +265,23 @@ parameters:
                         class: Mapbender\DigitizerBundle\Element\Digitizer
                         target: map
                         schemes:
+                            # combine_schemes_together:
+                            #     label: combine schemes (in this case poi and line)
+                            #     searchType: currentExtent # Initial state of checkbox for limiting feature loading to current visible map portion. [all / currentExtent] (default: currentExtent).
+                            #     combine:
+                            #         - poi
+                            #         - line
+                            #     # roles: #Show this schema only to users with (at least one of) these roles
+                            #     #    - root
+                            #     #    - ROLE_GROUP_EDITING
+
                             poi:
                                 label: 'point digitizing'
-                                maxResults: 500 
+                                maxResults: 500 # only load limited number of feature
+                                zoomBuffer: 100
+                                #filterUser: true
+                                #trackUser: true
+                                #featureType: poi # you can define a featureType in your parameters.yaml and refer to the name in the configuration
                                 featureType:
                                     connection: geodata_db
                                     table: poi
@@ -277,83 +291,108 @@ parameters:
                                     srid: 4326
                                     filter: ~
                                     #filter: gid < 10000'
-                                    #filter: 'user_name = :userName'
-                                    #styleField: style
-                                    events:
-                                        onBeforeSave: $feature->setAttribute('abstract', 'MAPS'); $feature->setAttribute('user_name', $user ); $feature->setAttribute('group_name', implode(',', $userRoles));                             
-                                allowEditData: true
-                                allowDelete: true
-                                allowDigitize: true
-                                printable: false
-                                allowChangeVisibility: true
-                                #allowCustomStyle: true  # needs styleField definition in featureType section
+                                    #filter: 'user_name = :userName' # use trackUser instead
+                                    #userColumn: user_name
+                                    styleField: style
+                                    #events:
+                                    #    onBeforeSave: $feature->setAttribute('abstract', 'MAPS'); $feature->setAttribute('user_name', $user ); $feature->setAttribute('group_name', implode(',', $userRoles));
+                                allowCustomStyle: true
+                                allowChangeVisibility: true # Offer buttons to toggle feature visibility (default true)
+                                allowCreate: true   # Allow new feature generation (default true)
+                                allowDelete: true   # Allow geometry deletion (default true)
+                                allowDigitize: true # Allow geometry creation and editing (default true)
+                                allowEditData: true # Allow attribute editing (default true)
+                                allowRefresh: true # Offer button to reload data (for tables frequently modified by concurrent users) (default false)
+
+                                continueDrawingAfterSave: true # Keep drawing tool active after creating and saving a new feature (~fast batch mode feature creation) (default false)
+
+                                displayPermanent: true # Keep features visible on map even after switching to a different schema (default false)
+                                displayOnInactive: true # Keep features visible on map even after deactivating Digitizer (default false)
+
                                 refreshLayersAfterFeatureSave:
                                     - mapbender_users # or WMS InstanceID
-                                inlineSearch: true                                
-                                pageLength: 5
+
+                                # Table
+                                inlineSearch: true # Enables display filtering by search term (default true)
+                                searchType: currentExtent # Initial state of checkbox for limiting feature loading to current visible map portion. [all / currentExtent] (default: currentExtent).
+                                paging: true # De/activate paging in table (default true)
+                                pageLength: 5 # Limits the number of rows per page in table (default 16)
+
+                                printable: true
+                                # roles: #Show this schema only to users with (at least one of) these roles
+                                #    - root
+                                #    - ROLE_GROUP_EDITING
+
                                 copy:
                                     enable: true
                                     overwriteValuesWithDefault: true
                                     data:
-                                        firstname: 'Paul'
-                                        lastname: Meier
-                                    #style:
-                                    #    label: "Dupliziertes Objekt"
-                                    #    fillColor: "#ff0000"
-                                    #    fillOpacity: 1
-                                    #    strokeWidth: 4
-                                    #    strokeColor: "#660033"                                    
+                                        firstname: 'Paul' # every copied feature will get firstname Paul
+                                        lastname: 'Meier' # every copied feature will get lastname Meier
+
                                 toolset:
                                     -
                                         type: drawPoint
                                     -
-                                        type: modifyFeature
-                                    -
                                         type: moveFeature
                                     -
                                         type: selectFeature
-                                    -
-                                        type: removeSelected
+
+
                                 popup:
-                                    title: 'point test suite'
+                                    title: 'point test suite' # Popup title text
                                     width: 500px
-                                searchType: all
+                                    #width: 50vw   # half screen width
+                                    #modal: true # Everything except the form window is grayed out and the position and size of the window is fixed for the duration of the data collection.
+                                    #position: {at: "left+200px",  my: "left top-460px"}  # Position of the popup in the browser area
                                 styles:
                                     default:
-                                        strokeWidth: 4
-                                        strokeColor: "#00ff00" 
-                                        fillColor:   "#ff0000" 
-                                        fillOpacity: 0.3
-                                        strokeOpacity: 0.6
+                                        strokeWidth: 3
+                                        strokeColor: "#00ff00"
+                                        fillColor:   ${fill_color}
+                                        fillOpacity: 0.9
+                                        strokeOpacity: 0.8
                                         pointRadius: 10
                                         label: ${name}
                                         fontColor: black
                                         fontSize: 12
                                         fontFamily: 'Arial, Courier New, monospace'
                                         fontWeight: bold
-                                        labelOutlineColor: white
+                                        labelOutlineColor: yellow
                                         labelOutlineWidth: 1
                                         labelYOffset: -18
-                                        labelXOffset: -18           
+                                        labelXOffset: -18
+                                        graphic: true
+                                        externalGraphic: 'https://schulung.foss.academy/symbols/${symbol}.png'
+                                        graphicWidth: 30
+                                        graphicHeight: 30
                                     select:
                                         strokeWidth: 3
-                                        strokeColor: "#00ffff" 
-                                        fillColor:   "#FF00ff" 
+                                        strokeColor: "#00ffff"
+                                        fillColor:   "#FF00ff"
                                         fillOpacity: 0.5
                                         pointRadius: 6
                                         label: ${gid}
                                         fontColor: green
                                         fontSize: 18
+                                        labelOutlineColor: blue
+                                        labelOutlineWidth: 2
+                                        labelYOffset: 18
+                                        labelXOffset: -18
                                     unsaved:
                                         strokeWidth: 3
-                                        strokeColor: "#f0f0f0" 
-                                        fillColor:   "#ffffff" 
+                                        strokeColor: "#f0f0f0"
+                                        fillColor:   "#ffffff"
                                         fillOpacity: 0.5
                                         pointRadius: 6
-                                        label: 'Neu - bitte speichern'
+                                        label: 'Please save'
                                         fontColor: red
-                                        fontSize: 18                                      
-                             
+                                        fontSize: 18
+                                        labelOutlineColor: #ff00ff
+                                        labelOutlineWidth: 3
+                                        labelYOffset: -18
+                                        labelXOffset: 18
+
                                 tableFields:
                                     gid:
                                         label: Nr.
@@ -361,92 +400,152 @@ parameters:
                                     name:
                                         label: Name
                                         width: 80%
+
                                 formItems:
                                     -
                                         type: tabs
                                         children:
                                             -
-                                                type: form
-                                                title: 'Basic information'
+                                                title: '1. Basic information'
                                                 css:
                                                     padding: 10px
                                                 children:
                                                     -
                                                         type: label
-                                                        title: 'Welcome to the digitize demo. Try the new Mapbender feature!'                                                        
+                                                        title: 'Welcome to the digitize demo. Try the new Mapbender feature!'
+                                                        #css:
+                                                        #    color: red
+                                                    -
+                                                        type: html
+                                                        html: '<b>Read more at the </b><a href="https://mapbender.org" target="_blank">Mapbender-Website</a></br>'
+                                                    # -
+                                                    #     type: div
+                                                    #     text: dies ist ein div
+                                                    # -
+                                                    #     type: span
+                                                    #     text: dies ist ein span
+
+                                                    # -
+                                                    #     type: p
+                                                    #     text: dies ist ein p
                                                     -
                                                         type: text
                                                         title: user_name
-                                                        text: data.user_name                                                       
+                                                        text: data.user_name
                                                     -
-                                                        type: input
-                                                        title: Name
-                                                        mandatory: true # please note that mandatory: false is inter. Delete the row instead.
+                                                        type: input   # Type of form input field
+                                                        title: Name   # Label text for form input field
                                                         name: name
-                                                        mandatoryText: 'Please give a name to the poi.'
-                                                        infoText: 'Help: Please give a name to the new object.'
+                                                        #value: 'A place to be' # Initial field value on newly created items
+
                                                         copyClipboard: true
+                                                        infoText: 'Info: Please give a name to the new object.' # Explanatory text placed in a tooltip next to the label
+                                                        mandatoryText: 'Mandatory Field: Please give a name to the poi.'
+                                                        required: true
+                                                        #mandatory: true #DEPRECATED please use required: true instead
+                                                        css:
+                                                            color: green
+                                                        #cssClass: myClass # Added to the class attribute of the form group (container around label and input)
+                                                        attr:
+                                                            placeholder: 'Please give a name to the poi.' # placeholder. Text is not saved
+                                                            #pattern: '\w{2}\d{3,}' # Two letters followed by at least three digits
                                                     -
                                                         type: input
                                                         title: Title
-                                                        mandatory: false
+                                                        reuqired: false
                                                         name: title
+
                                                     -
                                                         type: textArea
                                                         name: abstract
                                                         title: Abstract
-                                                        placeholder: 'please edit this field'
+                                                        mandatoryText: 'This field is mandatory'
+                                                        required: true
+                                                        attr:
+                                                            placeholder: 'Please write an abstract'
+                                                            rows: 3
+
+                                                    # -   type: text
+                                                    #     title: Show text from textarea with line wrap
+                                                    #     text: |
+                                                    #           data.abstract
+                                                    #     css:
+                                                    #         color: green
                                                     -
                                                         type: select
+                                                        select2: true # activates full text search for the select box (please not for multi: true full text search is activated by default)
                                                         title: Type
                                                         name: type
-                                                        #mandatory: true
-                                                        #mandatoryText: 'Please give a name to the new object.'
                                                         infoText: 'Help: Please choose a type.'
+                                                        mandatoryText: 'Please give a name to the new object.'
+                                                        required: true
+                                                        maximumSelectionLength: 2 # maximum number of possible selections for multi-select
                                                         attr:
-                                                            required: required                                            
+                                                            multiple: true
+                                                        # options:
+                                                        #     '': 'Please select a type...'
+                                                        #     'A': 'Type A'
+                                                        #     'B': 'Type B'
+                                                        #     'C': 'Type C'
+                                                        #     'D': 'Type D'
                                                         options:
                                                             - label: 'Please select a type...'
                                                               value: ''
-                                                            - label: 'Type A'
-                                                              value: 'A'
-                                                            - label: 'Type B'
-                                                              value: 'B'
-                                                            - label: 'Type C'
-                                                              value: 'C'
-                                                            - label: 'Type D'
-                                                              value: 'D'                                                                                                                            
-                                                            - label: 'Type E'
-                                                              value: 'E'                                                              
+                                                            # - label: 'Type A'
+                                                            #   value: 'A'
+                                                            # - label: 'Type B'
+                                                            #   value: 'B'
+                                                            # - label: 'Type C'
+                                                            #   value: 'C'
+                                                            # - label: 'Type D'
+                                                            #   value: 'D'
+                                                            #- label: 'Type E (disabled)'
+                                                            #  value: 'E'
+                                                            #  attr:
+                                                            #      disabled: disabled
+                                                        #value: A,C   # use comma-separated values for default multi-select value
+                                                        connection: geodata_db
+                                                        sql: SELECT type_name, type_id FROM types ORDER BY type_id ASC;
                                                     -
                                                         type: breakLine
 
-                                                    -   type: text    # Typ text zur Generierung von dynamischen Texten aus der Datenbank
-                                                        title: 'Mapbender user/group'   # Beschriftung (optional)
-                                                        #text: data.name  #+ ' ' + data.firstname + ' ' + data.lastname + ' Email:' + data.email
+                                                    -   type: text    # type to generate dynamic text
+                                                        title: 'Mapbender user/group'   # label (optional)
+                                                        #text: |
+                                                        #        data.name  #+ ' ' + data.firstname + ' ' + data.lastname + ' Email:' + data.email
                                                         #text: "'user: ' + data.user_name + ' group:' + data.group_name"
                                                         text: |
                                                               'user: ' + data.user_name + ' group:' + data.group_name
+                                                    #-   type: text     # Typ text zur Generierung von dynamischen Texten aus der Datenbank
+                                                    #    title: 'Text with function type:text'   # Beschriftung (optional)
+                                                        # text: |
+                                                        #       (function(){ var result = '';
+                                                        #                   if(data.user_name){
+                                                        #                       result += 'user: ' + data.user_name;
+                                                        #                   }else{
+                                                        #                       result += 'user: -' ;
+                                                        #                   }
+                                                        #                   if(data.user_group){
+                                                        #                       result += ' group: ' + data.group_name;
+                                                        #                   }else{
+                                                        #                       result += ' group: -' ;
+                                                        #                   }
+                                                        #                   return result;})()
 
-                                                    -   type: text     # Typ text zur Generierung von dynamischen Texten aus der Datenbank
-                                                        title: Text with function type:text   # Beschriftung (optional)
-                                                        text: |
-                                                              (function(){ var result = '';
-                                                                          if(data.user_name){
-                                                                              result += 'user: ' + data.user_name;
-                                                                          }else{
-                                                                              result += 'user: -' ;
-                                                                          }
-                                                                          if(data.user_group){
-                                                                              result += ' group: ' + data.group_name;
-                                                                          }else{
-                                                                              result += ' group: -' ;
-                                                                          }                                                                          
-                                                                          return result;})()                                                                        
+                                                    -   type: radioGroup
+                                                        title: Radiobuttons - Choose one
+                                                        name: category # column
+                                                        options:
+                                                            - label: Category 1
+                                                              value: c1
+                                                            - label: Category 2
+                                                              value: c2
+                                                            - label: Category 3
+                                                              value: c3
+                                                        value: c2   # Pre-select option by default for new items, if not set first option is pre-selected
 
                                             -
-                                                type: form
-                                                title: 'Personal information'
+                                                title: '2. Personal information'
                                                 css:
                                                     padding: 10px
                                                 children:
@@ -462,12 +561,21 @@ parameters:
                                                                 name: firstname
                                                                 css:
                                                                     width: 30%
+                                                                #focus: |
+                                                                #    var inputField = el;
+                                                                #    var form1 = inputField.closest(".data-manager-edit-data");
+                                                                #    form1.css("background-color","#ffc0c0");
+                                                                #blur: |
+                                                                #    var inputField = el;
+                                                                #    var form = inputField.closest(".modal-body");
+                                                                #    form.css("background-color","transparent");                                                                                                       -
                                                             -
                                                                 type: input
                                                                 title: Lastname
                                                                 name: lastname
-                                                                #mandatory: '/^[0-9]+$/'
-                                                                #mandatoryText: 'Only numbers'
+                                                                # mandatory: '/^[0-9]+$/'
+                                                                # mandatoryText: 'Only numbers'
+                                                                # required: false
                                                                 css:
                                                                     width: 30%
                                                             -
@@ -476,38 +584,91 @@ parameters:
                                                                 name: email
                                                                 css:
                                                                     width: 40%
-                                                    #-
-                                                    #    type: select
-                                                    #    multiple: false
-                                                    #    title: Interests
-                                                    #    name: interests
-                                                    #    options:
-                                                    #        maps: maps
-                                                    #        reading: reading
-                                                    #        swimming: swimming
-                                                    #        dancing: dancing
-                                                    #        beer: beer
-                                                    #        flowers: flowers
                                                     -
-                                                        type: colorPicker
-                                                        title: 'Fill Color'
-                                                        name: fill_color
+                                                       type: select
+                                                       multiple: false
+                                                       title: Interests
+                                                       name: interests
+                                                       options:
+                                                           maps: maps
+                                                           reading: reading
+                                                           swimming: swimming
+                                                           dancing: dancing
+                                                           beer: beer
+                                                           flowers: flowers
                                                     -
-                                                        type: date
-                                                        title: 'favorite Date'
-                                                        name: date_favorite
-                                                        mandatory: true
-                                                        css:
-                                                            width: 25%
+                                                        type: fieldSet
+                                                        children:
+                                                            -
+                                                                type: date
+                                                                title: 'favorite Date'
+                                                                name: date_favorite
+                                                                # not supported to predefine a value: 2024-04-01
+                                                                attr:
+                                                                    min: '2020-01-01'
+                                                                    max: '2030-01-01'
+                                                                css:
+                                                                    width: 25%
+                                                               # Highlight the year column when you edit the date-field
+                                                               # and automatically insert the year from the date
+                                                                change: |
+                                                                    var inputField = el;
+                                                                    var form = inputField.closest(".data-manager-edit-data");
+                                                                    var yearField = form.find("[name='year']");
+                                                                    var value = inputField.val()
+                                                                    var year = value && value.match(/^\d{4}/)[0] || null;
+                                                                    yearField.val(year);
+                                                                    yearField.css("background-color","#ffc0c0");
+
+                                                            -
+                                                                type: input
+                                                                title: Year
+                                                                name: year
+                                                                css:
+                                                                    width: 25%
+
+                                                            -
+                                                                type: colorPicker
+                                                                title: 'Fill Color - used for default style'
+                                                                name: fill_color
+                                                                value: "#ff00ff"
+
                                                     -
                                                         type: breakLine
-                                                    -
-                                                        type: checkbox
-                                                        name: public
-                                                        value: true
-                                                        title: 'public (this new object is public)'
 
-                                                    
+                                                    -
+                                                        type: fieldSet
+                                                        children:
+                                                            -
+                                                                type: checkbox
+                                                                title: 'public (this new object is public)'
+                                                                name: public
+                                                                value: true
+                                                                # required: true makes no sense as checkbox can not be set false then
+                                                                #required: false
+                                                                css:
+                                                                    width: 50%
+                                                            -
+                                                                type: text
+                                                                text: |
+                                                                      'Status checkbox: ' + data.public
+                                                                css:
+                                                                    width: 50%
+
+                                                    -
+                                                        type: file
+                                                        name: file_reference
+                                                        title: 'upload a file' # Label
+                                                        text: File upload # button labeling
+                                                        attr:
+                                                          accept: 'image/png'
+                                                    -   type: image
+                                                        name: file_reference   # Link to input established by matching "name" value
+                                                        #src: './uploads/mapbender_user/screenshot.png' # path to placeholder image
+                                                        enlargeImage: true
+                                                        imageCss:
+                                                            width: 200px
+
 
                             line:
                                 label: 'line digitizing'
@@ -519,10 +680,17 @@ parameters:
                                     geomType: line
                                     geomField: geom
                                     srid: 4326
-                                    filter: 'st_isempty(geom) = false'
+                                    filter: "st_isempty(geom) = false
+                                             AND st_intersects(geom,st_geomfromtext('POLYGON((7.078768115095284 50.718742549359874,7.108512203024121 50.71922903890011,7.10792188122481 50.733883032109,7.078168524167035 50.733396290239824,7.078768115095284 50.718742549359874))',4326))"
                                     styleField: style
-                                allowDelete: true
-                                allowCustomStyle: true  # needs styleField definition in featureType section
+                                    # file upload location - customization per column on featureType (or dataStore) level
+                                    #files:
+                                    #  - field: file_reference
+                                    #    path: /data/demo/mapbender_upload_lines/
+                                allowDigitize: true # Allow geometry creation and editing (default true)
+                                allowEditData: true # Allow attribute editing (default true)
+                                allowDelete: true # Allow geometry deletion (default true)
+                                allowCustomStyle: true  # only for geomType line and multi-/polygon needs styleField definition in featureType section
                                 toolset:
                                     -
                                         type: drawLine
@@ -530,10 +698,7 @@ parameters:
                                         type: modifyFeature
                                     -
                                         type: moveFeature
-                                    -
-                                        type: selectFeature
-                                    -
-                                        type: removeSelected
+
                                 popup:
                                     title: 'line test suite'
                                     width: 500px
@@ -541,30 +706,30 @@ parameters:
                                 styles:
                                     default:
                                         strokeWidth: 2
-                                        strokeColor: "#0000ff" #'${fontcolor}'
+                                        strokeColor: "#0000ff"
                                         strokeOpacity: 0.6
                                         label: ${name}
-                                        fontColor: "#0000ff" #'${fontcolor}'
+                                        fontColor: "#0000ff"
                                         fontSize: 18
                                         fontFamily: 'Arial, Courier New, monospace'
                                         fontWeight: bold
                                         labelOutlineColor: white
                                         labelOutlineWidth: 1
                                         labelYOffset: -18
-                                        labelXOffset: -18           
+                                        labelXOffset: -18
                                     select:
                                         strokeWidth: 5
-                                        strokeOpacity: 0.5            
+                                        strokeOpacity: 0.5
                                         strokeColor: "#b000b0"
                                         label: ${gid}
                                         fontColor: blue
-                                        fontSize: 18                                       
+                                        fontSize: 18
                                     unsaved:
                                         strokeWidth: 5
-                                        strokeColor: "#ff0000" 
+                                        strokeColor: "#ff0000"
                                         label: 'Neu - bitte speichern'
                                         fontColor: red
-                                        fontSize: 18 
+                                        fontSize: 18
                                 tableFields:
                                     gid:
                                         label: Nr.
@@ -573,43 +738,79 @@ parameters:
                                         label: Name
                                         width: 80%
                                 formItems:
-                                    -
-                                        type: form
-                                        title: 'Basic information'
+                                    -   type: p
+                                        text: This is an introductory paragraph.
+                                    # Arrange inputs in Bootstrap grid row + columns
+                                    -   type: div
+                                        cssClass: row
                                         css:
                                             padding: 10px
                                         children:
-                                            -
-                                                type: label
-                                                title: 'Welcome to the digitize demo. Try the new Mapbender feature!'
-                                            -
-                                                type: input
-                                                title: Name
-                                                name: name
-                                                mandatory: true
-                                                mandatoryText: 'Please give a name to the new object.'
-                                                infoText: 'Help: Please give a name to the new object.'
-                                            -
-                                                type: select
-                                                title: Type
-                                                name: type
-                                                infoText: 'Help: Please choose a type...'
-                                                attr:
-                                                    required: required                                            
-                                                options:
-                                                    - label: 'Please select a type...'
-                                                      value: ''
-                                                    - label: 'Type A'
-                                                      value: 'A'
-                                                    - label: 'Type B'
-                                                      value: 'B'
-                                                    - label: 'Type C'
-                                                      value: 'C'
-                                                    - label: 'Type D'
-                                                      value: 'D'                                                                                                                            
-                                                    - label: 'Type E'
-                                                      value: 'E'                                                  
-                                                    
+                                            - type: input
+                                              title: Input in left column
+                                              name: firstname
+                                              attr:
+                                                  placeholder: Please add first name
+                                              cssClass: col-xs-4 col-4
+                                            - type: input
+                                              title: Input in middle column
+                                              name: lastname
+                                              cssClass: col-xs-4 col-4
+                                            - type: input
+                                              name: email
+                                              title: Input in right column
+                                              cssClass: col-xs-4 col-4
+                                    -
+                                        type: tabs
+                                        children:
+                                          - title: 'Tab 1'
+                                            children:
+                                                -
+                                                    type: label
+                                                    title: 'Welcome to the digitize demo. Try the new Mapbender feature!'
+                                          - title: 'Tab 2'
+                                            children:
+                                                -
+                                                    type: label
+                                                    title: 'Welcome to the digitize demo. Try the new Mapbender feature!'
+                                                -
+                                                    type: input
+                                                    title: Name
+                                                    name: name
+                                                    mandatory: true
+                                                    mandatoryText: 'Please give a name to the new object.'
+                                                    infoText: 'Help: Please give a name to the new object.'
+                                                -
+                                                    type: select
+                                                    title: Type
+                                                    name: type
+                                                    infoText: 'Help: Please choose a type...'
+                                                    required: true
+                                                    options:
+                                                        - label: 'Please select a type...'
+                                                          value: ''
+                                                        - label: 'Type A'
+                                                          value: 'A'
+                                                        - label: 'Type B'
+                                                          value: 'B'
+                                                        - label: 'Type C'
+                                                          value: 'C'
+                                                        - label: 'Type D'
+                                                          value: 'D'
+                                                        - label: 'Type E'
+                                                          value: 'E'
+                                          - title: 'Tab 3'
+                                            children:
+                                                -
+                                                    type: file
+                                                    name: file_reference
+                                                    title: 'upload a file'
+                                                    attr:
+                                                      accept: 'image/*'
+                                                -   type: image
+                                                    name: file_reference   # Link to input established by matching "name" value
+                                                    src: ./uploads/mapbender_user/screenshot.png # path to placeholder image
+
                             polygon:
                                 label: 'polygon digitizing'
                                 maxResults: 1500
@@ -621,9 +822,10 @@ parameters:
                                     geomField: geom
                                     srid: 4326
                                     styleField: style
-                                openFormAfterEdit: true
                                 allowDelete: true
                                 allowCustomStyle: true  # needs styleField definition in featureType section
+                                allowCancelButton: true
+                                allowDeleteByCancelNewGeometry: false
                                 toolset:
                                     -
                                         type: drawPolygon
@@ -639,15 +841,12 @@ parameters:
                                         type: modifyFeature
                                     -
                                         type: moveFeature
-                                    -
-                                        type: selectFeature
-                                    -
-                                        type: removeSelected
+
                                 popup:
                                     title: 'polygon test suite'
                                     width: 500px
                                 searchType: currentExtent
-                                pageLength: 10                                
+                                pageLength: 10
                                 tableFields:
                                     gid:
                                         label: Nr.
@@ -658,59 +857,52 @@ parameters:
                                 styles:
                                     default:
                                         strokeWidth: 2
-                                        strokeColor: "#0000ff" 
+                                        strokeColor: "#0000ff"
                                         strokeOpacity: 0.6
                                         label: ${name}
-                                        fontColor: "#0000ff" 
+                                        fontColor: "#0000ff"
                                         fontSize: 18
                                         fontFamily: 'Arial, Courier New, monospace'
                                         fontWeight: bold
                                         labelOutlineColor: white
                                         labelOutlineWidth: 1
                                         labelYOffset: -18
-                                        labelXOffset: -18           
+                                        labelXOffset: -18
                                     select:
                                         strokeWidth: 5
-                                        strokeOpacity: 0.5            
+                                        strokeOpacity: 0.5
                                         strokeColor: "#b000b0"
                                         label: ${gid}
                                         fontColor: blue
-                                        fontSize: 18                                        
+                                        fontSize: 18
                                     unsaved:
                                         strokeWidth: 5
-                                        strokeColor: "#ff0000" 
+                                        strokeColor: "#ff0000"
                                         label: 'Neu - bitte speichern'
                                         fontColor: red
-                                        fontSize: 18                                       
+                                        fontSize: 18
                                 formItems:
                                     -
-                                        type: form
-                                        title: 'Basic information'
-                                        css:
-                                            padding: 10px
-                                        children:
-                                            -
-                                                type: label
-                                                title: 'Welcome to the digitize demo. Try the new Mapbender feature!'
-                                            -
-                                                type: input
-                                                title: Name
-                                                mandatory: true
-                                                name: name
-                                                mandatoryText: 'Please give a name to the new object.'
-                                                infoText: 'Help: Please give a name to the new object.'
-                                            -
-                                                type: select
-                                                title: Type
-                                                name: type
-                                                infoText: 'Help: Please give a type to the new object.'                                                
-                                                attr:
-                                                    required: required                                            
-                                                options:
-                                                    - label: 'Please select a type...'
-                                                      value: ''
-                                                connection: geodata_db
-                                                sql: "Select chr(a) || '-Type' as value , chr(a) as key FROM generate_series(65,70) as a order by a;"
+                                        type: label
+                                        title: 'Welcome to the digitize demo. Try the new Mapbender feature!'
+                                    -
+                                        type: input
+                                        title: Name
+                                        mandatory: true
+                                        name: name
+                                        mandatoryText: 'Please give a name to the new object.'
+                                        infoText: 'Help: Please give a name to the new object.'
+                                    -
+                                        type: select
+                                        title: Type
+                                        name: type
+                                        infoText: 'Help: Please give a type to the new object.'
+                                        required: true
+                                        options:
+                                            - label: 'Please select a type...'
+                                              value: ''
+                                        connection: geodata_db
+                                        sql: "Select chr(a) || '-Type' as value , chr(a) as key FROM generate_series(65,70) as a order by a;"
 
 
                     layertree:
