@@ -265,15 +265,16 @@ parameters:
                         class: Mapbender\DigitizerBundle\Element\Digitizer
                         target: map
                         schemes:
-                            # combine_schemes_together:
-                            #     label: combine schemes (in this case poi and line)
-                            #     searchType: currentExtent # Initial state of checkbox for limiting feature loading to current visible map portion. [all / currentExtent] (default: currentExtent).
-                            #     combine:
-                            #         - poi
-                            #         - line
-                            #     # roles: #Show this schema only to users with (at least one of) these roles
-                            #     #    - root
-                            #     #    - ROLE_GROUP_EDITING
+                            combine_schemes_together:
+                                label: combine schemes (in this case poi/line/polygon)
+                                searchType: currentExtent # Initial state of checkbox for limiting feature loading to current visible map portion. [all / currentExtent] (default: currentExtent).
+                                combine:
+                                    - poi
+                                    - line
+                                    - polygon
+                                # roles: #Show this schema only to users with (at least one of) these roles
+                                #    - root
+                                #    - ROLE_GROUP_EDITING
 
                             poi:
                                 label: 'point digitizing'
@@ -296,6 +297,7 @@ parameters:
                                     styleField: style
                                     #events:
                                     #    onBeforeSave: $feature->setAttribute('abstract', 'MAPS'); $feature->setAttribute('user_name', $user ); $feature->setAttribute('group_name', implode(',', $userRoles));
+
                                 allowCustomStyle: true
                                 allowChangeVisibility: true # Offer buttons to toggle feature visibility (default true)
                                 allowCreate: true   # Allow new feature generation (default true)
@@ -482,15 +484,17 @@ parameters:
                                                         maximumSelectionLength: 2 # maximum number of possible selections for multi-select
                                                         attr:
                                                             multiple: true
+                                                            placeholder: 'Please select'
                                                         # options:
                                                         #     '': 'Please select a type...'
                                                         #     'A': 'Type A'
                                                         #     'B': 'Type B'
                                                         #     'C': 'Type C'
                                                         #     'D': 'Type D'
-                                                        options:
+
                                                             - label: 'Please select a type...'
                                                               value: ''
+
                                                             # - label: 'Type A'
                                                             #   value: 'A'
                                                             # - label: 'Type B'
@@ -504,8 +508,16 @@ parameters:
                                                             #  attr:
                                                             #      disabled: disabled
                                                         #value: A,C   # use comma-separated values for default multi-select value
-                                                        connection: geodata_db
-                                                        sql: SELECT type_name, type_id FROM types ORDER BY type_id ASC;
+#                                                        connection: geodata_db
+#                                                        sql: SELECT type_name, type_id FROM types ORDER BY type_id ASC;
+
+                                                        #useValuesAsKeys: true
+                                                        #options:
+                                                        #   - A
+                                                        #   - B
+                                                        #   - C
+                                                        #   - D
+
                                                     -
                                                         type: breakLine
 
@@ -534,7 +546,7 @@ parameters:
 
                                                     -   type: radioGroup
                                                         title: Radiobuttons - Choose one
-                                                        name: category # column
+                                                        name: category
                                                         options:
                                                             - label: Category 1
                                                               value: c1
@@ -633,8 +645,7 @@ parameters:
                                                                 name: fill_color
                                                                 value: "#ff00ff"
 
-                                                    -
-                                                        type: breakLine
+
 
                                                     -
                                                         type: fieldSet
@@ -687,6 +698,7 @@ parameters:
                                     #files:
                                     #  - field: file_reference
                                     #    path: /data/demo/mapbender_upload_lines/
+                                allowChangeVisibility: false # Offer buttons to toggle feature visibility (default true)
                                 allowDigitize: true # Allow geometry creation and editing (default true)
                                 allowEditData: true # Allow attribute editing (default true)
                                 allowDelete: true # Allow geometry deletion (default true)
@@ -822,6 +834,7 @@ parameters:
                                     geomField: geom
                                     srid: 4326
                                     styleField: style
+                                allowChangeVisibility: false # Offer buttons to toggle feature visibility (default true)
                                 allowDelete: true
                                 allowCustomStyle: true  # needs styleField definition in featureType section
                                 allowCancelButton: true
@@ -918,7 +931,11 @@ parameters:
                         class: Mapbender\CoreBundle\Element\Sketch
                         target: map
                         auto_activate: false
-
+                    dataupload:
+                        class: Mapbender\CoreBundle\Element\DataUpload
+                        target: map
+                        maxFileSize: 10
+                        helpText: mb.core.dataupload.admin.helpText
                     searchrouter:
                         target: map
                         timeoutFactor: 3
@@ -957,6 +974,9 @@ parameters:
                                 results:
                                     view: table
                                     count: true
+                                    exportcsv: true
+                                    sortBy: name
+                                    sortOrder: asc #desc
                                     headers:
                                         name: Name
                                         gemeinde: Commune
@@ -989,7 +1009,170 @@ parameters:
                                             fillColor: '#00FFFF'
                                             fillWidth: 6
                                             fillOpacity: 0.6
+                            2-route-lines:
+                                title: Lines
+                                class: Mapbender\CoreBundle\Component\SQLSearchEngine
+                                class_options:
+                                    connection: geodata_db
+                                    relation: lines
+                                    attributes:
+                                        - gid
+                                        - name
+                                        - type
+                                    geometry_attribute: geom
+                                form:
+                                    name:
+                                        type: text
+                                        options:
+                                            required: false
+                                            label: Name
+                                            attr:
+                                                data-autocomplete: 'on'
+                                        compare: ilike
+                                    type:
+                                        type: text
+                                        options:
+                                            label: 'Type'
+                                            required: false
+                                        compare: ilike
+                                results:
+                                    view: table
+                                    count: true
+                                    exportcsv: true
+                                    sort: name
+                                    headers:
+                                        name: Name
+                                        type: Type
+                                        gid: gid
+                                    callback:
+                                        event: click
+                                        options:
+                                            buffer: ~
+                                            minScale: 1000
+                                            maxScale: 2000
+                                    styleMap:
+                                        default:
+                                            strokeColor: '#8000FF'
+                                            strokeWidth: 5
+                                            strokeOpacity: 1
+                                            fillColor: '#8000FF'
+                                            fillOpacity: 0.8
+                                            fillWidth: 6
+                                            label: ${name}
+                                            fontColor: "#000000"
+                                            fontSize: 12px
+                                            fontFamily: 'Arial, Courier New, monospace'
+                                            fontWeight: normal
+                                            labelOutlineColor: '#ffffff'
+                                            labelOutlineWidth: 1
+                                            labelYOffset: -18
+                                            labelXOffset: -18
+                                        select:
+                                            strokeColor: '#ff00ff'
+                                            strokeWidth: 6
+                                            strokeOpacity: 1
+                                            fillColor: '#ff00ff'
+                                            fillOpacity: 0.6
+                                            fillWidth: 12
+                                            label: ${name} - ${gid}
+                                            fontColor: "#ff00ff"
+                                            fontSize: 15px
+                                            fontFamily: 'Arial, Courier New, monospace'
+                                            fontWeight: bold
+                                            labelOutlineColor: '#ffff00'
+                                            labelOutlineWidth: 1
+                                            labelYOffset: 18
+                                            labelXOffset: 18
+                                        temporary:
+                                            strokeColor: '#00FFFF'
+                                            strokeOpacity: 1
+                                            strokeWidth: 2
+                                            fillColor: '#00FFFF'
+                                            fillWidth: 6
+                                            fillOpacity: 0.6
+                                            label: ${gid}
 
+                            3-route-polygon:
+                                title: Polygon
+                                class: Mapbender\CoreBundle\Component\SQLSearchEngine
+                                class_options:
+                                    connection: geodata_db
+                                    relation: polygons
+                                    attributes:
+                                        - gid
+                                        - name
+                                        - type
+                                    geometry_attribute: geom
+                                form:
+                                    name:
+                                        type: text
+                                        options:
+                                            required: false
+                                            label: Name
+                                            attr:
+                                                data-autocomplete: 'on'
+                                        compare: ilike
+                                    type:
+                                        type: text
+                                        options:
+                                            label: 'Type'
+                                            required: false
+                                        compare: ilike
+                                results:
+                                    view: table
+                                    count: true
+                                    exportcsv: true
+                                    headers:
+                                        name: Name
+                                        type: Type
+                                        gid: gid
+                                    callback:
+                                        event: click
+                                        options:
+                                            buffer: ~
+                                            minScale: 1000
+                                            maxScale: 5000
+                                    styleMap:
+                                        default:
+                                            strokeColor: '#8000FF'
+                                            strokeWidth: 1
+                                            strokeOpacity: 1
+                                            fillColor: '#8000FF'
+                                            fillOpacity: 0.8
+                                            fillWidth: 6
+                                            label: ${name}
+                                            fontColor: "#ff0000"
+                                            fontSize: 30px
+                                            fontFamily: 'Arial, Courier New, monospace'
+                                            fontWeight: bold
+                                            labelOutlineColor: '#ffff00'
+                                            labelOutlineWidth: 1
+                                            labelYOffset: -18
+                                            labelXOffset: -18
+                                        select:
+                                            strokeColor: '#ff00ff'
+                                            strokeWidth: 2
+                                            strokeOpacity: 1
+                                            fillColor: '#ff00ff'
+                                            fillOpacity: 0.6
+                                            fillWidth: 12
+                                            label: ${gid}
+                                            fontColor: "#00ff00"
+                                            fontSize: 30px
+                                            fontFamily: 'Arial, Courier New, monospace'
+                                            fontWeight: bold
+                                            labelOutlineColor: '#ffff00'
+                                            labelOutlineWidth: 1
+                                            labelYOffset: 18
+                                            labelXOffset: 18
+                                        temporary:
+                                            strokeColor: '#00FFFF'
+                                            strokeOpacity: 1
+                                            strokeWidth: 2
+                                            fillColor: '#00FFFF'
+                                            fillWidth: 6
+                                            fillOpacity: 0.6
+                                            label: ${gid}
                 footer:
                     imprintButton:
                         title: Imprint & Contact
@@ -1049,3 +1232,4 @@ parameters:
                         class: Mapbender\CoreBundle\Element\HTMLElement
                         content: '<span style="color: #6FB536; font-weight:bold">powered by Mapbender</span>'
                         classes: html-element-inline
+

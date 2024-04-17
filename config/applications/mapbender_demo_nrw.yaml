@@ -22,6 +22,7 @@ parameters:
                     closed: false # true/false
                     screenType: all # all/desktop/mobile
                     width: "654px"
+                    resizable: true
               - name: footer
                 properties:
                     item_alignment": right # right/left/center
@@ -302,7 +303,7 @@ parameters:
                         placeholder: 'Please provide an address'
                         class: Mapbender\CoreBundle\Element\SimpleSearch
                         target: map
-                        query_url: 'http://geodaten.metropoleruhr.de/suche?wt=json&indent=true&rows=10'                        
+                        query_url: 'http://geodaten.metropoleruhr.de/suche?wt=json&indent=true&rows=10'
                         #only Bonn
                         #query_url: 'http://geodaten.metropoleruhr.de/suche?wt=json&indent=true&rows=10&fq=onm:Bonn'
                         query_key: q
@@ -313,7 +314,7 @@ parameters:
                         collection_path: response.docs
                         label_attribute: text
                         geom_attribute: utm32
-                        sourceSrs: 'EPSG:25832'                        
+                        sourceSrs: 'EPSG:25832'
                         geom_format: WKT
                         delay: !!float 300
                         query_ws_replace: null
@@ -535,6 +536,12 @@ parameters:
                         addMapSrsList: true
                         zoomlevel: 6
 
+                    dataupload:
+                        class: Mapbender\CoreBundle\Element\DataUpload
+                        target: map
+                        maxFileSize: 10
+                        helpText: mb.core.dataupload.admin.helpText
+
                     html-about-mapbender:
                         title: 'About Mapbender'
                         class: Mapbender\CoreBundle\Element\HTMLElement
@@ -588,6 +595,8 @@ parameters:
                                     view: table
                                     count: true
                                     exportcsv: true
+                                    sortBy: gemeinde
+                                    sortOrder: asc # desc
                                     headers:
                                         name: Name
                                         gemeinde: Gemeinde
