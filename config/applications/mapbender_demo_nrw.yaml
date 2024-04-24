@@ -548,6 +548,14 @@ parameters:
                         classes: html-element-inline
                         content: "<p>This is a demo of the HTML-element.</p><br><p><b>Applicaton name:</b><br> {{ application.title }}</p><br><p>Mapbender is part of </p><p><a href=\"https://www.osgeo.org/projects/mapbender/\" target=\"_blank\"><img src=\"https://www.osgeo.org/wp-content/themes/roots/assets/img/logo-osgeo.svg\" alt=\"OSGeo Project\"  title=\"OSGeo Project\" width=\"100px\" /></a></p><p><br>Find out more about OSGeo at<br/><a href=\"https://www.osgeo.org\" target=\"_blank\">https://www.osgeo.org</a><br/><a href=\"https://www.osgeo.org/projects/mapbender/\" target=\"_blank\">https://www.osgeo.org/projects/mapbender/</a>"
 
+                    viewmanager:
+                        title: View Manager
+                        class: Mapbender\CoreBundle\Element\ViewManager
+                        publicEntries: rw          # String or empty (falsy value disables public entries entirely); other allowed values are ro (read only), rw (allow read and write), rwd (allow read and write and deletion) (default: ro)
+                        privateEntries: true       # Turns user-private states on, with full usage (save, reapply, delete) (default: true)
+                        allowAnonymousSave: true   # Extend right to save public entries also to anonymous users (default: false)
+                        showDate: true             # Show date of creation or last update in entry listing (default: true)
+
 ####################################################
 
                     searchrouter:
