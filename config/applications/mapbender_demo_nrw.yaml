@@ -31,6 +31,7 @@ parameters:
                     menu_label: "Menu" # NULL or text
             layersets:
                 Themen:
+                    selected: false
                     mapbender_users:
                         class: Mapbender\WmsBundle\Entity\WmsInstance
                         title: 1 Mapbender Users
@@ -47,7 +48,8 @@ parameters:
                         opacity: 85
                         isBaseSource: false
                         
-                Hintergrundthemen:                        
+                Hintergrundthemen:
+                    selected: true
                     osm:
                         class: Mapbender\WmsBundle\Entity\WmsInstance
                         title: 6 OSM Demo
@@ -63,6 +65,7 @@ parameters:
                         opacity: 50
                         isBaseSource: true
                 overview:
+                    selected: true
                     osm_overview:
                         class: Mapbender\WmsBundle\Entity\WmsInstance
                         title: 2o OSM Demo
@@ -78,6 +81,7 @@ parameters:
                         isBaseSource: false
 
                 Raumbezug:
+                    selected: true
                     Bodenbewegungsgebiete:
                         class: Mapbender\WmsBundle\Entity\WmsInstance
                         title: 3 WMS NW Bodenbewegungsgebiete Kacheln
@@ -92,8 +96,8 @@ parameters:
                         opacity: 100
                         isBaseSource: true
 
-
                 Luftbildinformation:
+                    selected: true
                     overlay:
                         class: Mapbender\WmsBundle\Entity\WmsInstance
                         title: 4 NW Overlay für DOP
@@ -137,6 +141,7 @@ parameters:
                         isBaseSource: true                        
 
                 'Touristik und Freizeit':
+                    selected: true
                     tfis:
                         class: Mapbender\WmsBundle\Entity\WmsInstance
                         title: 2 WMS NW TFIS
