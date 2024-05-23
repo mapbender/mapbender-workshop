@@ -8,8 +8,6 @@
  */
 namespace Workshop\DemoBundle;
 
-use Mapbender\CoreBundle\Component\MapbenderBundle;
-
 use Mapbender\CoreBundle\DependencyInjection\Compiler\AutodetectSasscBinaryPass;
 use Mapbender\CoreBundle\DependencyInjection\Compiler\ContainerUpdateTimestampPass;
 use Mapbender\CoreBundle\DependencyInjection\Compiler\MapbenderYamlCompilerPass;
@@ -30,7 +28,7 @@ use Symfony\Component\HttpKernel\Bundle\Bundle;
  *
  * @author Astrid Emde
  */
-class WorkshopDemoBundle extends MapbenderBundle
+class WorkshopDemoBundle extends Bundle
 {
 
     public function build(ContainerBuilder $container)
@@ -46,18 +44,4 @@ class WorkshopDemoBundle extends MapbenderBundle
         //$container->addResource(new FileResource($xmlLoader->getLocator()->locate('services.xml')));
         $container->addResource(new FileResource($xmlLoader->getLocator()->locate('templates.xml')));
     }
-
-
-    public function getContainerExtension()
-    {
-        return null;
-    }
-
-/*    public function boot(): void
-    {
-        parent::boot();
-        $assetService = $this->container->get('mapbender.application_asset.service');
-        $assetService->registerAssetOverride('@MapbenderCoreBundle/Resources/public/sass/element/button.scss', '@WorkshopDemoBundle/Resources/public/element/demo_button.scss');
-    }
-  */
 }
