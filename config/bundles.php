@@ -1,7 +1,6 @@
 <?php
 
 return [
-    Symfony\Bundle\AclBundle\AclBundle::class => ['all' => true],
     Symfony\Bundle\DebugBundle\DebugBundle::class => ['dev' => true],
     Symfony\Bundle\FrameworkBundle\FrameworkBundle::class => ['all' => true],
     Symfony\Bundle\MonologBundle\MonologBundle::class => ['all' => true],
@@ -21,9 +20,9 @@ return [
     Mapbender\ManagerBundle\MapbenderManagerBundle::class => ['all' => true],
     Mapbender\PrintBundle\MapbenderPrintBundle::class => ['all' => true],
     Mapbender\MobileBundle\MapbenderMobileBundle::class => ['all' => true],
-    Sensio\Bundle\FrameworkExtraBundle\SensioFrameworkExtraBundle::class => ['all' => true],
     Mapbender\DigitizerBundle\MapbenderDigitizerBundle::class => ['all' => true],
     Mapbender\DataSourceBundle\MapbenderDataSourceBundle::class => ['all' => true],
     Mapbender\DataManagerBundle\MapbenderDataManagerBundle::class => ['all' => true],
+    DAMA\DoctrineTestBundle\DAMADoctrineTestBundle::class => ['test' => true],
     Workshop\DemoBundle\WorkshopDemoBundle::class => ['all' => true],
 ];
