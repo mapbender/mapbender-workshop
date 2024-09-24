@@ -74,3 +74,6 @@ parameters:
 #      - name: iconHeartbeat
 #        title: Heartbeat
 #        class: fa fa-heartbeat
+
+# mapbender.manager.manager.template_class: Workshop\DemoBundle\Template\DemoManagerTemplate
+# mapbender.manager.manager.login_template_class: Workshop\DemoBundle\Template\DemoLoginTemplate
