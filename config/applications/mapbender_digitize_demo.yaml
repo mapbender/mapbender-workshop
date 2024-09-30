@@ -5,56 +5,80 @@ parameters:
             screenshot: ~
             description: Try the Mapbender Digitize Demo with the Tables defined in the documentation (https://doc.mapbender.org/en/functions/editing/digitizer/digitizer_configuration.html#sql-for-the-demo-tables) or with the PostgreSQL database backup in the workshop repository (https://github.com/mapbender/mapbender-workshop/geobasis.backup).
             published: true
-            persistentView: false             
+            persistentView: false
             template:  Mapbender\CoreBundle\Template\Fullscreen
+            custom_css: null
             regionProperties:
+              - name: toolbar
+                properties:
+                    item_alignment": right  # left/right/center
+                    screenType: all         # desktop/mobile/all
+                    generate_button_menu: false # true/false
+                    menu_label: NULL # NULL or text
               - name: sidepane
                 properties:
-                  name: accordion
+                    name: accordion # tabs (for button) / accordion / NULL
+                    align: left # right/left
+                    closed: false # true/false
+                    screenType: all # all/desktop/mobile
+                    width: "250px"
+                    resizable: true
+              - name: footer
+                properties:
+                    item_alignment": right # right/left/center
+                    screenType: desktop # all/desktop/mobile
+                    generate_button_menu: false # true/false
+                    menu_label: NULL # NULL or text
             layersets:
                 main:
+                    selected: true
+                themes:
+                    selected: true
                     mapbender_users:
                         class: Mapbender\WmsBundle\Entity\WmsInstance
                         title: Mapbender Users
                         url: https://wms.wheregroup.com/cgi-bin/mapbender_user.xml
                         version: 1.3.0
                         layers:
-                            10: { name: Mapbender_User,    title : User, visible: true, legendurl: https://wms.wheregroup.com/cgi-bin/mapbender_user.xml?version=1.3.0&service=WMS&request=GetLegendGraphic&sld_version=1.1.0&layer=Mapbender_User&format=image/png&STYLE=default }
-                            22: { name: Mapbender_Names,   title : Name, visible: true, queryable: true}
+                            4: { name: Mapbender_User,    title : User, visible: true, legendurl: https://wms.wheregroup.com/cgi-bin/mapbender_user.xml?version=1.3.0&service=WMS&request=GetLegendGraphic&sld_version=1.1.0&layer=Mapbender_User&format=image/png&STYLE=default }
+                            5: { name: Mapbender_Names,   title : Name, visible: true, queryable: true}
                         info_format: text/html
                         visible: true
                         format: image/png
                         transparent: true
                         tiled: false
                         opacity: 85
-                        basesource: false
+                        isBaseSource: false
+                        toggle: true
                     osm:
                         class: Mapbender\WmsBundle\Entity\WmsInstance
                         title: OSM Demo
                         url: https://osm-demo.wheregroup.com/service
                         version: 1.3.0
                         layers:
-                            30: { name: osm,    title : Germany OSM Demo WhereGroup,  visible: true }
+                            12: { name: osm,    title : OSM Demo WhereGroup,  visible: true }
                         info_format: text/html
                         visible: true
                         format: image/png
                         transparent: true
                         tiled: true
                         opacity: 100
-                        basesource: false
+                        isBaseSource: false
                 overview:
-                    osm_overview:
+                    selected: true
+                    osm-overview:
                         class: Mapbender\WmsBundle\Entity\WmsInstance
                         title: OSM Demo
                         url: https://osm-demo.wheregroup.com/service
                         version: 1.3.0
                         layers:
-                            40: { name: osm,    title : Germany OSM Demo WhereGroup,  visible: true }
+                            21: { name: osm,    title : OSM Demo WhereGroup,  visible: true }
                         tiled: false
                         format: image/png
                         transparent: true
                         visible: true
                         opacity: 100
+                        isBaseSource: false
             elements:
                 toolbar:
                     html-application:
@@ -62,64 +86,59 @@ parameters:
                         class: Mapbender\CoreBundle\Element\HTMLElement
                         classes: html-element-inline
                         content: "{{ application.title }}"
+                        screenType: desktop
 
                     fi-button:
-                        title: mb.core.featureinfo.class.title
-                        tooltip: mb.core.featureinfo.class.title
-                        class: Mapbender\CoreBundle\Element\Button
+                        class: Mapbender\CoreBundle\Element\ControlButton
                         icon: iconInfoActive
-                        label: true
+                        label: false
                         target: featureinfo
                         group: featureinfo
+
                     print-button:
-                        title: mb.core.printclient.class.title
-                        tooltip: mb.core.printclient.class.title
-                        class: Mapbender\CoreBundle\Element\Button
+                        class: Mapbender\CoreBundle\Element\ControlButton
                         label: false
                         icon: iconPrint
                         target: printclient
+                        screenType: desktop
+
                     imageexport-button:
-                        title: mb.print.imageexport.class.title
-                        tooltip: mb.print.imageexport.class.title
-                        class: Mapbender\CoreBundle\Element\Button
+                        class: Mapbender\CoreBundle\Element\ControlButton
                         label: false
                         icon: iconImageExport
                         target: imageexport
+                        screenType: desktop
+
                     legend-button:
-                        title: mb.core.legend.class.title
-                        tooltip: mb.core.legend.class.title
-                        class: Mapbender\CoreBundle\Element\Button
+                        class: Mapbender\CoreBundle\Element\ControlButton
                         label: false
                         target: legend
                         icon: iconLegend
+                        screenType: desktop
                     wmsloader-button:
-                        title: mb.wms.wmsloader.class.title
-                        tooltip: mb.wms.wmsloader.class.description
-                        class: Mapbender\CoreBundle\Element\Button
+                        class: Mapbender\CoreBundle\Element\ControlButton
                         label: false
                         target: wmsloader
                         icon: iconWms
+                        screenType: desktop
                     linerulerButton:
-                        title: mb.core.ruler.tag.measure
-                        tooltip: mb.core.ruler.tag.line
-                        class: Mapbender\CoreBundle\Element\Button
+                        class: Mapbender\CoreBundle\Element\ControlButton
                         icon: icon-line-ruler
                         label: false
                         target: lineruler
                         group: rulers
+                        screenType: desktop
                     arearulerButton:
-                        title: mb.core.ruler.tag.measure
-                        tooltip: mb.core.ruler.tag.area
-                        class: Mapbender\CoreBundle\Element\Button
+                        class: Mapbender\CoreBundle\Element\ControlButton
                         icon: icon-area-ruler
                         label: false
                         target: arearuler
                         group: rulers
-
+                        screenType: desktop
                     poiButton:
                         title: mb.core.poi.class.title
                         tooltip: mb.core.poi.class.description
-                        class: Mapbender\CoreBundle\Element\Button
+                        class: Mapbender\CoreBundle\Element\ControlButton
                         icon: iconPoi
                         label: false
                         target: poi
@@ -243,7 +262,7 @@ parameters:
                         anchor: 'right-bottom'
                         maximized: true
                         fixed: false
-
+                        screenType: desktop
                     scaledisplay:
                         title: mb.core.scaledisplay.class.title
                         class: Mapbender\CoreBundle\Element\ScaleDisplay
@@ -265,12 +284,13 @@ parameters:
                         class: Mapbender\DigitizerBundle\Element\Digitizer
                         target: map
                         schemes:
-                            # combine_schemes_together:
-                            #     label: combine schemes (in this case poi and line)
-                            #     searchType: currentExtent # Initial state of checkbox for limiting feature loading to current visible map portion. [all / currentExtent] (default: currentExtent).
-                            #     combine:
-                            #         - poi
-                            #         - line
+                            combine_schemes_together:
+                                label: combine schemes (in this case poi and line)
+                                searchType: currentExtent # Initial state of checkbox for limiting feature loading to current visible map portion. [all / currentExtent] (default: currentExtent).
+                                combine:
+                                    - poi
+                                    - line
+                                    - polygon
                             #     # roles: #Show this schema only to users with (at least one of) these roles
                             #     #    - root
                             #     #    - ROLE_GROUP_EDITING
@@ -294,6 +314,10 @@ parameters:
                                     #filter: 'user_name = :userName' # use trackUser instead
                                     #userColumn: user_name
                                     styleField: style
+                                    # file upload location - customization per column on featureType (or dataStore) level
+                                    #files:
+                                    #  - field: file_reference
+                                    #    path: /data/demo/mapbender_upload_poi/
                                     #events:
                                     #    onBeforeSave: $feature->setAttribute('abstract', 'MAPS'); $feature->setAttribute('user_name', $user ); $feature->setAttribute('group_name', implode(',', $userRoles));
                                 allowCustomStyle: true
@@ -335,9 +359,6 @@ parameters:
                                         type: drawPoint
                                     -
                                         type: moveFeature
-                                    -
-                                        type: selectFeature
-
 
                                 popup:
                                     title: 'point test suite' # Popup title text
@@ -413,31 +434,17 @@ parameters:
                                                     -
                                                         type: label
                                                         title: 'Welcome to the digitize demo. Try the new Mapbender feature!'
-                                                        #css:
-                                                        #    color: red
+                                                        css:
+                                                           color: black
                                                     -
                                                         type: html
-                                                        html: '<b>Read more at the </b><a href="https://mapbender.org" target="_blank">Mapbender-Website</a></br>'
-                                                    # -
-                                                    #     type: div
-                                                    #     text: dies ist ein div
-                                                    # -
-                                                    #     type: span
-                                                    #     text: dies ist ein span
+                                                        html: '<p><b>Read more at the </b><a href="https://mapbender.org" target="_blank" style="color:blue;">Mapbender-Website</a>!</br>Enjoy Mapbender.</p>'
 
-                                                    # -
-                                                    #     type: p
-                                                    #     text: dies ist ein p
-                                                    -
-                                                        type: text
-                                                        title: user_name
-                                                        text: data.user_name
                                                     -
                                                         type: input   # Type of form input field
                                                         title: Name   # Label text for form input field
                                                         name: name
                                                         #value: 'A place to be' # Initial field value on newly created items
-
                                                         copyClipboard: true
                                                         infoText: 'Info: Please give a name to the new object.' # Explanatory text placed in a tooltip next to the label
                                                         mandatoryText: 'Mandatory Field: Please give a name to the poi.'
@@ -452,9 +459,8 @@ parameters:
                                                     -
                                                         type: input
                                                         title: Title
-                                                        reuqired: false
+                                                        required: false
                                                         name: title
-
                                                     -
                                                         type: textArea
                                                         name: abstract
@@ -464,13 +470,6 @@ parameters:
                                                         attr:
                                                             placeholder: 'Please write an abstract'
                                                             rows: 3
-
-                                                    # -   type: text
-                                                    #     title: Show text from textarea with line wrap
-                                                    #     text: |
-                                                    #           data.abstract
-                                                    #     css:
-                                                    #         color: green
                                                     -
                                                         type: select
                                                         select2: true # activates full text search for the select box (please not for multi: true full text search is activated by default)
@@ -508,50 +507,33 @@ parameters:
                                                         sql: SELECT type_name, type_id FROM types ORDER BY type_id ASC;
                                                     -
                                                         type: breakLine
-
-                                                    -   type: text    # type to generate dynamic text
-                                                        title: 'Mapbender user/group'   # label (optional)
-                                                        #text: |
-                                                        #        data.name  #+ ' ' + data.firstname + ' ' + data.lastname + ' Email:' + data.email
-                                                        #text: "'user: ' + data.user_name + ' group:' + data.group_name"
+                                                    -
+                                                        type: text
+                                                        title: user_name / group_name
+                                                        #text: data.user_name
                                                         text: |
-                                                              'user: ' + data.user_name + ' group:' + data.group_name
-                                                    #-   type: text     # Typ text zur Generierung von dynamischen Texten aus der Datenbank
-                                                    #    title: 'Text with function type:text'   # Beschriftung (optional)
-                                                        # text: |
-                                                        #       (function(){ var result = '';
-                                                        #                   if(data.user_name){
-                                                        #                       result += 'user: ' + data.user_name;
-                                                        #                   }else{
-                                                        #                       result += 'user: -' ;
-                                                        #                   }
-                                                        #                   if(data.user_group){
-                                                        #                       result += ' group: ' + data.group_name;
-                                                        #                   }else{
-                                                        #                       result += ' group: -' ;
-                                                        #                   }
-                                                        #                   return result;})()
-
-                                                    -   type: radioGroup
-                                                        title: Radiobuttons - Choose one
-                                                        name: category # column
-                                                        options:
-                                                            - label: Category 1
-                                                              value: c1
-                                                            - label: Category 2
-                                                              value: c2
-                                                            - label: Category 3
-                                                              value: c3
-                                                        value: c2   # Pre-select option by default for new items, if not set first option is pre-selected
+                                                              'USER: ' + data.user_name + ' GROUP:' + data.group_name
+                                                    -   type: text     # Typ text zur Generierung von dynamischen Texten aus der Datenbank
+                                                        title: 'Text with function type:text'   # Beschriftung (optional)
+                                                        text: |
+                                                              (function(){ var result = '';
+                                                                           if(data.user_name){
+                                                                               result += 'USER: ' + data.user_name;
+                                                                           }else{
+                                                                               result += 'USER: -' ;
+                                                                           }
+                                                                           if(data.user_group){
+                                                                               result += ' GROUP: ' + data.group_name;
+                                                                           }else{
+                                                                               result += ' GROUP: -' ;
+                                                                           }
+                                                                           return result;})()
 
                                             -
                                                 title: '2. Personal information'
                                                 css:
                                                     padding: 10px
-                                                children:
-                                                    -
-                                                        type: label
-                                                        title: 'Please give us some information about yourself.'
+                                                children:                                             
                                                     -
                                                         type: fieldSet
                                                         children:
@@ -573,9 +555,6 @@ parameters:
                                                                 type: input
                                                                 title: Lastname
                                                                 name: lastname
-                                                                # mandatory: '/^[0-9]+$/'
-                                                                # mandatoryText: 'Only numbers'
-                                                                # required: false
                                                                 css:
                                                                     width: 30%
                                                             -
@@ -585,30 +564,14 @@ parameters:
                                                                 css:
                                                                     width: 40%
                                                     -
-                                                       type: select
-                                                       multiple: false
-                                                       title: Interests
-                                                       name: interests
-                                                       options:
-                                                           maps: maps
-                                                           reading: reading
-                                                           swimming: swimming
-                                                           dancing: dancing
-                                                           beer: beer
-                                                           flowers: flowers
-                                                    -
                                                         type: fieldSet
                                                         children:
                                                             -
                                                                 type: date
                                                                 title: 'favorite Date'
                                                                 name: date_favorite
-                                                                # not supported to predefine a value: 2024-04-01
-                                                                attr:
-                                                                    min: '2020-01-01'
-                                                                    max: '2030-01-01'
                                                                 css:
-                                                                    width: 25%
+                                                                    width: 30%
                                                                # Highlight the year column when you edit the date-field
                                                                # and automatically insert the year from the date
                                                                 change: |
@@ -625,17 +588,26 @@ parameters:
                                                                 title: Year
                                                                 name: year
                                                                 css:
-                                                                    width: 25%
+                                                                    width: 20%
 
                                                             -
                                                                 type: colorPicker
                                                                 title: 'Fill Color - used for default style'
                                                                 name: fill_color
                                                                 value: "#ff00ff"
-
+                                                                css:
+                                                                    width: 50%
                                                     -
-                                                        type: breakLine
-
+                                                       type: select
+                                                       multiple: false
+                                                       title: Interests
+                                                       name: interests
+                                                       options:
+                                                           maps: maps
+                                                           reading: reading
+                                                           swimming: swimming
+                                                           dancing: dancing
+                                                           flowers: flowers
                                                     -
                                                         type: fieldSet
                                                         children:
@@ -644,8 +616,6 @@ parameters:
                                                                 title: 'public (this new object is public)'
                                                                 name: public
                                                                 value: true
-                                                                # required: true makes no sense as checkbox can not be set false then
-                                                                #required: false
                                                                 css:
                                                                     width: 50%
                                                             -
@@ -655,6 +625,24 @@ parameters:
                                                                 css:
                                                                     width: 50%
 
+                                                    -   type: radioGroup
+                                                        title: Radiobuttons - Choose one
+                                                        name: category
+                                                        options:
+                                                            - label: Category 1
+                                                              value: c1
+                                                            - label: Category 2
+                                                              value: c2
+                                                            - label: Category 3
+                                                              value: c3
+                                                        value: c2   # Pre-select option by default for new items, if not set first option is pre-selected
+
+
+                                            -
+                                                title: '3. Data'
+                                                css:
+                                                    padding: 10px
+                                                children:
                                                     -
                                                         type: file
                                                         name: file_reference
@@ -664,10 +652,10 @@ parameters:
                                                           accept: 'image/png'
                                                     -   type: image
                                                         name: file_reference   # Link to input established by matching "name" value
-                                                        #src: './uploads/mapbender_user/screenshot.png' # path to placeholder image
+                                                        src: './uploads/mapbender_user/screenshot.png' # path to placeholder image
                                                         enlargeImage: true
                                                         imageCss:
-                                                            width: 200px
+                                                            width: 100px
 
 
                             line:
@@ -683,14 +671,14 @@ parameters:
                                     filter: "st_isempty(geom) = false
                                              AND st_intersects(geom,st_geomfromtext('POLYGON((7.078768115095284 50.718742549359874,7.108512203024121 50.71922903890011,7.10792188122481 50.733883032109,7.078168524167035 50.733396290239824,7.078768115095284 50.718742549359874))',4326))"
                                     styleField: style
-                                    # file upload location - customization per column on featureType (or dataStore) level
-                                    #files:
-                                    #  - field: file_reference
-                                    #    path: /data/demo/mapbender_upload_lines/
+
                                 allowDigitize: true # Allow geometry creation and editing (default true)
                                 allowEditData: true # Allow attribute editing (default true)
                                 allowDelete: true # Allow geometry deletion (default true)
                                 allowCustomStyle: true  # only for geomType line and multi-/polygon needs styleField definition in featureType section
+                                displayPermanent: true # Keep features visible on map even after switching to a different schema (default false)
+                                displayOnInactive: true # Keep features visible on map even after deactivating Digitizer (default false)
+
                                 toolset:
                                     -
                                         type: drawLine
@@ -738,78 +726,31 @@ parameters:
                                         label: Name
                                         width: 80%
                                 formItems:
-                                    -   type: p
-                                        text: This is an introductory paragraph.
-                                    # Arrange inputs in Bootstrap grid row + columns
-                                    -   type: div
-                                        cssClass: row
-                                        css:
-                                            padding: 10px
-                                        children:
-                                            - type: input
-                                              title: Input in left column
-                                              name: firstname
-                                              attr:
-                                                  placeholder: Please add first name
-                                              cssClass: col-xs-4 col-4
-                                            - type: input
-                                              title: Input in middle column
-                                              name: lastname
-                                              cssClass: col-xs-4 col-4
-                                            - type: input
-                                              name: email
-                                              title: Input in right column
-                                              cssClass: col-xs-4 col-4
                                     -
-                                        type: tabs
-                                        children:
-                                          - title: 'Tab 1'
-                                            children:
-                                                -
-                                                    type: label
-                                                    title: 'Welcome to the digitize demo. Try the new Mapbender feature!'
-                                          - title: 'Tab 2'
-                                            children:
-                                                -
-                                                    type: label
-                                                    title: 'Welcome to the digitize demo. Try the new Mapbender feature!'
-                                                -
-                                                    type: input
-                                                    title: Name
-                                                    name: name
-                                                    mandatory: true
-                                                    mandatoryText: 'Please give a name to the new object.'
-                                                    infoText: 'Help: Please give a name to the new object.'
-                                                -
-                                                    type: select
-                                                    title: Type
-                                                    name: type
-                                                    infoText: 'Help: Please choose a type...'
-                                                    required: true
-                                                    options:
-                                                        - label: 'Please select a type...'
-                                                          value: ''
-                                                        - label: 'Type A'
-                                                          value: 'A'
-                                                        - label: 'Type B'
-                                                          value: 'B'
-                                                        - label: 'Type C'
-                                                          value: 'C'
-                                                        - label: 'Type D'
-                                                          value: 'D'
-                                                        - label: 'Type E'
-                                                          value: 'E'
-                                          - title: 'Tab 3'
-                                            children:
-                                                -
-                                                    type: file
-                                                    name: file_reference
-                                                    title: 'upload a file'
-                                                    attr:
-                                                      accept: 'image/*'
-                                                -   type: image
-                                                    name: file_reference   # Link to input established by matching "name" value
-                                                    src: ./uploads/mapbender_user/screenshot.png # path to placeholder image
+                                        type: label
+                                        title: 'Welcome to the digitize demo. Try the new Mapbender feature!'
+                                    -
+                                        type: input
+                                        title: Name
+                                        name: name
+                                        mandatory: true
+                                        mandatoryText: 'Please give a name to the new object.'
+                                        infoText: 'Help: Please give a name to the new object.'
+                                    -
+                                        type: select
+                                        title: Type
+                                        name: type
+                                        infoText: 'Help: Please choose a type...'
+                                        required: true
+                                        options:
+                                            - label: 'Please select a type...'
+                                              value: ''
+                                            - label: 'Type A'
+                                              value: 'A'
+                                            - label: 'Type B'
+                                              value: 'B'
+                                            - label: 'Type C'
+                                              value: 'C'
 
                             polygon:
                                 label: 'polygon digitizing'
@@ -826,6 +767,9 @@ parameters:
                                 allowCustomStyle: true  # needs styleField definition in featureType section
                                 allowCancelButton: true
                                 allowDeleteByCancelNewGeometry: false
+                                displayPermanent: true # Keep features visible on map even after switching to a different schema (default false)
+                                displayOnInactive: true # Keep features visible on map even after deactivating Digitizer (default false)
+
                                 toolset:
                                     -
                                         type: drawPolygon
@@ -888,21 +832,21 @@ parameters:
                                     -
                                         type: input
                                         title: Name
-                                        mandatory: true
                                         name: name
+                                        required: true
                                         mandatoryText: 'Please give a name to the new object.'
                                         infoText: 'Help: Please give a name to the new object.'
-                                    -
-                                        type: select
-                                        title: Type
-                                        name: type
-                                        infoText: 'Help: Please give a type to the new object.'
-                                        required: true
-                                        options:
-                                            - label: 'Please select a type...'
-                                              value: ''
-                                        connection: geodata_db
-                                        sql: "Select chr(a) || '-Type' as value , chr(a) as key FROM generate_series(65,70) as a order by a;"
+                                    #-
+                                    #    type: select
+                                    #    title: Type
+                                    #    name: type
+                                    #    infoText: 'Help: Please give a type to the new object.'
+                                    #    required: true
+                                    #    options:
+                                    #        - label: 'Please select a type...'
+                                    #          value: ''
+                                    #    connection: geodata_db
+                                    #    sql: "Select chr(a) || '-Type' as value , chr(a) as key FROM generate_series(65,70) as a order by a;"
 
 
                     layertree:
@@ -914,17 +858,19 @@ parameters:
                         showBaseSource: true
                         layerRemove: true
                         menu: [opacity,zoomtolayer,metadata]
+                        screenType: desktop
                     sketch:
                         class: Mapbender\CoreBundle\Element\Sketch
                         target: map
                         auto_activate: false
+                        screenType: desktop
 
                     searchrouter:
                         target: map
                         timeoutFactor: 3
                         width: 700
                         height: 500
-                        asDialog: false
+                        screenType: desktop
                         class: Mapbender\CoreBundle\Element\SearchRouter                        
                         routes:
                             1-route:
@@ -997,11 +943,12 @@ parameters:
                         class: Mapbender\CoreBundle\Element\Button
                         label: true
                         click: https://mapbender.org/en/contact/
+                        screenType: desktop
 
                     privacyButton:
                         title: Privacy-Policy
                         tooltip: Privacy-Policy
-                        class: Mapbender\CoreBundle\Element\Button
+                        class: Mapbender\CoreBundle\Element\CustomButton
                         label: true
                         click: http://mapbender.org/en/privacy-policy
 
@@ -1020,6 +967,7 @@ parameters:
                         empty:  "x: - y: -"
                         prefix: "x: "
                         separator:  " y: "
+                        screenType: desktop
                         
                     srs:
                         class: Mapbender\CoreBundle\Element\SrsSelector
@@ -1027,6 +975,7 @@ parameters:
                         tooltip: mb.core.srsselector.class.description
                         label: false
                         target: map
+                        screenType: desktop
                         
                     scaleselector:
                         class: Mapbender\CoreBundle\Element\ScaleSelector
@@ -1034,18 +983,21 @@ parameters:
                         tooltip: mb.core.scaleselector.class.description
                         label: false
                         target: map
+                        screenType: desktop
                     applicationswitcher:
                         class: Mapbender\CoreBundle\Element\ApplicationSwitcher
                         applications: [mapbender_user, mapbender_user_basic]
-                    copyrightButton:
+                        screenType: desktop
+                    OSM-badge:
                         title: © OpenStreetMap contributors
                         tooltip: © OpenStreetMap contributors
-                        class: Mapbender\CoreBundle\Element\Button
+                        class: Mapbender\CoreBundle\Element\LinkButton
                         label: true
                         click: https://www.openstreetmap.org/copyright
-                        
-                    HTML:
+                        screenType: desktop
+                    html-powered-by:
                         title: HTML-powered by Mapbender
                         class: Mapbender\CoreBundle\Element\HTMLElement
-                        content: '<span style="color: #6FB536; font-weight:bold">powered by Mapbender</span>'
+                        content: '<span style="color:#009ee0;">powered by Mapbender</span>'
                         classes: html-element-inline
+                        screenType: desktop
