@@ -1,0 +1,16 @@
+.btn-primary {
+  --bs-btn-bg: #ccd221;
+  --bs-btn-border-color: #ccd221;
+  --bs-btn-hover-bg: #002647;
+  --bs-btn-hover-border-color: #002647;
+  --bs-btn-active-bg: #1A709E;
+  --bs-btn-active-border-color: #1A709E;
+}
+
+.form-control:focus {
+  color: var(--bs-body-color);
+  background-color: var(--bs-body-bg);
+  border-color: #ccd221;
+  outline: 0;
+  box-shadow: 0 0 0 .15rem rgba(84,89,95,.15);
+}

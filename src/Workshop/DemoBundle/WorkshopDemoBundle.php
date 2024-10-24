@@ -38,10 +38,10 @@ class WorkshopDemoBundle extends Bundle
         $xmlLoader = new XmlFileLoader($container, $configLocator);
         $xmlLoader->load('elements.xml');
         //$xmlLoader->load('services.xml');        
-        $xmlLoader->load('templates.xml');
+        //$xmlLoader->load('templates.xml');
         // Auto-rebuild on config change
         $container->addResource(new FileResource($xmlLoader->getLocator()->locate('elements.xml')));
         //$container->addResource(new FileResource($xmlLoader->getLocator()->locate('services.xml')));
-        $container->addResource(new FileResource($xmlLoader->getLocator()->locate('templates.xml')));
+        //$container->addResource(new FileResource($xmlLoader->getLocator()->locate('templates.xml')));
     }
 }

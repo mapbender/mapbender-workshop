@@ -7,9 +7,11 @@ use Mapbender\Component\Element\StaticView;
 use Mapbender\CoreBundle\Entity\Element;
 use Mapbender\Utils\HtmlUtil;
 use Symfony\Contracts\Translation\TranslatorInterface;
+use Symfony\Component\DependencyInjection\Attribute\AutoconfigureTag;
+
 use Workshop\DemoBundle\Element\Type\ClickAdminType;
 
-
+#[AutoconfigureTag('mapbender.element.click_button_triggered')]
 class ClickButtonTriggered extends AbstractElementService
 {
     private TranslatorInterface $translator;

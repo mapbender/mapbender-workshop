@@ -5,12 +5,14 @@ namespace Workshop\DemoBundle\Templates;
 use Mapbender\CoreBundle\Template\Fullscreen;
 use Mapbender\CoreBundle\Entity\Application;
 
+use Symfony\Component\DependencyInjection\Attribute\AutoconfigureTag;
 
 /**
  * Template DemoFullscreen
  * 
  * @author Astrid Emde
  */
+#[AutoconfigureTag('mapbender.application_template')]
 class DemoFullscreen extends Fullscreen
 {
     /**
@@ -25,12 +27,10 @@ class DemoFullscreen extends Fullscreen
     {
         return array(
             '@MapbenderCoreBundle/Resources/public/sass/libs/_variables.scss',
-            '@WorkshopDemoBundle/Resources/public/demo_variables_blue.scss',
+            '@WorkshopDemoBundle/Resources/public/css/demo_variables_blue.scss'
         );
     }
 
-
-//                    '@WorkshopDemoBundle/Resources/public/demo_fullscreen.css',
     /**
      * @inheritdoc
      */
@@ -40,13 +40,13 @@ class DemoFullscreen extends Fullscreen
             case 'css':
                 return array(
                     '@MapbenderCoreBundle/Resources/public/sass/template/fullscreen.scss',
-
+                    '@WorkshopDemoBundle/Resources/public/css/demo_fullscreen.scss',
                 );
             case 'js':
                 return array(
                     '@FOMCoreBundle/Resources/public/js/frontend/sidepane.js',
                     '@FOMCoreBundle/Resources/public/js/frontend/tabcontainer.js',
-                    '@MapbenderCoreBundle/Resources/public/mapbender.container.info.js',
+                    '@MapbenderCoreBundle/Resources/public/mapbender.container.info.js'
                 );
             case 'trans':
             default:

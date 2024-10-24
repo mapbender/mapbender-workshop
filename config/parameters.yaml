@@ -5,7 +5,7 @@
 parameters:
     # locale en, de, es, fr, it, nl, pt, ru, tr, uk are available
     fallback_locale:   en
-    locale:            en
+    locale:            de
     # uncomment this if you don't want the language to automatically adapt to the browser language
     # mapbender.automatic_locale: false
 
@@ -28,7 +28,7 @@ parameters:
 
     # Custom Branding
     branding.project_name: Geoportal powered by Mapbender
-    branding.logo: ./bundles/mapbendercore/image/OSGeo_project.png
+    branding.logo: ./bundles/workshopdemo/images/mapbender_logo.png
     branding.login_backdrop: https://mapbender.org/fileadmin/mapbender/resources/images/startseite/mapbender-stadt-markierungen.jpg
     branding.login_backdrop_hq: https://mapbender.org/fileadmin/mapbender/resources/images/startseite/mapbender-stadt-markierungen.jpg
     branding.splashscreen_image: bundles/mapbendercore/image/OSGeo_project.png
@@ -38,6 +38,7 @@ parameters:
           text: Mapbender.org
         - link: https://mapbender.org/en/showcase/
           text: Gallery
+
 
     # disabled elements are not available throughout the application
     # mapbender.disabled_elements:
@@ -54,6 +55,8 @@ parameters:
 
 # print queue: activates the queued print mode: read more at https://github.com/mapbender/mapbender/pull/1070
     mapbender.print.queueable: false
+    # mapbender.print.queue.storage_dir: /data/mapbender/application/public/prints/
+
     # specifies an absolute path for the generated PDF files
     # default is [your mapbender installation]/web/prints
     # mapbender.print.queue.storage_dir: "/dat/example-installation/prints"
@@ -64,7 +67,7 @@ parameters:
 #      "@MapbenderCoreBundle/Resources/public/sass/element/button.scss": "@@WorkshopDemoBundle/Resources/public/element/demo_button.scss"
 #      "@MapbenderCoreBundle/Resources/public/sass/element/scalebar.scss": "@@WorkshopDemoBundle/Resources/public/element/demo_scalebar.scss"
 
-# 
+# icons Font Awesome https://fontawesome.com/search
 #    mapbender.icons.disable_default: false
 #    mapbender.icons.disable_default_fa: false
 #    mapbender.icons.custom:
@@ -75,5 +78,6 @@ parameters:
 #        title: Heartbeat
 #        class: fa fa-heartbeat
 
+# use customized manager / login Template
     # mapbender.manager.manager.template_class: Workshop\DemoBundle\Templates\DemoManagerTemplate
     # mapbender.manager.manager.login_template_class: Workshop\DemoBundle\Templates\DemoLoginTemplate

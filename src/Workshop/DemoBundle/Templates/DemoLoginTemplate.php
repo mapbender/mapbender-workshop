@@ -15,9 +15,11 @@ class DemoLoginTemplate extends LoginTemplate
             return [
                 '@MapbenderCoreBundle/Resources/public/sass/libs/_variables.scss',
                 '@MapbenderManagerBundle/Resources/public/sass/manager/variables.scss',
-                '@WorkshopDemoBundle/Resources/public/demo_manager_variables.scss',
-                '@WorkshopDemoBundle/Resources/public/demo_login_variables.scss',   
+                '@WorkshopDemoBundle/Resources/public/css/custom_manager_variables.scss',
+                '@WorkshopDemoBundle/Resources/public/css/custom_login_variables.scss',   
                 '@MapbenderManagerBundle/Resources/public/sass/manager/login.scss',
+                '@WorkshopDemoBundle/Resources/public/css/custom_manager.scss',
+                '@WorkshopDemoBundle/Resources/public/css/custom_login.scss',
             ];
         }
         return $parent;

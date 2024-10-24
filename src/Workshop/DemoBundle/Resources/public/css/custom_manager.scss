@@ -1,0 +1,32 @@
+.btn-primary {
+  --bs-btn-bg: #D50032;
+  --bs-btn-border-color: #D50032;
+  --bs-btn-hover-bg: #565294;
+  --bs-btn-hover-border-color: #565294;
+  --bs-btn-active-bg: #1A709E;
+  --bs-btn-active-border-color: #1A709E;
+}
+
+.btn-light {
+  --bs-btn-color: #2985ab;
+  --bs-btn-hover-bg: #d3d4d5;
+  --bs-btn-hover-border-color: #ccd221;
+}
+
+.form-control:focus {
+  color: var(--bs-body-color);
+  background-color: var(--bs-body-bg);
+  border-color: #2985ab;
+  outline: 0;
+  box-shadow: 0 0 0 .15rem rgba(84,89,95,.15);
+}
+
+.underlined {
+  border-bottom: solid #ccd221 5px;
+}
+
+.tabContainer .nav > li a.active {
+  border-bottom: solid #2985ab 3px;
+}
+
+

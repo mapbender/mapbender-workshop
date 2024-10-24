@@ -1,0 +1,13 @@
+/* Amended variables for backend area; applied on top of libs/_variables.scss from core bundle */
+$textColor: #2985ab;
+$backgroundColor: rgb(207,207,207,0.3); //#CFCFCF;
+
+/* Black on white for maximum contrast and decent placeholder contrast */
+$fontSize: 14px;
+$fontFamily: "Montserrat", "Roboto (web)", "Sans-serif", "Ubuntu", $fontFamily;
+//$fontFamily: "Ubuntu", $fontFamily;
+
+$borderColor: #ccd221;
+
+$inputBorderColor: #2985ab;
+$inputFocusBorderColor: #2985ab;

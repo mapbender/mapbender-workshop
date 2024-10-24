@@ -31,8 +31,8 @@ $toolBarFontColor: #002647; //lila
 $toolBarBackgroundColor: $backgroundColor;
 $toolBarOpacity: 1;
 // Default and hover opacity for Button (and Button-like) Elements in toolbars
-$toolBarButtonDefaultOpacity: 0.7;
-$toolBarButtonHoverOpacity: 0.4;
+$toolBarButtonDefaultOpacity: 1;
+$toolBarButtonHoverOpacity: 0.8;
 $toolBarButtonActiveOpacity: $toolBarButtonHoverOpacity;
 
 // the holy colors

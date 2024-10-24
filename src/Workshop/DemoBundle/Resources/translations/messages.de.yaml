@@ -8,5 +8,5 @@ mb:
       admin:
         help: Hilfe
         help_help: Hilfe zur Hilfe
-        link: Linktext
+        link: Anwendungslink
         link_help: Falls gesetzt, wird der Link geöffnet, wenn im Popup "OK" gedrückt wird
