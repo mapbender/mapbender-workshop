@@ -31,8 +31,14 @@ parameters:
     branding.logo: ./bundles/workshopdemo/images/mapbender_logo.png
     branding.login_backdrop: https://mapbender.org/fileadmin/mapbender/resources/images/startseite/mapbender-stadt-markierungen.jpg
     branding.login_backdrop_hq: https://mapbender.org/fileadmin/mapbender/resources/images/startseite/mapbender-stadt-markierungen.jpg
-    branding.splashscreen_image: bundles/mapbendercore/image/OSGeo_project.png
+    
+    #branding.splashscreen_image: bundles/mapbendercore/image/OSGeo_project.png
+    branding.splashscreen_image:
+        default: ./bundles/workshopdemo/images/mapbender_logo.png
+        mapbender_user: bundles/mapbendercore/image/OSGeo_project.png  
+        mapbender_user_basic: bundles/mapbendercore/image/OSGeo_project.png  
 
+ 
     mapbender.sitelinks:
         - link: https://mapbender.org/
           text: Mapbender.org
@@ -81,3 +87,6 @@ parameters:
 # use customized manager / login Template
     # mapbender.manager.manager.template_class: Workshop\DemoBundle\Templates\DemoManagerTemplate
     # mapbender.manager.manager.login_template_class: Workshop\DemoBundle\Templates\DemoLoginTemplate
+
+# print legend output styling 
+    mapbender.print.legend_handler.service.class: Workshop\DemoBundle\Component\Print\LegendHandler
