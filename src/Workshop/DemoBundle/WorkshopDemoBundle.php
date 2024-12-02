@@ -36,11 +36,8 @@ class WorkshopDemoBundle extends Bundle
         parent::build($container);
         $configLocator = new FileLocator(__DIR__ . '/Resources/config');
         $xmlLoader = new XmlFileLoader($container, $configLocator);
-        $xmlLoader->load('elements.xml');
-        //$xmlLoader->load('services.xml');        
         //$xmlLoader->load('templates.xml');
         // Auto-rebuild on config change
-        $container->addResource(new FileResource($xmlLoader->getLocator()->locate('elements.xml')));
         //$container->addResource(new FileResource($xmlLoader->getLocator()->locate('services.xml')));
         //$container->addResource(new FileResource($xmlLoader->getLocator()->locate('templates.xml')));
     }
