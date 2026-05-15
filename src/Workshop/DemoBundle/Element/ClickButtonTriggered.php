@@ -11,7 +11,7 @@ use Symfony\Component\DependencyInjection\Attribute\AutoconfigureTag;
 
 use Workshop\DemoBundle\Element\Type\ClickAdminType;
 
-#[AutoconfigureTag('mapbender.element.click_button_triggered')]
+#[AutoconfigureTag('mapbender.element')]
 class ClickButtonTriggered extends AbstractElementService
 {
     private TranslatorInterface $translator;
@@ -63,7 +63,6 @@ class ClickButtonTriggered extends AbstractElementService
             'css' => array(),
             'trans' => array(
                 'mb.workshop.click.help',
-                'mb.workshop.click.test',
             ),
         );
     }

@@ -9,12 +9,6 @@ parameters:
             template:  Mapbender\CoreBundle\Template\Fullscreen
             custom_css: null
             regionProperties:
-              - name: toolbar
-                properties:
-                    item_alignment": right  # left/right/center
-                    screenType: all         # desktop/mobile/all
-                    generate_button_menu: false # true/false
-                    menu_label: NULL # NULL or text
               - name: sidepane
                 properties:
                     name: accordion # tabs (for button) / accordion / list / NULL
@@ -1147,6 +1141,126 @@ parameters:
                                             fillColor: '#00FFFF'
                                             fillWidth: 6
                                             fillOpacity: 0.6
+                            2-route:
+                                title: points
+                                class: Mapbender\CoreBundle\Component\SQLSearchEngine  
+                                class_options:
+                                    connection: geodata_db
+                                    relation: poi
+                                    attributes:
+                                        - gid
+                                        - name
+                                        - abstract
+                                        - title
+                                        - year
+                                        - date_favorite
+                                    geometry_attribute: geom
+                                form:
+                                    name:
+                                        type: Symfony\Component\Form\Extension\Core\Type\TextType 
+                                        options:
+                                            required: false
+                                            label: Name
+                                            attr:
+                                                data-autocomplete: 'on'
+                                        compare: ilike
+                                    date_favorite:
+                                        type: Symfony\Component\Form\Extension\Core\Type\DateType 
+                                        options:
+                                            label: 'favorite_date'
+                                            required: false
+                                            widget: single_text
+                                        compare: greater-equal
+                                    year:
+                                        type: Symfony\Component\Form\Extension\Core\Type\IntegerType
+                                        options:
+                                            label: 'year'
+                                            required: false
+                                        compare: greater-equal
+                                results:
+                                    view: table
+                                    count: true
+                                    exportcsv: true
+                                    sortBy: name
+                                    sortOrder: asc #desc
+                                    zoomToResultExtent: true
+                                    headers:
+                                        name: Name
+                                        date_favorite: favorite_date
+                                        year: year
+                                    callback:
+                                        event: click
+                                        options:
+                                            buffer: ~
+                                            minScale: 1000
+                                            maxScale: 2500
+                                    styleMap:
+                                        default:
+                                            strokeColor: '#8000FF'
+                                            strokeWidth: 1
+                                            strokeOpacity: 1
+                                            fillColor: '#8000FF'
+                                            fillOpacity: 0.8
+                                            fillWidth: 6
+                                        select:
+                                            strokeColor: '#ff00ff'
+                                            strokeWidth: 2
+                                            strokeOpacity: 1
+                                            fillColor: '#ff00ff'
+                                            fillOpacity: 0.6
+                                            fillWidth: 12
+                                            label: ${name} - ${gid} # Attribut/e für die Beschriftung oder fester Text
+                                            fontColor: "#0000ff"    # Beschriftungsfarbe
+                                            fontSize: 30px          # Schriftgröße
+                                            fontFamily: 'Arial, Courier New, monospace' # Schriftart
+                                            fontWeight: bold
+                                            labelOutlineColor: '#ffff00' # Schriftumrandungsfarbe
+                                            labelOutlineWidth: 1    # Breite der Umrandung
+                                            fontOffsetX: -18       # Versatz X-Achse
+                                            fontOffsetY: -18       # Versatz Y-Achse
+                                        temporary:
+                                            strokeColor: '#00FFFF'
+                                            strokeOpacity: 1
+                                            strokeWidth: 2
+                                            fillColor: '#00FFFF'
+                                            fillWidth: 6
+                                            fillOpacity: 0.6
+
+                    layertree:
+                        title: mb.core.layertree.class.title
+                        class: Mapbender\CoreBundle\Element\Layertree
+                        target: map
+                        type: element
+                        autoOpen: false
+                        showBaseSource: true
+                        layerRemove: true
+                        menu: [opacity,zoomtolayer,metadata]
+                        hideNotToggleable: true
+                        hideSelect: true
+                        hideInfo: false
+                        useTheme: true
+                        themes:
+                            -
+                                id: main
+                                title: main
+                                useTheme: true
+                                opened: true
+                                sourceVisibility: false
+                                allSelected: false
+                            -
+                                id: themes
+                                title: mb.demoapps.themes
+                                useTheme: true
+                                opened: true
+                                sourceVisibility: false
+                                allSelected: false
+                            -
+                                id: background themes
+                                title: mb.demoapps.background
+                                useTheme: true
+                                opened: true
+                                sourceVisibility: false
+                                allSelected: false
 
                     layertree:
                         class: Mapbender\CoreBundle\Element\Layertree
